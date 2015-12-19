@@ -38,7 +38,7 @@ public class Stats {
 	public int getVit() {
 		return vit;
 	}
-	public int getIntel() {
+	public int getInt() {
 		return intel;
 	}
 	public int getWis() {
