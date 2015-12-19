@@ -1,5 +1,7 @@
 package entities.monsters;
 
-public abstract class Monster {
+import entities.Entity;
+
+public abstract class Monster extends Entity{
 
 }
