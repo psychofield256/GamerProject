@@ -34,21 +34,20 @@ class Inventory:
 class Item:
 	"""Class used to create items.
 	takes a dict with:
-	-an str name (necessary)
-	-an str lore (use "" if you don't want)
+	-an str name
+	-an str lore (use None if you don't want)
 	-an str usedIn (same as above)
 	-an str id (necessary)
-	-an int weight (necessary)"""
+	-an int weight"""
 
 	def __init__(self, args):
 		"""unpack the name, lore and usedIn attributes."""
 		self.name, self.id, self.lore = args["name"], args["id"], args["lore"]
 		self.usedIn, self.weight = args["usedIn"], args["weight"]
-		#Used for recognizing an normal item from one that can be inserted
-		self.insertable = args["insertable"]
 
 	def __str__(self):
-		var = self.name + "\n" + self.lore + "\n" + "used in: " + self.usedIn + "\n" + (str(self.weight)) + "kg"
+
+		var = self.name + "\n" + self.lore + "\n" + "used in:" + self.usedIn + "\n" + str(self.weight) + "kg"
 		return var
 
 	def __eq__(self, other):
@@ -69,19 +68,8 @@ class Equipment(Item):
 		#the stat boosts
 		self.str, self.dex, self.vit = args["str"], args["dex"], args["vit"]
 		self.int, self.wis, self.luk = args["int"], args["wis"], args["luk"]
-		#the slot used (weapon, helmet,...) and the type (axe, sword, bow,...)
+		#the slot and type
 		self.slot, self.type = args["slot"], args["type"]
-		#the number of items that can be inserted
-		self.emptySlots = args["emptySlots"]
-		#the items inserted (used for removing)
-		self.usedSlots = []
-
-	def insert(self, item):
-		#todo
-		try:
-			something
-		except:
-			pass
 
 
 
@@ -92,7 +80,7 @@ class Potion(Item):
 	and Potion(2, "Mana") for a lvl 2 mana potion"""
 	
 	def __init__(self, lvl, ptype="Life"):
-		self.name  = ptype + " Potion lvl " + str(lvl)
+		self.name  = ptype + " Potion lvl" + str(lvl)
 		self.id = ptype + "Potion" + str(lvl) #e.g: "LifePotion2"
 		self.lvl = lvl
 		self.regen = lvl * 200
@@ -100,8 +88,3 @@ class Potion(Item):
 		self.lore = "A magic beverage that instantly regenerates your " + self.type + " from " + str(self.regen) + " points "
 		self.weight = 0.1
 		self.usedIn = "Nothing"
-
-class ToInsert(Item):
-	"""Class for items that can be inserted
-	takes the same args than Item, and:
-	-6 int stats (str, dex, vit, int, wis, luk)"""

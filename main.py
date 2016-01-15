@@ -16,11 +16,5 @@ for item in i.sayItems():
 for equip in i.sayEquipment():
 	print(equip, "\n")
 
-if a == b:
-	print("yes")
-else:
-	print("no")
-if a == c:
-	print("yes")
-else:
-	print("no")
+d = Potion(3)
+print(d)
