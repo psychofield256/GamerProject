@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 #made while learning with thepythongamebook.com/en:pygame:step003
+#will try http://usingpython.com/python-rpg-game/ to make a random dungeon
+#http://gamedevelopment.tutsplus.com/tutorials/create-a-procedurally-generated-dungeon-cave-system--gamedev-10099
+#
 
 import pygame
 
@@ -31,11 +34,30 @@ class PygView():
 
 			self.clock.tick(self.fps)
 
-			
+			radius = 200 #radius
+			color = (200,200,200) #color
+
+			#main circle
+			#define some points. google "pentagram tutorial" to understand the positions
+			a,b = (320,440), (320,40)
+			c,d = (120,240), (520,240)
+			o = (320,240) #center
+			pygame.draw.circle(self.background, color, o, radius)
+
+			surf = pygame.Surface((320,240))
+			surf.set_colorkey((0,0,0))
+			pygame.draw.circle(surf, (100,100,100), (150,100), 50)
+			surf.convert_alpha()
+
+
+
+
 			#pygame.draw.circle(self.background, (255,192,203), (self.screen.get_size()[0]//2, self.screen.get_size()[1]//2), 200)
 			self.screen.blit(self.background, (0,0))
+			self.screen.blit(surf, (320,240))
 
-			pygame.draw.arc(self.background, (0,150,0),(400,10,150,100), 0, 3.14) 
+
+			#pygame.draw.arc(self.background, (0,150,0),(400,10,150,100), 0, 3.14) 
 			pygame.display.flip()
 
 		pygame.quit()
