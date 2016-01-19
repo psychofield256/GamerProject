@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#made while learning with thepythongamebook.com/en:pygame:step003
+#made while learning with thepythongamebook.com/en:pygame:step004
 #will try http://usingpython.com/python-rpg-game/ to make a random dungeon
 #http://gamedevelopment.tutsplus.com/tutorials/create-a-procedurally-generated-dungeon-cave-system--gamedev-10099
 #
