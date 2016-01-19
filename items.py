@@ -2,7 +2,6 @@
 # -*- encoding: utf-8 -*-
 
 #IMPORTANT:
-#Don't forget to set "insertable": False when you don't want an error
 
 
 #items
@@ -72,6 +71,28 @@ equipments = [
 		"type": "sword",
 		"str": 5, "dex": 0, "vit": 0,
 		"int": 0, "wis": 0, "luk": 0
+	}, {
+		"name": "test chestplate",
+		"lore": "a wonderful cheat armor",
+		"lvl": 1,
+		"usedIn": "Nothing",
+		"weight": 0,
+		"emptySlots": 5,
+		"slot": "chestplate",
+		"type": "LightArmor",
+		"str": 500, "dex": 500, "vit": 500,
+		"int": 500, "wis": 500, "luk": 500
+	}, {
+		"name": "helmet",
+		"lore": "cheat test helmet",
+		"lvl": 1,
+		"usedIn": "Nothing",
+		"weight": 0,
+		"emptySlots": 4,
+		"slot": "helmet",
+		"type": "LightArmor",
+		"str": 500, "dex": 500, "vit": 500,
+		"int": 500, "wis": 500, "luk": 500
 	}
 ]
 
