@@ -44,4 +44,6 @@ print("items:")
 for item in i.sayItems():
 	print(item, "\n")
 print("-----------------------")
-
+print("potions:")
+for p in i.sayPotions():
+	print(p, "\n")
