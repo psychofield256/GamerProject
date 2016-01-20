@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 #-*-encoding:utf-8-*-
 
-from classes import *
+from classes.item import Item
+from classes.equipment import Equipment
+from classes.inventory import Inventory
+from classes.potion import Potion 
 from items import items, equipments, jewels
 itemList = []
 for item in items:
@@ -23,14 +26,13 @@ for item in itemList:
 	i.add(item)
 
 a = Potion(4)
-print(a)
+
 i.add(a)
 
 i.equip(4)
 i.equip(3)
 i.unequip("helmet")
 
-#should only display items, not equipments
 print("-----------------------")
 print("actual equipment:")
 for equip in i.saySlots():
