@@ -15,20 +15,33 @@ for jewel in jewels:
 	itemList.append(Item(jewel, jewel=True))
 
 l = itemList + equipList
-
-i = Inventory(l)
+i = Inventory()
 
 for item in equipList:
 	i.add(item)
 for item in itemList:
 	i.add(item)
 
-#i.equip(4)
-i.equip(0)
-i.equip(2)
-i.equip(2)
-#i.equip(1)
+a = Potion(4)
+print(a)
+i.add(a)
+
+i.equip(4)
+i.equip(3)
+i.unequip("helmet")
+
+#should only display items, not equipments
+print("-----------------------")
+print("actual equipment:")
+for equip in i.saySlots():
+	print(equip, "\n")
+print("-----------------------")
+print("equipments:")
+for e in i.sayEquipments():
+	print(e,"\n")
+print("-----------------------------")
+print("items:")
 for item in i.sayItems():
 	print(item, "\n")
-for equip in i.sayEquipment():
-	print(equip, "\n")
+print("-----------------------")
+

@@ -8,10 +8,8 @@
 items = [
 	#example
 	{
-		"id": "TestItem1",
-		"name": "item",
+		"name": "item name",
 		"lore": "description",
-		"usedIn": "Nothing",
 		"weight": 1,
 	},
 	
@@ -20,10 +18,8 @@ items = [
 jewels = [
 	#jewel example
 	{
-		"id": "TestJewel1",
 		"name": "jewel test",
 		"lore": "A jewel that can decorate an equipment",
-		"usedIn": "Jewelry",
 		"weight": 1,
 		"str": 300, "dex": 300, "vit": 300,
 		"int": 300, "wis": 300, "luk": 300 #no, that's not cheat
@@ -34,11 +30,9 @@ jewels = [
 equipments = [
 	#example
 	{
-		"id": "Example",
 		"name": "Example Sword",
 		"lore": "description",
 		"lvl": 1,
-		"usedIn": "Nothing",
 		"weight": 10,
 		"emptySlots": 1, #emptySlots if for inserting items which provide stat boosts
 		"slot": "weapon", #weapon, helmet, chestplate, leggings or boots
@@ -46,24 +40,19 @@ equipments = [
 		"str": 100, "dex": 100, "vit": 100,
 		"int": 100, "wis": 100, "luk": 100 #no, that's not cheat. that's programming.
 	}, {
-		"id": "BossSword1",
 		"name": "sword of devil",
 		"lore": "the sword left by the blue demon",
 		"lvl": 10,
-		"usedIn": "Nothing",
 		"weight": 10,
-		"insertable": False,
 		"emptySlots": 2, 
 		"slot": "weapon",
 		"type": "sword",
 		"str": 10, "dex": 15, "vit": 10,
 		"int": 0, "wis": 0, "luk": 0
 	}, {
-		"id": "FirstSword",
 		"name": "wooden stick",
 		"lore": "a wooden stick you \"borrowed\" at someone you didn't know",
 		"lvl": 1,
-		"usedIn": "Nothing",
 		"weight": 12,
 		"insertable": False,
 		"emptySlots": 0,
@@ -75,7 +64,6 @@ equipments = [
 		"name": "test chestplate",
 		"lore": "a wonderful cheat armor",
 		"lvl": 1,
-		"usedIn": "Nothing",
 		"weight": 0,
 		"emptySlots": 5,
 		"slot": "chestplate",
@@ -86,7 +74,6 @@ equipments = [
 		"name": "helmet",
 		"lore": "cheat test helmet",
 		"lvl": 1,
-		"usedIn": "Nothing",
 		"weight": 0,
 		"emptySlots": 4,
 		"slot": "helmet",

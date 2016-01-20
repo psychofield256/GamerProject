@@ -1,0 +1,9 @@
+todo list:
+python abstract basic classes may be needed further
+(module abc)
+unittest
+
+change list:
+-add equip/unequip, potions/items/equipments inventories without bugs
+-removed "usedIn" useless attribute
+-add the todo/change lists

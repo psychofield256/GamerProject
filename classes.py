@@ -1,32 +1,28 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+from typing import ItemsView
+from test.test_pyexpat import PositionTest
 
-#todo
-#not necessary for now
-#from abc import ABCMeta, abstractmethod
-
-#next commit:
-#no more id needed
-#inventory works!
-#no more ugly "insertable": False on equipment
 
 class Inventory:
 	"""Class used to create the inventory of entities
 	takes:
 	-every Item you want (or a tuple)
 	-the four Equipment (helmet, chestplate, leggings, boots, weapon)"""
-	def __init__(self, items, helmet=None, chestplate=None, leggings = None, boots = None, weapon=None):
+	def __init__(self, items=[], helmet=None, chestplate=None, leggings = None, boots = None, weapon=None):
 		self.items = []
 		self.equipments = []
 		for item in items:
-			#todo add equipments
 			#if the item is an equipment, add it to equipments
 			if item.iType == "equipment":
 				self.equipments.append(item)
+			#if it's a potion, it goes in potions
+			elif item.iType == "potion":
+				self.potions.append(item)
 			#else, add it to items
 			else:
 				self.items.append(item)
-		self.equips = {"helmet": helmet, "chestplate": chestplate,
+		self.slots = {"helmet": helmet, "chestplate": chestplate,
 		"leggings": leggings, "boots": boots, "weapon": weapon}
 		#self.helmet = helmet
 		#self.chestplate = chestplate
@@ -37,45 +33,62 @@ class Inventory:
 	def sayItems(self):
 		for item in self.items:
 			yield item
-	def sayEquipment(self):
-		#for equip in self.equips.values():
+	def sayEquipments(self):
+		"""yield the equipments stored"""
+		for equip in self.equipments:
+			yield equip
+	def saySlots(self):
+		#for equip in self.slots.values():
 		#	yield equip
-		return self.equips["weapon"], self.equips["helmet"], self.equips["chestplate"],
-		self.equips["leggings"], self.equips["boots"]
+		yield self.slots["weapon"]
+		yield self.slots["helmet"]
+		yield self.slots["chestplate"]
+		yield self.slots["leggings"]
+		yield self.slots["boots"]
+		#return self.slots["weapon"], self.slots["helmet"], self.slots["chestplate"],
+		#self.slots["leggings"], self.slots["boots"]
+	def sayPotions(self):
+		for p in self.potions:
+			yield p
 	def add(self, item):
-		self.items.append(item)
-	def equip(self, equipPosition):
+		if item.iType == "equipment":
+			self.equipments.append(item)
+		elif item.iType == "potion":
+			self.potions.append(item)
+		elif item.iType == "item" or item.iType == "jewel":
+			self.items.append(item)
+	def equip(self, position):
 		"""Method for equipping an equipment in the inventory to the corresponding slot
 		and unequipping the old one"""
 		try:
 			#takes the equipment to equip
-			item = self.equipments[equipPosition]
+			equip = self.equipments[position]
 			#unequip the slot of the item to equîp
-			self.unequip(item.slot)
+			self.unequip(equip.slot)
 			#copy the new one in the equipment and delete the old one
-			self.equips[item.slot] = item
-			del self.equipments[equipPosition]
+			self.slots[equip.slot] = equip
+			del self.equipments[position]
 		except AttributeError:
 			print("this is not an equipment!")
 
 	def unequip(self, slot):
 		#check if the actual equipment is not None.
 		#Then, take the item in the slot selected and copy it to the inventory.
-		#then, delete it
+		#then, replace it with None
 		#if it was None, don't do anything, because equip will replace it when there will be something
-		if self.equips[slot] != None:
-			self.add(self.equips[slot])
-			del self.equips[slot]
+		if self.slots[slot] != None:
+			self.add(self.slots[slot])
+			self.slots[slot] = None
 
 
 class Item:
 	"""Class used to create items.
 	takes a dict defined in items.py (there is an example)"""
 
-	def __init__(self, args, jewel=False, equipment=False):
-		"""unpack the name, lore and usedIn attributes."""
+	def __init__(self, args, jewel=False):
+		"""unpack the name, lore and other attributes."""
 		self.name, self.lore = args["name"], args["lore"]
-		self.usedIn, self.weight = args["usedIn"], args["weight"]
+		self.weight = args["weight"]
 		#saves the source dict used for defining the item
 		self.src = args
 		#used for recognizing jewels
@@ -92,7 +105,7 @@ class Item:
 		self.int, self.wis, self.luk = args["int"], args["wis"], args["luk"]
 
 	def __str__(self):
-		var = self.name + "\n" + self.lore + "\n" + "used in: " + self.usedIn + "\n" + (str(self.weight)) + "kg"
+		var = self.name + "\n" + self.lore + "\n" + (str(self.weight)) + "kg"
 		#if jewel
 		if self.iType == "jewel":
 			var += "\n" + "insertable"
@@ -105,8 +118,12 @@ class Item:
 		var = "\n" + "str: " + str(self.str) + " dex: " + str(self.dex) + " vit: " + str(self.vit)
 		var += "\n" + "int: " + str(self.int) + " wis: " + str(self.wis) + " luk: " + str(self.luk)
 		return var
-
+	
 	def __eq__(self, other):
+		#if the other item is just void, return false.
+		#else, if they have the same source dict, they're equal 
+		if other == None:
+			return False
 		return self.src == other.src
 
 
@@ -138,13 +155,26 @@ class Equipment(Item):
 
 	def insert(self, item):
 		#todo
-		try:
-			something
-		except:
-			pass
-
-
-
+		self.emptySlots -= 1
+		self.usedSlots.append(item)
+		self.str += item.str
+		self.dex += item.dex
+		self.vit += item.vit
+		self.int += item.int
+		self.wis += item.wis
+		self.luk += item.luk
+	def remove(self, number):
+		"""function for removing a jewel from self
+		add 1 to the index for easier use"""
+		toRemove = self.usedSlots[number+1]
+		self.str -= item.str
+		self.dex -= item.dex
+		self.vit -= item.vit
+		self.int -= item.int
+		self.wis -= item.wis
+		self.luk -= item.luk
+		del self.usedSlots[number+1]
+		
 class Potion(Item):
 	"""Class used to create life/mana potions.
 	takes an int level and an str type ("Life" or Mana") that is "Life" by default.
@@ -153,15 +183,8 @@ class Potion(Item):
 	
 	def __init__(self, lvl, ptype="Life"):
 		self.name  = ptype + " Potion lvl " + str(lvl)
-		self.id = ptype + "Potion" + str(lvl) #e.g: "LifePotion2"
 		self.lvl = lvl
 		self.regen = lvl * 200
-		self.type = ptype.lower()
-		self.lore = "A magic beverage that instantly regenerates your " + self.type + " from " + str(self.regen) + " points "
+		self.iType = ptype.lower()
+		self.lore = "A magic beverage that instantly regenerates your " + self.iType + " from " + str(self.regen) + " points "
 		self.weight = 0.1
-		self.usedIn = "Nothing"
-
-class ToInsert(Item):
-	"""Class for items that can be inserted
-	takes the same args than Item, and:
-	-6 int stats (str, dex, vit, int, wis, luk)"""
