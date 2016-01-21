@@ -5,7 +5,9 @@ todo list:
 
 
 change list:
-
+-adding an error message if the slot to unequip doesn't exist
+-remaking commentaries
+-------------------------------------------
 -Potion in potion.py, Item in item.py,...
 -classes in python/classes folder
 -python files in python folder
