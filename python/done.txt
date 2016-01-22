@@ -7,3 +7,4 @@ x 2016-01-22 classes in python/classes folder
 x 2016-01-22 python files in python folder
 x 2016-01-22 remaking commentaries
 x 2016-01-22 removed "usedIn" useless attribute
+x 2016-01-22 clean classes/item.py

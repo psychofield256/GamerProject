@@ -3,27 +3,36 @@
 
 from classes.item import Item
 
+
 class Equipment(Item):
     """Class used to create equipments.
-    takes a dict, as Item, but with the slot, the type, the emplySlots and every stat boost defined in.
+
+    Takes a dict, as Item, but with more attributes (explained in items.py).
     for example, see in items.py, at equip"""
 
     def __init__(self, args):
         """Will call the mother constructor to set the general attributes.
         Then, saves other caracteristics"""
         Item.__init__(self, args)
-        #saves the stat boost
+        # saves the stat boost
         self.takeStats(args)
-        #the slot used (weapon, helmet,...) and the type (axe, sword, bow,...)
-        self.slot, self.type, self.lvl = args["slot"], args["type"], args["lvl"]
-        #the itemType can be "jewel", "equipment" or "item"
+        # the slot used (weapon, helmet,...) and the type (axe, sword, bow,...)
+        self.slot = args["slot"]
+        self.type = args["type"]
+        self.lvl = args["lvl"]
+        # the itemType can be "jewel", "equipment" or "item"
         self.iType = "equipment"
-        #the number of items that can be inserted
+        # the number of items that can be inserted
         self.emptySlots = args["emptySlots"]
-        #the items inserted (used for removing)
+        # the items inserted (used for removing)
         self.usedSlots = []
+
     def __str__(self):
-        """#take the Item __str__ function, and add the equipment caracteristics"""
+        """
+        return a paragraph describing the equipment.
+
+        take the Item.__str__ function, and add the equipment caracteristics
+        """
         var = Item.__str__(self)
         var += "\n" + "equipment"
         var += self.sayStats()

@@ -1,7 +1,8 @@
 implementations:
 2016-01-22 unittest
-2016-01-22 4 spaces indentation, blank lines, is/not, comments @pep8
-2016-01-22 Pylint convention tracking @pylint
+(A) 2016-01-22 Pylint, pep8 and flake8 tracking @codeclean
+(B) 2016-01-22 Rewrite comments, use more is/not @cleancode
+(A) 2016-01-22 clean classes/equipment.py
 
 bugs:
 2016-01-22 #1:Inventory.sayPotions() doesn't say anything

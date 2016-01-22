@@ -1,0 +1,180 @@
+item.py:30:9: E265 block comment should start with '# '
+        #if jewel
+        ^
+    Separate inline comments by at least two spaces.
+
+    An inline comment is a comment on the same line as a statement.  Inline
+    comments should be separated by at least two spaces from the statement.
+    They should start with a # and a single space.
+
+    Each line of a block comment starts with a # and a single space
+    (unless it is indented text inside the comment).
+
+    Okay: x = x + 1  # Increment x
+    Okay: x = x + 1    # Increment x
+    Okay: # Block comment
+    E261: x = x + 1 # Increment x
+    E262: x = x + 1  #Increment x
+    E262: x = x + 1  #  Increment x
+    E265: #Block comment
+    E266: ### Block comment
+item.py:33:13: E265 block comment should start with '# '
+            #add the stats to var
+            ^
+    Separate inline comments by at least two spaces.
+
+    An inline comment is a comment on the same line as a statement.  Inline
+    comments should be separated by at least two spaces from the statement.
+    They should start with a # and a single space.
+
+    Each line of a block comment starts with a # and a single space
+    (unless it is indented text inside the comment).
+
+    Okay: x = x + 1  # Increment x
+    Okay: x = x + 1    # Increment x
+    Okay: # Block comment
+    E261: x = x + 1 # Increment x
+    E262: x = x + 1  #Increment x
+    E262: x = x + 1  #  Increment x
+    E265: #Block comment
+    E266: ### Block comment
+item.py:36:5: E301 expected 1 blank line, found 0
+    def sayStats(self):
+    ^
+    Separate top-level function and class definitions with two blank lines.
+
+    Method definitions inside a class are separated by a single blank line.
+
+    Extra blank lines may be used (sparingly) to separate groups of related
+    functions.  Blank lines may be omitted between a bunch of related
+    one-liners (e.g. a set of dummy implementations).
+
+    Use blank lines in functions, sparingly, to indicate logical sections.
+
+    Okay: def a():\n    pass\n\n\ndef b():\n    pass
+    Okay: def a():\n    pass\n\n\n# Foo\n# Bar\n\ndef b():\n    pass
+
+    E301: class Foo:\n    b = 0\n    def bar():\n        pass
+    E302: def a():\n    pass\n\ndef b(n):\n    pass
+    E303: def a():\n    pass\n\n\n\ndef b(n):\n    pass
+    E303: def a():\n\n\n\n    pass
+    E304: @decorator\n\ndef a():\n    pass
+item.py:37:80: E501 line too long (88 > 79 characters)
+        """function for returnin the stats of the item. If the item don't have any, pass because
+                                                                               ^
+    Limit all lines to a maximum of 79 characters.
+
+    There are still many devices around that are limited to 80 character
+    lines; plus, limiting windows to 80 characters makes it possible to have
+    several windows side-by-side.  The default wrapping on such devices looks
+    ugly.  Therefore, please limit all lines to a maximum of 79 characters.
+    For flowing long blocks of text (docstrings or comments), limiting the
+    length to 72 characters is recommended.
+
+    Reports error E501.
+item.py:39:80: E501 line too long (98 > 79 characters)
+        var = "\n" + "str: " + str(self.str) + " dex: " + str(self.dex) + " vit: " + str(self.vit)
+                                                                               ^
+    Limit all lines to a maximum of 79 characters.
+
+    There are still many devices around that are limited to 80 character
+    lines; plus, limiting windows to 80 characters makes it possible to have
+    several windows side-by-side.  The default wrapping on such devices looks
+    ugly.  Therefore, please limit all lines to a maximum of 79 characters.
+    For flowing long blocks of text (docstrings or comments), limiting the
+    length to 72 characters is recommended.
+
+    Reports error E501.
+item.py:40:80: E501 line too long (99 > 79 characters)
+        var += "\n" + "int: " + str(self.int) + " wis: " + str(self.wis) + " luk: " + str(self.luk)
+                                                                               ^
+    Limit all lines to a maximum of 79 characters.
+
+    There are still many devices around that are limited to 80 character
+    lines; plus, limiting windows to 80 characters makes it possible to have
+    several windows side-by-side.  The default wrapping on such devices looks
+    ugly.  Therefore, please limit all lines to a maximum of 79 characters.
+    For flowing long blocks of text (docstrings or comments), limiting the
+    length to 72 characters is recommended.
+
+    Reports error E501.
+item.py:42:1: W293 blank line contains whitespace
+
+^
+    Trailing whitespace is superfluous.
+
+    The warning returned varies on whether the line itself is blank, for easier
+    filtering for those who want to indent their blank lines.
+
+    Okay: spam(1)\n#
+    W291: spam(1) \n#
+    W293: class Foo(object):\n    \n    bang = 12
+item.py:44:9: E265 block comment should start with '# '
+        #if the other item is just void, return false.
+        ^
+    Separate inline comments by at least two spaces.
+
+    An inline comment is a comment on the same line as a statement.  Inline
+    comments should be separated by at least two spaces from the statement.
+    They should start with a # and a single space.
+
+    Each line of a block comment starts with a # and a single space
+    (unless it is indented text inside the comment).
+
+    Okay: x = x + 1  # Increment x
+    Okay: x = x + 1    # Increment x
+    Okay: # Block comment
+    E261: x = x + 1 # Increment x
+    E262: x = x + 1  #Increment x
+    E262: x = x + 1  #  Increment x
+    E265: #Block comment
+    E266: ### Block comment
+item.py:45:9: E265 block comment should start with '# '
+        #else, if they have the same source dict, they're equal
+        ^
+    Separate inline comments by at least two spaces.
+
+    An inline comment is a comment on the same line as a statement.  Inline
+    comments should be separated by at least two spaces from the statement.
+    They should start with a # and a single space.
+
+    Each line of a block comment starts with a # and a single space
+    (unless it is indented text inside the comment).
+
+    Okay: x = x + 1  # Increment x
+    Okay: x = x + 1    # Increment x
+    Okay: # Block comment
+    E261: x = x + 1 # Increment x
+    E262: x = x + 1  #Increment x
+    E262: x = x + 1  #  Increment x
+    E265: #Block comment
+    E266: ### Block comment
+item.py:45:64: W291 trailing whitespace
+        #else, if they have the same source dict, they're equal
+                                                               ^
+    Trailing whitespace is superfluous.
+
+    The warning returned varies on whether the line itself is blank, for easier
+    filtering for those who want to indent their blank lines.
+
+    Okay: spam(1)\n#
+    W291: spam(1) \n#
+    W293: class Foo(object):\n    \n    bang = 12
+item.py:46:18: E711 comparison to None should be 'if cond is None:'
+        if other == None:
+                 ^
+    Comparison to singletons should use "is" or "is not".
+
+    Comparisons to singletons like None should always be done
+    with "is" or "is not", never the equality operators.
+
+    Okay: if arg is not None:
+    E711: if arg != None:
+    E711: if None == arg:
+    E712: if arg == True:
+    E712: if False == arg:
+
+    Also, beware of writing if x when you really mean if x is not None --
+    e.g. when testing whether a variable or argument that defaults to None was
+    set to some other value.  The other value might have a type (such as a
+    container) that could be false in a boolean context!
