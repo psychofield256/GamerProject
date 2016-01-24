@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from classes.item import Item
+"""
+module with the class Equipment.
+"""
+
+from item import Item
 
 
 class Equipment(Item):
@@ -23,9 +27,9 @@ class Equipment(Item):
         # the itemType can be "jewel", "equipment" or "item"
         self.iType = "equipment"
         # the number of items that can be inserted
-        self.emptySlots = args["emptySlots"]
+        self.empty_slots = args["emptySlots"]
         # the items inserted (used for removing)
-        self.usedSlots = []
+        self.used_slots = []
 
     def __str__(self):
         """
@@ -39,23 +43,25 @@ class Equipment(Item):
         return var
 
     def insert(self, item):
-        #todo
-        self.emptySlots -= 1
-        self.usedSlots.append(item)
+        """insert a jewel in the equipment"""
+        # todo
+        self.empty_slots -= 1
+        self.used_slots.append(item)
         self.str += item.str
         self.dex += item.dex
         self.vit += item.vit
         self.int += item.int
         self.wis += item.wis
         self.luk += item.luk
+
     def remove(self, number):
         """function for removing a jewel from self
         add 1 to the index for easier use"""
-        toRemove = self.usedSlots[number+1]
-        self.str -= item.str
-        self.dex -= item.dex
-        self.vit -= item.vit
-        self.int -= item.int
-        self.wis -= item.wis
-        self.luk -= item.luk
-        del self.usedSlots[number+1]
+        to_remove = self.used_slots[number+1]
+        self.str -= to_remove.str
+        self.dex -= to_remove.dex
+        self.vit -= to_remove.vit
+        self.int -= to_remove.int
+        self.wis -= to_remove.wis
+        self.luk -= to_remove.luk
+        del self.used_slots[number+1]

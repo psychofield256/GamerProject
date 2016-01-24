@@ -1,9 +1,6 @@
-implementations:
-2016-01-22 unittest
-(A) 2016-01-22 Pylint, pep8 and flake8 tracking @codeclean
-(B) 2016-01-22 Rewrite comments, use more is/not @cleancode
-(A) 2016-01-22 clean classes/equipment.py
+2016-01-22 unittest @debug
+(B) 2016-01-24 change Item.str, Item.dex,... into Item.stats{"str"} @add
+(B) 2016-01-22 Rewrite comments, use more is/not @clean
+(A) 2016-01-24 test code and handle specific cases with unittest @debug
 
-bugs:
-2016-01-22 #1:Inventory.sayPotions() doesn't say anything
 
