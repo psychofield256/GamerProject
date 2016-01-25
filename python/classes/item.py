@@ -5,6 +5,8 @@
 Module containing the Item class.
 """
 
+from constants import STATLIST
+
 
 class Item(object):
     """Class used to create items.
@@ -25,31 +27,28 @@ class Item(object):
             self.item_type = "item"
 
     def take_stats(self, args):
-        """function for taking the str, dex, vit, int, wis and luk
+        """function for taking the stats (given in constants.py)
         from the dict used for creating the item"""
-        stat_list = ["str", "dex", "vit", "int", "wis", "luk"]
-        for stat in stat_list:
+        for stat in STATLIST:
             self.stats[stat] = args[stat]
-        # self.str, self.dex, self.vit = args["str"], args["dex"], args["vit"]
-        # self.int, self.wis, self.luk = args["int"], args["wis"], args["luk"]
 
-    def __str__(self):
-        var = self.name + "\n" + self.lore + "\n" + (str(self.weight)) + "kg"
-        # if jewel
-        if self.item_type == "jewel":
-            var += "\n" + "insertable"
-            # add the stats to var
-            var += self.say_stats()
-        return var
+        def __str__(self):
+            var = self.name + "\n" + self.lore + "\n" + (str(self.weight)) + "kg"
+            # if jewel
+            if self.item_type == "jewel":
+                var += "\n" + "insertable"
+                # add the stats to var
+                var += self.say_stats()
+            return var
 
-    def say_stats(self):
-        """
-        function for returning the stats of the item.
+        def say_stats(self):
+            """
+            function for returning the stats of the item.
 
-        If the item don't have any, pass because
-        it will not be used"""
-        var = ""
-        stat_list = ["str", "dex", "vit", "int", "wis", "luk"]
+            If the item don't have any, pass because
+            it will not be used"""
+            var = ""
+            stat_list = ["str", "dex", "vit", "int", "wis", "luk"]
         for i, stat in enumerate(stat_list):
             # if i is a multiple of 3
             if (i % 3) == 0:

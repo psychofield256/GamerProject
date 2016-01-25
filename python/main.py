@@ -4,7 +4,7 @@
 from classes.item import Item
 from classes.equipment import Equipment
 from classes.inventory import Inventory
-from classes.potion import Potion 
+from classes.potion import Potion
 from items import items, equipments, jewels
 itemList = []
 for item in items:

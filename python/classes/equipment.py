@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+# pylint: disable=no-name-in-module,import-error
+
 
 """
 module with the class Equipment.
 """
 
-from item import Item
+from classes.item import Item
+from constants import STATLIST
 
 
 class Equipment(Item):
@@ -18,14 +21,15 @@ class Equipment(Item):
         """Will call the mother constructor to set the general attributes.
         Then, saves other caracteristics"""
         Item.__init__(self, args)
-        # saves the stat boost
-        self.takeStats(args)
+        # saves the stat boosts in a dict
+        self.stats = {}
+        self.take_stats(args)
         # the slot used (weapon, helmet,...) and the type (axe, sword, bow,...)
         self.slot = args["slot"]
         self.type = args["type"]
         self.lvl = args["lvl"]
         # the itemType can be "jewel", "equipment" or "item"
-        self.iType = "equipment"
+        self.item_type = "equipment"
         # the number of items that can be inserted
         self.empty_slots = args["emptySlots"]
         # the items inserted (used for removing)
@@ -39,7 +43,7 @@ class Equipment(Item):
         """
         var = Item.__str__(self)
         var += "\n" + "equipment"
-        var += self.sayStats()
+        var += self.say_stats()
         return var
 
     def insert(self, item):
@@ -47,21 +51,14 @@ class Equipment(Item):
         # todo
         self.empty_slots -= 1
         self.used_slots.append(item)
-        self.str += item.str
-        self.dex += item.dex
-        self.vit += item.vit
-        self.int += item.int
-        self.wis += item.wis
-        self.luk += item.luk
+
+        for stat in STATLIST:
+            self.stats[stat] += item.stats[stat]
 
     def remove(self, number):
         """function for removing a jewel from self
         add 1 to the index for easier use"""
         to_remove = self.used_slots[number+1]
-        self.str -= to_remove.str
-        self.dex -= to_remove.dex
-        self.vit -= to_remove.vit
-        self.int -= to_remove.int
-        self.wis -= to_remove.wis
-        self.luk -= to_remove.luk
+        for stat in STATLIST:
+            self.stats[stat] -= to_remove.stats[stat]
         del self.used_slots[number+1]
