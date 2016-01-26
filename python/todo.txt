@@ -1,3 +1,2 @@
-(A) 2016-01-24 change Item.str, Item.dex,... into Item.stats{"str"} @add
 2016-01-22 Rewrite comments, use more is/not @clean
 2016-01-24 test code and handle specific cases with unittest @debug

@@ -14,6 +14,7 @@ ITEMS = [
         "name": "item name",
         "lore": "description",
         "weight": 1,
+        "lvl": 1
     },
 
 ]

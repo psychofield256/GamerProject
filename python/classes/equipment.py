@@ -8,7 +8,7 @@ module with the class Equipment.
 """
 
 from classes.item import Item
-from constants import STATLIST
+from constants import STATLIST, EQUIPGENERALS
 
 
 class Equipment(Item):
@@ -21,17 +21,13 @@ class Equipment(Item):
         """Will call the mother constructor to set the general attributes.
         Then, saves other caracteristics"""
         Item.__init__(self, args)
-        # saves the stat boosts in a dict
-        self.stats = {}
+        # saves the stat boosts in the stats dict
         self.take_stats(args)
         # the slot used (weapon, helmet,...) and the type (axe, sword, bow,...)
-        self.slot = args["slot"]
-        self.type = args["type"]
-        self.lvl = args["lvl"]
+        for info in EQUIPGENERALS:
+            self.generals[info] = args[info]
         # the itemType can be "jewel", "equipment" or "item"
         self.item_type = "equipment"
-        # the number of items that can be inserted
-        self.empty_slots = args["emptySlots"]
         # the items inserted (used for removing)
         self.used_slots = []
 
@@ -49,7 +45,7 @@ class Equipment(Item):
     def insert(self, item):
         """insert a jewel in the equipment"""
         # todo
-        self.empty_slots -= 1
+        self.generals["empty_slots"] -= 1
         self.used_slots.append(item)
 
         for stat in STATLIST:

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-# pylint: disable=E0401,E0602,R0903,W0612
 
 """
 Module containing the Item class.
@@ -38,11 +37,7 @@ class Item(object):
             self.stats[stat] = args[stat]
 
         def __str__(self):
-            var = ""
-            for info in GENERALS:
-                var += info + ": " + self.generals[info]
-            # var = self.name + "\n" + self.lore +
-            # "\n" + (str(self.weight)) + "kg"
+            var = self.name + "\n" + self.lore + "\n" + (str(self.weight)) + "kg"
             # if jewel
             if self.item_type == "jewel":
                 var += "\n" + "insertable"
@@ -57,15 +52,16 @@ class Item(object):
             If the item don't have any, pass because
             it will not be used"""
             var = ""
-            for i, stat in enumerate(STATLIST):
-                # if i is a multiple of 3
-                if (i % 3) == 0:
-                    value = str(self.stats[stat])
-                    var += "\n{}: {}".format(stat, value)
-                else:
-                    value = str(self.stats[stat])
-                    var += " {}: {}".format(stat, value)
-            return var
+            stat_list = ["str", "dex", "vit", "int", "wis", "luk"]
+        for i, stat in enumerate(stat_list):
+            # if i is a multiple of 3
+            if (i % 3) == 0:
+                value = str(self.stats[stat])
+                var += "\n{}: {}".format(stat, value)
+            else:
+                value = str(self.stats[stat])
+                var += " {}: {}".format(stat, value)
+        return var
 
     def __eq__(self, other):
         # if the other item is just void, return false.

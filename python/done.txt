@@ -4,9 +4,13 @@ x 2016-01-22 add equip/unequip, potions/items/equipments inventories without bug
 x 2016-01-22 add the todo/change lists
 x 2016-01-22 adding an error message if the slot to unequip doesn't exist
 x 2016-01-22 classes in python/classes folder
+x 2016-01-22 clean classes/item.py
 x 2016-01-22 python files in python folder
 x 2016-01-22 remaking commentaries
 x 2016-01-22 removed "usedIn" useless attribute
-x 2016-01-22 clean classes/item.py
-x 2016-01-24 clean classes/equipment.py @add @clean
-x 2016-01-25 2016-01-25 10/10 score in equipment.py @clean
+x 2016-01-24 clean classes/equipment.py @clean
+x 2016-01-25 10/10 score in equipment.py @clean
+x 2016-01-26 10/10 score in item.py @clean
+x 2016-01-26 change Item.str, Item.dex,... into Item.stats{"str"} @add
+x 2016-01-26 change Item.name,... into Item.generals{"name"}
+x 2016-01-26 add constants GENERALS, EQUIPGENERALS, STATLIST
