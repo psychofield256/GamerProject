@@ -1,2 +1,3 @@
 2016-01-22 Rewrite comments, use more is/not @clean
-2016-01-24 test code and handle specific cases with unittest @debug
+2016-01-24 test code and handle specific cases with pytest @debug
+2016-02-01 replace constants STATLIST, GENERALS and EQUIPGENERALS by a for boucle
