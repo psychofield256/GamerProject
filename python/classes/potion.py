@@ -6,8 +6,7 @@ Module containing the Potion class
 """
 
 
-# from classes.item import Item
-from item import Item
+from classes.item import Item
 
 
 class Potion(Item):
@@ -22,11 +21,12 @@ class Potion(Item):
         """The construction doesn't call
         Item.__init__ because no dict is used"""
         self.itemtype = "potion"
-        self.regen = lvl * 200,
+        self.potiontype = potiontype.lower()
+        self.regen = lvl * 200
         self.infos = {
             "name": potiontype + " Potion lvl " + str(lvl),
             "lore": "A magic beverage that instantly regenerates your " +
-                    self.itemtype + " from " + str(self.regen) + " points ",
+                    self.potiontype + " from " + str(self.regen) + " points.",
             "lvl": lvl,
             "weight": 0.1,
         }

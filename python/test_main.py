@@ -6,6 +6,7 @@ Tests for the Gamer Project
 
 from items import ITEMS, JEWELS, EQUIPMENTS
 from classes.item import Item
+from classes.potion import Potion
 
 
 def test_item_list():
@@ -66,3 +67,29 @@ def test_item_object():
     item2 = Item(src)
     item2.name = "name"
     assert item == item2
+
+def test_potion_object():
+    """Tests the Potion class."""
+    potion = Potion(2)
+    assert potion.itemtype == "potion"
+    assert potion.potiontype == "life"
+    assert potion.regen == 400
+
+    i = potion.infos
+    assert i["name"] == "Life Potion lvl 2"
+    assert i["lore"] == "A magic beverage that instantly regenerates " \
+    "your life from 400 points."
+    assert i["lvl"] == 2
+    assert i["weight"] == 0.1
+
+    mpotion = Potion(3, "Mana")
+    assert mpotion.itemtype == "potion"
+    assert mpotion.potiontype == "mana"
+    assert mpotion.regen == 600
+
+    i = mpotion.infos
+    assert i["name"] == "Mana Potion lvl 3"
+    assert i["lore"] == "A magic beverage that instantly regenerates " \
+    "your mana from 600 points."
+    assert i["lvl"] == 3
+    assert i["weight"] == 0.1
