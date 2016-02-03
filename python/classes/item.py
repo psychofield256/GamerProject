@@ -38,7 +38,7 @@ class Item(object):
         var = ""
         # if the item doesn't have stats
         if not hasattr(self, "stats"):
-            return var
+            return
 
         for i, stat in enumerate(self.stats.keys()):
             # if i is a multiple of 3, jump a line

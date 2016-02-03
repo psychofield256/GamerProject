@@ -58,9 +58,9 @@ def test_item_object():
     assert item.itemtype == "item"
     assert item.src == src
     assert not hasattr(item, "stats")
-    assert item.saystats() == ""
+    assert item.saystats() is None
     # to be sure the item is stopping before making errors
-    assert not item.takestats(src)
+    assert item.takestats(src) is None
     assert str(item) == "name: test\nlore: description\nlvl: 4\nweight: 20\n"
 
     item2 = Item(src)
