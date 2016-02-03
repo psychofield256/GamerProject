@@ -25,20 +25,23 @@ class Item(object):
         self.stats = {}
         # used for recognizing jewels
         if jewel:
-            self.take_stats(src)
-            self.item_type = "jewel"
+            self.takestats(src)
+            self.itemtype = "jewel"
         else:
-            self.item_type = "item"
+            self.itemtype = "item"
             del self.stats
 
-    def say_stats(self):
+    def saystats(self):
         """
         function for returning the stats of the item.
-        If the item don't have any, pass because
-        it will not be used"""
+        If the item don't have any, if will just return an empty string."""
         var = ""
+        # if the item doesn't have stats
+        if not hasattr(self, "stats"):
+            return var
+
         for i, stat in enumerate(self.stats.keys()):
-            # if i is a multiple of 3
+            # if i is a multiple of 3, jump a line
             if (i % 3) == 0:
                 value = str(self.stats[stat])
                 var += "\n{}: {}".format(stat, value)
@@ -47,23 +50,32 @@ class Item(object):
                 var += " {}: {}".format(stat, value)
         return var
 
-    def take_stats(self, args):
+    def takestats(self, args):
         """function for taking the stats from the dict used
-        to create the item"""
+        to create the item. If the item is not a
+        jewel or an equipment, it will stop before making errors"""
+        if self.itemtype == "item":
+            return
         for stat in args.stats.keys():
             self.stats[stat] = args[stat]
 
     def __str__(self):
         var = ""
-        for info in self.infos.keys():
-            var += info + ": " + self.infos[info]
+        i = self.infos
+        var += "name: " + i["name"] + "\n"
+        var += "lore: " + i["lore"] + "\n"
+        var += "lvl: " + str(i["lvl"]) + "\n"
+        var += "weight: " + str(i["weight"]) + "\n"
+        #for info in self.infos.keys():
+        #    var += info + ": " + str(self.infos[info])
+        #    var += "\n"
         # var = self.name + "\n" + self.lore +
         # "\n" + (str(self.weight)) + "kg"
         # if jewel
-        if self.item_type == "jewel":
+        if self.itemtype == "jewel":
             var += "\n" + "insertable"
             # add the stats to var
-            var += self.say_stats()
+            var += self.saystats()
         return var
 
     def __eq__(self, other):

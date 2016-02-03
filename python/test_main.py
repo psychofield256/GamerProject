@@ -4,6 +4,7 @@ Tests for the Gamer Project
 
 
 from items import ITEMS, JEWELS, EQUIPMENTS
+from classes.item import Item
 
 
 def test_item_list():
@@ -38,3 +39,29 @@ def test_equipment_list():
         assert isinstance(equip["emptyslots"], int)
         for stat in equip["stats"].values():
             assert isinstance(stat, int)
+
+def test_item_object():
+    """Tests the Item class.
+    Creates a dict for this, so it won't need items.py to be working"""
+
+    src = {
+        "name": "test",
+        "lore": "description",
+        "lvl": 4,
+        "weight": 20,
+    }
+
+    item = Item(src)
+    for info in ["name", "lore", "lvl", "weight"]:
+        assert item.infos[info] == src[info]
+    assert item.itemtype == "item"
+    assert item.src == src
+    assert not hasattr(item, "stats")
+    assert item.saystats() == ""
+    # to be sure the item is stopping before making errors
+    assert not item.takestats(src)
+    assert str(item) == "name: test\nlore: description\nlvl: 4\nweight: 20\n"
+
+    item2 = Item(src)
+    item2.name = "name"
+    assert item == item2
