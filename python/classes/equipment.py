@@ -1,14 +1,18 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
-# pylint: disable=no-name-in-module,import-error
-
 
 """
 module with the class Equipment.
 """
 
-from classes.item import Item
-from constants import STATLIST, EQUIPGENERALS
+try:
+    from classes.item import Item
+except ImportError:
+    from item import Item
+
+try:
+    from constants import STATLIST, EQUIPGENERALS
+except ImportError:
+    pass
 
 
 class Equipment(Item):

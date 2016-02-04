@@ -1,12 +1,23 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
 # pylint: disable=super-init-not-called
+
 """
 Module containing the Potion class
+
+Potion.itemtype (str): "potion"
+Potion.potiontype (str): the potion type ("life" or "mana")
+Potion.regen (int): the regeneration when drank
+Potion.infos (dict):
+    name (str): its name
+    lore (str): its lore
+    lvl (int): the level of the item
+    weight (int): the weight (0.1 for a potion)
 """
 
-
-from classes.item import Item
+try:
+    from classes.item import Item
+except ImportError:
+    from item import Item
 
 
 class Potion(Item):

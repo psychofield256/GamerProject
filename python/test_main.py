@@ -68,6 +68,19 @@ def test_item_object():
     item2.name = "name"
     assert item == item2
 
+def test_jewel_item():
+    """Tests for items that are jewels"""
+    src = {
+        "name": "jewel",
+        "lore": "item that can be inserted",
+        "lvl": 5,
+        "weight": 2,
+        "stats": {
+            "str": 1, "dex": 2, "vit": 3,
+            "int": 4, "wis": 5, "luk": 6
+        }
+    }
+
 def test_potion_object():
     """Tests the Potion class."""
     potion = Potion(2)
