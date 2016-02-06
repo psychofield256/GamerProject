@@ -1,4 +1,5 @@
-2016-01-22 Rewrite comments, use more is/not @clean
-2016-01-24 test code and handle specific cases with pytest @debug
+2016-01-22 Rewrite comments
+2016-01-24 test code and handle specific cases with pytest
 2016-02-01 replace constants STATLIST, GENERALS and EQUIPGENERALS by a for boucle
 2016-02-02 add npcs, players, etc.
+2016-02-06 add tests for Equipment, Jewel, PassiveBoost (with a real owner), etc.

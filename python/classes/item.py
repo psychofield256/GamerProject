@@ -20,16 +20,15 @@ class Item(object):
 
         # saves the source dict (used for recognizing the item)
         self.src = src
+        self.itemtype = "item"
 
-        # creates the stats dict (deleted if useless)
-        self.stats = {}
         # used for recognizing jewels
         if jewel:
+            # creates the stats dict
+            self.stats = {}
             self.takestats(src)
+            # erases the old value
             self.itemtype = "jewel"
-        else:
-            self.itemtype = "item"
-            del self.stats
 
     def saystats(self):
         """
@@ -66,12 +65,8 @@ class Item(object):
         var += "lore: " + i["lore"] + "\n"
         var += "lvl: " + str(i["lvl"]) + "\n"
         var += "weight: " + str(i["weight"]) + "\n"
-        # for info in self.infos.keys():
-        #    var += info + ": " + str(self.infos[info])
-        #    var += "\n"
-        # var = self.name + "\n" + self.lore +
-        # "\n" + (str(self.weight)) + "kg"
-        # if jewel
+
+        # if it's a jewel, say it's insertable and its stats
         if self.itemtype == "jewel":
             var += "\n" + "insertable"
             # add the stats to var

@@ -5,6 +5,8 @@ Tests for the Gamer Project
 
 # todo:
 # jewel test
+# equipment test
+# PassiveBoost test (with a real owner)
 
 from random import randrange
 
@@ -12,6 +14,7 @@ from functions.levels import getexp, getlvl
 from items import ITEMS, JEWELS, EQUIPMENTS
 from classes.item import Item
 from classes.potion import Potion
+from classes.skills import PassiveBoost
 
 
 def test_getexp():
@@ -40,6 +43,7 @@ def test_getlvl():
     assert getlvl(0) == 1
     assert getlvl(1) == 2
 
+#items lists
 
 def test_item_list():
     """Tests each dict of the item list (items.py)"""
@@ -74,6 +78,7 @@ def test_equipment_list():
         for stat in equip["stats"].values():
             assert isinstance(stat, int)
 
+# items instances
 
 def test_item_object():
     """Tests the Item class.
@@ -114,6 +119,9 @@ def test_jewel_item():
             "int": 4, "wis": 5, "luk": 6
         }
     }
+    jewel = Item(src, jewel=True)
+
+
 
 
 def test_potion_object():
@@ -141,3 +149,13 @@ def test_potion_object():
         "your mana from 600 points."
     assert i["lvl"] == 3
     assert i["weight"] == 0.1
+
+
+def test_passiveboost():
+    """Tests the PassiveBoost class."""
+    stats = ("str", "dex", "vit")
+    boosts = (10,10,20)
+    # owner should not be None, but entities are still not made
+    boost = PassiveBoost(stats, boosts, owner=None)
+    
+
