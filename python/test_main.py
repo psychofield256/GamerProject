@@ -3,10 +3,42 @@
 Tests for the Gamer Project
 """
 
+# todo:
+# jewel test
 
+from random import randrange
+
+from functions.levels import getexp, getlvl
 from items import ITEMS, JEWELS, EQUIPMENTS
 from classes.item import Item
 from classes.potion import Potion
+
+
+def test_getexp():
+    """Tests the getexp function"""
+    lvl = 5
+    # 5^3 = 125
+    real_exp = 5 ** 3
+    assert real_exp == 125
+    test_exp = getexp(5)
+    assert real_exp == test_exp
+
+    lvl = randrange(30)
+    real_exp = lvl ** 3
+    test_exp = getexp(lvl)
+    assert real_exp == test_exp
+
+
+def test_getlvl():
+    """Tests the getlvl function"""
+    exp5 = 124
+    exp6 = 125
+
+    assert getlvl(exp5) == 5
+    assert getlvl(exp6) == 6
+    assert getlvl(exp5) == getlvl(exp6) - 1
+    assert getlvl(0) == 1
+    assert getlvl(1) == 2
 
 
 def test_item_list():
@@ -42,6 +74,7 @@ def test_equipment_list():
         for stat in equip["stats"].values():
             assert isinstance(stat, int)
 
+
 def test_item_object():
     """Tests the Item class.
     Creates a dict for this, so it won't need items.py to be working"""
@@ -68,6 +101,7 @@ def test_item_object():
     item2.name = "name"
     assert item == item2
 
+
 def test_jewel_item():
     """Tests for items that are jewels"""
     src = {
@@ -81,6 +115,7 @@ def test_jewel_item():
         }
     }
 
+
 def test_potion_object():
     """Tests the Potion class."""
     potion = Potion(2)
@@ -91,7 +126,7 @@ def test_potion_object():
     i = potion.infos
     assert i["name"] == "Life Potion lvl 2"
     assert i["lore"] == "A magic beverage that instantly regenerates " \
-    "your life from 400 points."
+        "your life from 400 points."
     assert i["lvl"] == 2
     assert i["weight"] == 0.1
 
@@ -103,6 +138,6 @@ def test_potion_object():
     i = mpotion.infos
     assert i["name"] == "Mana Potion lvl 3"
     assert i["lore"] == "A magic beverage that instantly regenerates " \
-    "your mana from 600 points."
+        "your mana from 600 points."
     assert i["lvl"] == 3
     assert i["weight"] == 0.1

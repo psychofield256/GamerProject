@@ -66,7 +66,7 @@ class Item(object):
         var += "lore: " + i["lore"] + "\n"
         var += "lvl: " + str(i["lvl"]) + "\n"
         var += "weight: " + str(i["weight"]) + "\n"
-        #for info in self.infos.keys():
+        # for info in self.infos.keys():
         #    var += info + ": " + str(self.infos[info])
         #    var += "\n"
         # var = self.name + "\n" + self.lore +
