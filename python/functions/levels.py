@@ -7,26 +7,29 @@ def getexp(lvl):
     """
     Calculates the experience needed to get the level in arguments.
 
-    The condition to level up is: exp = lvl^3,
-    where exp is the experience needed, and lvl
-    the next level.
+    The condition to level up is: exp = (lvl+1)^3,
+    where exp is the experience needed, and lvl+1
+    the next level (lvl is the current level)
     """
-    exp = lvl ** 3
+    exp = 0
+    while lvl > 1:
+        exp += lvl ** 3
+        lvl -= 1
     return exp
 
 
 def getlvl(exp):
     """Calculates the level depending on the current exp.
 
-    The condition to level up is: exp = lvl^3,
-    where exp is the experience needed, and lvl
+    The condition to level up is: exp = (lvl+1)^3,
+    where exp is the experience needed, and lvl+1
     the next level.
-    lvl - 1 is the current level (not used here), and lvl is the next one.
-    So here, we are calculating each time the exp needed to up again.
-    Actually, you can't have lvl 0, because 0 cubed = 0 and it's always 
-    equal to exp
+    lvl is the current level.
+    Here, we are calculating each time the exp needed to
+    up with the next level (lvl+1).
     """
-    lvl = 1
-    while exp >= lvl ** 3:
+    lvl = 0
+    while exp >= (lvl+1) ** 3: # while the exp is enough to up to the next level
+        exp -= (lvl+1) ** 3  # removes the exp used to up
         lvl += 1
     return lvl

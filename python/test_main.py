@@ -8,7 +8,7 @@ Tests for the Gamer Project
 # equipment test
 # PassiveBoost test (with a real owner)
 
-from random import randrange
+# from random import randrange
 
 from functions.levels import getexp, getlvl
 from items import ITEMS, JEWELS, EQUIPMENTS
@@ -20,30 +20,42 @@ from classes.skills import PassiveBoost
 def test_getexp():
     """Tests the getexp function"""
     lvl = 5
+    # 2^3 = 8
+    # 3^3 = 27
+    # 4^3 = 64
     # 5^3 = 125
-    real_exp = 5 ** 3
-    assert real_exp == 125
-    test_exp = getexp(5)
-    assert real_exp == test_exp
-
-    lvl = randrange(30)
-    real_exp = lvl ** 3
-    test_exp = getexp(lvl)
-    assert real_exp == test_exp
+    # 8+27+64+125 = 224
+    real_exp = 224
+    assert real_exp == getexp(lvl)
 
 
 def test_getlvl():
     """Tests the getlvl function"""
-    exp5 = 124
-    exp6 = 125
+    explvl2 = 9
+    explvl3 = 36
+    explvl4 = 100
+    explvl5 = 225
 
-    assert getlvl(exp5) == 5
-    assert getlvl(exp6) == 6
-    assert getlvl(exp5) == getlvl(exp6) - 1
-    assert getlvl(0) == 1
-    assert getlvl(1) == 2
+    assert getlvl(explvl2) == 2
+    assert getlvl(explvl2-1) == 1
+    assert getlvl(explvl2+1) == 2
+    assert getlvl(explvl3) == 3
+    assert getlvl(explvl3-1) == 2
+    assert getlvl(explvl3+1) == 3
+    assert getlvl(explvl4) == 4
+    assert getlvl(explvl4-1) == 3
+    assert getlvl(explvl4+1) == 4
+    assert getlvl(explvl5) == 5
+    assert getlvl(explvl5-1) == 4
+    assert getlvl(explvl5+1) == 5
 
-#items lists
+    # can be level 0, but up with 1 exp
+    assert getlvl(0) == 0
+    assert getlvl(-1) == 0
+    assert getlvl(1) == 1
+
+# items lists
+
 
 def test_item_list():
     """Tests each dict of the item list (items.py)"""
@@ -79,6 +91,7 @@ def test_equipment_list():
             assert isinstance(stat, int)
 
 # items instances
+
 
 def test_item_object():
     """Tests the Item class.
@@ -121,7 +134,7 @@ def test_jewel_item():
     }
     jewel = Item(src, jewel=True)
 
-
+# todo finish test
 
 
 def test_potion_object():
@@ -154,8 +167,6 @@ def test_potion_object():
 def test_passiveboost():
     """Tests the PassiveBoost class."""
     stats = ("str", "dex", "vit")
-    boosts = (10,10,20)
+    boosts = (10, 10, 20)
     # owner should not be None, but entities are still not made
     boost = PassiveBoost(stats, boosts, owner=None)
-    
-
