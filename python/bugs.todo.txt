@@ -1,2 +1,2 @@
-2016-01-24 #1:Inventory.sayPotions() doesn't say anything
+#1:Inventory.sayPotions() doesn't say anything
 
