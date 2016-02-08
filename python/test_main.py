@@ -20,13 +20,21 @@ from classes.skills import PassiveBoost
 def test_getexp():
     """Tests the getexp function"""
     lvl = 5
+    # 1^3 = 1
     # 2^3 = 8
     # 3^3 = 27
     # 4^3 = 64
     # 5^3 = 125
-    # 8+27+64+125 = 224
-    real_exp = 224
+    # 1+8+27+64+125 = 225
+    real_exp = 225
     assert real_exp == getexp(lvl)
+
+
+    assert getexp(0) == 0
+    assert getexp(1) == 1
+    assert getexp(2) == 9
+    assert getexp(3) == 36
+    assert getexp(4) == 100
 
 
 def test_getlvl():

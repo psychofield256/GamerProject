@@ -12,7 +12,7 @@ def getexp(lvl):
     the next level (lvl is the current level)
     """
     exp = 0
-    while lvl > 1:
+    while lvl > 0:
         exp += lvl ** 3
         lvl -= 1
     return exp
