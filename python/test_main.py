@@ -57,7 +57,7 @@ def test_getlvl():
     assert getlvl(explvl5-1) == 4
     assert getlvl(explvl5+1) == 5
 
-    # can be level 0, but up with 1 exp
+    # can be level 0, but level ups with 1 exp
     assert getlvl(0) == 0
     assert getlvl(-1) == 0
     assert getlvl(1) == 1

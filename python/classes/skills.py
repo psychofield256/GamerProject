@@ -22,28 +22,20 @@ class PassiveBoost(object):
     Takes:
     -an str tuple stats
     -an int tuple base boost
-    -an int level
-    -a float level growth
     -a Player/Monster instance owner
+    -an str tuple exp case (like ("attack", "win"))
+    -an int level (not necessary)
     """
 
-    def __init__(self, stats, boosts, owner, lvl=1):
-        # this is a tuple because a skill should not change
-        # it's not a dict because more of the stats will not be used
-        self.boostedstats = tuple(stats)
+    def __init__(self, stats, boosts, owner, expcases, lvl=0):
+        # this is a tuple because a boost should not change the boosted stats
+        # it's not a dict because most of the stats will not be used
+        self.boosted_stats = tuple(stats)
         self.basestats = tuple(boosts)
-        # creates the empty stat dict (useless for now)
-        # self.stats = {
-        #    "str": 0, "dex": 0, "vit": 0,
-        #    "int": 0, "wis": 0, "luk": 0,
-        # }
-        # todo remove if not used
-        # transfer the stats and their values in a dict
-        # for i, stat in enumerate(boosts):
-        #    self.stats[stat] = stats[i]
-
         self.owner = owner
+        # calculates the exp needed to get the level wanted
         self.exp = getexp(lvl)
+        self.expcases = expcases
 
     def addexp(self, exp):
         """Add exp to the boost"""
@@ -55,27 +47,38 @@ class PassiveBoost(object):
         """Returns the level of the instance"""
         return getlvl(self.exp)
 
-    def getstats(self):
+    def getbasestats(self):
         """
-        Generator of the stats and the values under the form of a tuple
+        Generator of the stats and their values at level 0 with tuples
 
         Yields (stat_name, value)
+        stat_name is the name of the stats (str), like "str" or "dex"
+        the value is the base value
+        """
+        for i, stat in enumerate(self.boosted_stats):
+            yield (stat, self.basestats[i])
+
+    def getstats(self):
+        """
+        Generator of the stats and their values under the form of a tuple
+
+        Yields (stat_name, value)
+        the value is the base value multiplied by (level+1) ^ 2
+        level+1 is because if the level is 0, the boost is 0
         """
         # todo
-        for i, stat in enumerate(self.boostedstats):
-            value = self.basestats[i] * (self.getlevel() ** 3)
+        for i, stat in enumerate(self.boosted_stats):
+            # take the value with i in self.basestats
+            # and multiply it depending on the level
+            value = self.basestats[i] * ((self.getlevel() + 1) ** 2)
             yield (stat, value)
-        # return self.stats
 
     def unapply(self):
         """Method to unapply the boosts on the owner"""
         for stat, value in self.getstats():
-            value = value * (self.getlevel() ** 3)
-            # value *= self.growth
             self.owner.stats[stat] -= value
 
     def apply(self):
         """Method to apply the boosts on the owner"""
         for stat, value in self.getstats():
-            value = value * (self.getlevel() ** 3)
             self.owner.stats[stat] += value
