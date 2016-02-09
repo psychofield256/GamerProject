@@ -6,6 +6,7 @@ import os
 
 try:
     from functions.levels import getexp, getlvl
+    from constants import *
 except ImportError:
     # if pythonpath is not main.py, go up until you're at it and register it
     directory = os.path.abspath(__file__)
@@ -14,20 +15,26 @@ except ImportError:
     sys.path.insert(0, directory)
 
     from functions.levels import getexp, getlvl
+    from constants import *
 
 
-class PassiveBoost(object):
-    """class for PassiveBoost.
+class PermanentBoost(object):
+    """
+    class for PermanentBoost.
+    A permanent boost is a permanent skill that increases
+    the stats of the owner. Its exp is gained in the defined cases.
+    It is always turned on and doesn't require mana to be activated
 
     Takes:
     -an str tuple stats
     -an int tuple base boost
     -a Player/Monster instance owner
-    -an str tuple exp case (like ("attack", "win"))
+    -an str tuple exp case (in constants.py)
     -an int level (not necessary)
     """
 
-    def __init__(self, stats, boosts, owner, expcases, lvl=0):
+    def __init__(self, name, stats, boosts, owner, expcases, lvl=0):
+        self.name = name
         # this is a tuple because a boost should not change the boosted stats
         # it's not a dict because most of the stats will not be used
         self.boosted_stats = tuple(stats)
@@ -37,10 +44,11 @@ class PassiveBoost(object):
         self.exp = getexp(lvl)
         self.expcases = expcases
 
-    def addexp(self, exp):
+    def addexp(self, exp, case):
         """Add exp to the boost"""
         self.unapply()
-        self.exp += exp
+        if case in self.expcases:
+            self.exp += exp
         self.apply()
 
     def getlevel(self):
@@ -82,3 +90,50 @@ class PassiveBoost(object):
         """Method to apply the boosts on the owner"""
         for stat, value in self.getstats():
             self.owner.stats[stat] += value
+
+
+class ActiveSkill(object):
+    """class for PassiveSkill.
+    A passive skill is a skill """
+    def __init__(self, name, stats, ):
+        super(PassiveSkill, self).__init__()
+        self.arg = arg
+        
+class PassiveSkill(PermanentBoost):
+    """
+    class for PassiveSkill.
+    a passive skill is a skill that increases the stats of the
+    owner and can be turned on/off.
+    Its exp is gained in the defined cases.
+    It constantly uses mana (every minute) when on,
+    and not when off. If there is not enough mana to keep it
+    activated, it removes itself from the owner's activated passives list.
+    Can be activated in the menu (it may be activated several times
+    at once, but costs most mana).
+    Inherits from PermanentBoost.
+
+    Takes:
+    -an str tuple stats
+    -an int tuple base boost
+    -a Player/Monster instance owner
+    -an str tuple exp case (all in constants.py)
+    -an int mana cost/minute (not necessary, 10 at level 0 by default)
+    -an int level (not necessary, 0 by default)
+
+    """
+    def __init__(self, name, stats, boosts, cost=10, owner, expcases, lvl=0):
+        # same for all except the mana cost
+        super(name, stats, boosts, owner, expcases, lvl)
+        self.cost = cost
+
+    def apply(self):
+        """Method to apply the boosts on the owner and take mana"""
+        super(self)
+        self.takecost()
+
+    def takecost(self):
+        """Method to remove the mana cost to the owner"""
+        try:
+            self.owner.mana -= self.cost
+        except ManaError:
+            self.owner.passives.remove(self)

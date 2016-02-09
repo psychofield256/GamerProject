@@ -1,18 +1,16 @@
 #!/usr/bin/env python
 
-"""
-Module containing the Item class.
-"""
+"""Module containing the Item class."""
 
 
 class Item(object):
-    """Class used to create items.
-    takes a dict defined in items.py"""
+    """Class used to create items. Takes a dict defined in items.py."""
 
     def __init__(self, src, jewel=False):
-        """unpack the src dict values into the item's infos attribute.
-        jewel is used for applying different process on them"""
+        """Unpack the source dict into the item's infos attribute.
 
+        jewel is used for applying different process on them, by
+        giving it the stats"""
         # unpack the src dict's informations
         self.infos = {}
         for info in ["name", "lore", "lvl", "weight"]:
