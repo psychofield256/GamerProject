@@ -7,10 +7,12 @@ class Item(object):
     """Class used to create items. Takes a dict defined in items.py."""
 
     def __init__(self, src, jewel=False):
-        """Unpack the source dict into the item's infos attribute.
+        """
+        Unpack the source dict into the item's infos attribute.
 
         jewel is used for applying different process on them, by
-        giving it the stats"""
+        giving it the stats
+        """
         # unpack the src dict's informations
         self.infos = {}
         for info in ["name", "lore", "lvl", "weight"]:
@@ -30,8 +32,10 @@ class Item(object):
 
     def saystats(self):
         """
-        function for returning the stats of the item.
-        If the item don't have any, if will just return an empty string."""
+        Function for returning the stats of the item.
+
+        If the item don't have any, it will just stop.
+        """
         var = ""
         # if the item doesn't have stats
         if not hasattr(self, "stats"):
@@ -48,15 +52,19 @@ class Item(object):
         return var
 
     def takestats(self, args):
-        """function for taking the stats from the dict used
-        to create the item. If the item is not a
-        jewel or an equipment, it will stop before making errors"""
+        """
+        Function for taking the stats from the dict used in creation.
+
+        If the item is not a jewel or an equipment,
+        it will stop before making errors.
+        """
         if self.itemtype == "item":
             return
         for stat in args.stats.keys():
             self.stats[stat] = args[stat]
 
     def __str__(self):
+        """Method returning an str version of the instance."""
         var = ""
         i = self.infos
         var += "name: " + i["name"] + "\n"
@@ -72,6 +80,11 @@ class Item(object):
         return var
 
     def __eq__(self, other):
+        """
+        Method returning True or False in an equallity.
+
+        If the other is None, it's always False.
+        """
         # if the other item is just void, return false.
         # else, if they have the same source dict, they're equal
         if other is None:
