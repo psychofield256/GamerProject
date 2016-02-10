@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-"""
-module with the class Equipment.
-"""
+"""module with the class Equipment."""
 
 try:
     from classes.item import Item
@@ -16,14 +14,15 @@ except ImportError:
 
 
 class Equipment(Item):
-    """Class used to create equipments.
+    """
+    Class used to create equipments.
 
     Takes a dict, as Item, but with more attributes (explained in items.py).
-    for example, see in items.py, at equip"""
+    for example, see in items.py, at equip.
+    """
 
     def __init__(self, args):
-        """Will call the mother constructor to set the general attributes.
-        Then, saves other caracteristics"""
+        """Call the mother constructor, and saves specific caracteristics."""
         Item.__init__(self, args)
         # saves the stat boosts in the stats dict
         self.take_stats(args)
@@ -37,9 +36,9 @@ class Equipment(Item):
 
     def __str__(self):
         """
-        return a paragraph describing the equipment.
+        Return a paragraph describing the equipment.
 
-        take the Item.__str__ function, and add the equipment caracteristics
+        take the Item.__str__ function, and add the equipment caracteristics.
         """
         var = Item.__str__(self)
         var += "\n" + "equipment"
@@ -47,7 +46,7 @@ class Equipment(Item):
         return var
 
     def insert(self, item):
-        """insert a jewel in the equipment"""
+        """Insert a jewel in the equipment."""
         # todo
         self.generals["empty_slots"] -= 1
         self.used_slots.append(item)
@@ -56,8 +55,12 @@ class Equipment(Item):
             self.stats[stat] += item.stats[stat]
 
     def remove(self, number):
-        """function for removing a jewel from self
-        add 1 to the index for easier use"""
+        """
+        Function for removing a jewel.
+
+        Add 1 to the index for easier use
+        (instead of doing remove(0), you do remove(1)).
+        """
         to_remove = self.used_slots[number+1]
         for stat in STATLIST:
             self.stats[stat] -= to_remove.stats[stat]
