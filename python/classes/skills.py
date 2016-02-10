@@ -117,16 +117,19 @@ class PassiveSkill(PermanentBoost):
     -an int level (not necessary, 0 by default)
     """
 
-    def __init__(self, name, stats, boosts, cost=10, owner, expcases, lvl=0):
+    def __init__(self, name, stats, boosts, owner, expcases, cost=10, lvl=0):
         """Constructor of PassiveSkill."""
         # same for all except the mana cost
-        super(name, stats, boosts, owner, expcases, lvl)
+        super().__init__(self, name, stats, boosts,
+                        owner, expcases, lvl)
         self.cost = cost
 
     def apply(self):
         """Method to apply the boosts on the owner and take mana."""
-        super(self)
-        self.takecost()
+        try:
+            super().apply(self)
+        except ManaError:
+            self.owner.passives
 
     def takecost(self):
         """Method to remove the mana cost to the owner."""
@@ -144,7 +147,7 @@ class ActiveSkill(object):
     and that consummes mana when used. It gains exp when being used.
     """
 
-    def __init__(self, name, stats, ):
+    def __init__(self, name, effect, damages, owner, lvl=0):
         """Constructor of ActiveSkill."""
-        super(PassiveSkill, self).__init__()
+        super().__init__()
         self.arg = arg
