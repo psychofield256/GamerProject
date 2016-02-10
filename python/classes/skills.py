@@ -1,5 +1,5 @@
 # pylint: disable=invalid-name,import-error
-"""Module for skills and active/passive boosts"""
+"""Module for skills and active/passive boosts."""
 
 import sys
 import os
@@ -21,6 +21,7 @@ except ImportError:
 class PermanentBoost(object):
     """
     class for PermanentBoost.
+
     A permanent boost is a permanent skill that increases
     the stats of the owner. Its exp is gained in the defined cases.
     It is always turned on and doesn't require mana to be activated
@@ -34,6 +35,7 @@ class PermanentBoost(object):
     """
 
     def __init__(self, name, stats, boosts, owner, expcases, lvl=0):
+        """Constructor of PermanentBoost."""
         self.name = name
         # this is a tuple because a boost should not change the boosted stats
         # it's not a dict because most of the stats will not be used
@@ -45,19 +47,19 @@ class PermanentBoost(object):
         self.expcases = expcases
 
     def addexp(self, exp, case):
-        """Add exp to the boost"""
+        """Add exp to the boost and refresh the stats."""
         self.unapply()
         if case in self.expcases:
             self.exp += exp
         self.apply()
 
     def getlevel(self):
-        """Returns the level of the instance"""
+        """Return the level of the instance."""
         return getlvl(self.exp)
 
     def getbasestats(self):
         """
-        Generator of the stats and their values at level 0 with tuples
+        Generator of the stats and their values at level 0 with tuples.
 
         Yields (stat_name, value)
         stat_name is the name of the stats (str), like "str" or "dex"
@@ -68,7 +70,7 @@ class PermanentBoost(object):
 
     def getstats(self):
         """
-        Generator of the stats and their values under the form of a tuple
+        Generator of the stats and their values under the form of a tuple.
 
         Yields (stat_name, value)
         the value is the base value multiplied by (level+1) ^ 2
@@ -82,26 +84,20 @@ class PermanentBoost(object):
             yield (stat, value)
 
     def unapply(self):
-        """Method to unapply the boosts on the owner"""
+        """Method to unapply the boosts on the owner."""
         for stat, value in self.getstats():
             self.owner.stats[stat] -= value
 
     def apply(self):
-        """Method to apply the boosts on the owner"""
+        """Method to apply the boosts on the owner."""
         for stat, value in self.getstats():
             self.owner.stats[stat] += value
 
 
-class ActiveSkill(object):
-    """class for PassiveSkill.
-    A passive skill is a skill """
-    def __init__(self, name, stats, ):
-        super(PassiveSkill, self).__init__()
-        self.arg = arg
-        
 class PassiveSkill(PermanentBoost):
     """
-    class for PassiveSkill.
+    Class for PassiveSkill.
+
     a passive skill is a skill that increases the stats of the
     owner and can be turned on/off.
     Its exp is gained in the defined cases.
@@ -119,21 +115,36 @@ class PassiveSkill(PermanentBoost):
     -an str tuple exp case (all in constants.py)
     -an int mana cost/minute (not necessary, 10 at level 0 by default)
     -an int level (not necessary, 0 by default)
-
     """
+
     def __init__(self, name, stats, boosts, cost=10, owner, expcases, lvl=0):
+        """Constructor of PassiveSkill."""
         # same for all except the mana cost
         super(name, stats, boosts, owner, expcases, lvl)
         self.cost = cost
 
     def apply(self):
-        """Method to apply the boosts on the owner and take mana"""
+        """Method to apply the boosts on the owner and take mana."""
         super(self)
         self.takecost()
 
     def takecost(self):
-        """Method to remove the mana cost to the owner"""
+        """Method to remove the mana cost to the owner."""
         try:
             self.owner.mana -= self.cost
         except ManaError:
             self.owner.passives.remove(self)
+
+
+class ActiveSkill(object):
+    """
+    class for PassiveSkill.
+
+    A passive skill is a skill that can be used in a fight,
+    and that consummes mana when used. It gains exp when being used.
+    """
+
+    def __init__(self, name, stats, ):
+        """Constructor of ActiveSkill."""
+        super(PassiveSkill, self).__init__()
+        self.arg = arg
