@@ -6,7 +6,7 @@
 class Item(object):
     """Class used to create items. Takes a dict defined in items.py."""
 
-    def __init__(self, src, jewel=False):
+    def __init__(self, src):
         """
         Unpack the source dict into the item's infos attribute.
 
@@ -23,45 +23,14 @@ class Item(object):
         self.itemtype = "item"
 
         # used for recognizing jewels
-        if jewel:
+        """
+        if False:
             # creates the stats dict
             self.stats = {}
             self.takestats(src)
             # erases the old value
             self.itemtype = "jewel"
-
-    def saystats(self):
         """
-        Function for returning the stats of the item.
-
-        If the item don't have any, it will just stop.
-        """
-        var = ""
-        # if the item doesn't have stats
-        if not hasattr(self, "stats"):
-            return
-
-        for i, stat in enumerate(self.stats.keys()):
-            # if i is a multiple of 3, jump a line
-            if (i % 3) == 0:
-                value = str(self.stats[stat])
-                var += "\n{}: {}".format(stat, value)
-            else:
-                value = str(self.stats[stat])
-                var += " {}: {}".format(stat, value)
-        return var
-
-    def takestats(self, args):
-        """
-        Function for taking the stats from the dict used in creation.
-
-        If the item is not a jewel or an equipment,
-        it will stop before making errors.
-        """
-        if self.itemtype == "item":
-            return
-        for stat in args.stats.keys():
-            self.stats[stat] = args[stat]
 
     def __str__(self):
         """Method returning an str version of the instance."""
@@ -71,12 +40,6 @@ class Item(object):
         var += "lore: " + i["lore"] + "\n"
         var += "lvl: " + str(i["lvl"]) + "\n"
         var += "weight: " + str(i["weight"]) + "\n"
-
-        # if it's a jewel, say it's insertable and its stats
-        if self.itemtype == "jewel":
-            var += "\n" + "insertable"
-            # add the stats to var
-            var += self.saystats()
         return var
 
     def __eq__(self, other):
@@ -90,3 +53,31 @@ class Item(object):
         if other is None:
             return False
         return self.src == other.src
+
+
+class Jewel(Item):
+    """
+    Class for Jewel.
+
+    A jewel is an item, but it can be inserted in an equipment,
+    and it has got stats.
+    """
+
+    def __init__(self, src):
+        Item.__init__(self)
+        self.stats = {}
+        for key, value in src["stats"].items():
+            self.stats[key] = value
+        self.itemtype = "jewel"
+
+    def __str__(self):
+        """Method returning an str version of the instance.
+
+        Call super(), and add "insertable" and the stats"""
+        var = Item.__str__(self)
+        var += "\ninsertable" + "\nstats:"
+        # add the stats to var
+        for stat, value in self.stats.items():
+            var += "\n"
+            var += "%s: %d" % stat, value
+        return var
