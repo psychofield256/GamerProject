@@ -3,8 +3,9 @@ test code with pytest
 replace constants STATLIST, GENERALS and EQUIPGENERALS by a for boucle (should already be done)
 add tests for Equipment, Jewel, PassiveBoost (with a real owner), etc.
 add npcs, players, etc.
+try to make an independant Jewel class (which inherits from Item)
 
 
 --specific---
 Entity class must have a "passives" PassiveSkill list attribute
-Entity class must raise a ManaError exception when trying to remove more mana than possible
+Entity class must raise a ManaError exception when trying to remove more mana than possible, or the skills must prevent this
