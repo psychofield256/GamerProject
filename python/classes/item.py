@@ -17,20 +17,28 @@ class Item(object):
         self.infos = {}
         for info in ["name", "lore", "lvl", "weight"]:
             self.infos[info] = src[info]
+        self.stats = None
 
         # saves the source dict (used for recognizing the item)
         self.src = src
         self.itemtype = "item"
 
-        # used for recognizing jewels
+    def say_stats(self):
         """
-        if False:
-            # creates the stats dict
-            self.stats = {}
-            self.takestats(src)
-            # erases the old value
-            self.itemtype = "jewel"
+        Method returning an str with all the stats.
+
+        The format is:
+        "\\nstat_name: value"
+        If there are no stat, an empty string is returned.
         """
+        if self.stats is None:
+            return ""  # empty string, as it will be added to a string
+        else:
+            var = ""
+            for stat, value in self.stats:
+                var += "\n%s: %d" % stat, value
+            return var
+
 
     def __str__(self):
         """Method returning an str version of the instance."""
