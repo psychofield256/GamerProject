@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Module containing the Item class."""
+"""Module containing the Item, Equipment, and Potion classes."""
 
 
 class Item(object):
