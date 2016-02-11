@@ -5,7 +5,8 @@ This is the python version of the Gamer Project.
 ## Config
 ### Equipments
 In json files, if you want to add new equipments, you have to write:
-'''json
+
+'''javascript
 {
 	"name": name,
 	"lore": description,
