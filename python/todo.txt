@@ -1,3 +1,9 @@
+--urgent--
+try to convert Item/Potion/Equipment/Jewel classes into json arrays or dict
+(this may be a major change for the rest of the program, so it must be done before others)
+
+
+
 --general--
 test code with pytest
 replace constants STATLIST, GENERALS and EQUIPGENERALS by a for boucle (should already be done)
