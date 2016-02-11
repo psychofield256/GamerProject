@@ -11,4 +11,7 @@ import json
 with open("config/town/weapon_shop.json", "r") as f:
 	weapons = json.load(f)
 
-print(weapons)
+for weapon in weapons:
+	print("---------------")
+	print(weapon["name"] + ":")
+	print(weapon)
