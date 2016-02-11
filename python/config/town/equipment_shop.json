@@ -1,0 +1,24 @@
+[
+	{
+		"name": "Debug Armor",
+		"lore": "An epic overcheat armor.",
+		"lvl": 0,
+		"weight": 0,
+		"empty_slots": 5,
+		"slot": 2,
+		"stats": {
+			"str": 5000, "dex": 5000, "vit": 5000,
+			"int": 5000, "wis": 5000, "luk": 5000
+		}
+	}, {
+		"name": "Leather Helmet",
+		"lore": "A flexible, but resistant helmet.",
+		"lvl": 3,
+		"weight": 6,
+		"empty_slots": 0,
+		"slot": 1,
+		"stats": {
+			"pres": 3
+		}
+	}
+]

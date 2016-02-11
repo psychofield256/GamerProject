@@ -1,11 +1,11 @@
 [
 	{
 		"name": "Wooden Stick",
-		"lore": "a wooden stick you \"borrowed\" at someone you didn't know",
-		"lvl": 1,
-		"weight": 6,
-		"emptyslots": 0,
-		"slot": "weapon",
+		"lore": "A wooden stick you \"borrowed\" at someone you didn't know.",
+		"lvl": 0,
+		"weight": 3,
+		"empty_slots": 1,
+		"slot": 0,
 		"stats": {
 			"str": 5
         }
