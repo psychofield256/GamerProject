@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # pylint: disable=F0401,E0611
 """
 Tests for the Gamer Project
