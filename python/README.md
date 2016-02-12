@@ -2,11 +2,17 @@
 
 This is the python version of the Gamer Project.
 
+## Requirements
+The needed libraries are:
+* bunch
+* json
+To install these, you can use pip: `pip install bunch json`
+
 ## Config
 ### Equipments
 In json files, if you want to add new equipments, you have to write:
 
-```javascript
+```json
 {
 	"name": name,
 	"lore": description,
@@ -32,8 +38,8 @@ In stats, the attributes are:
 	* luk: luck (the critical rate)
 
 2. added stats
-	* pres: physical resistence (% added to str base value)
-	* mres: magical resistance (% added to wis base value)
-	* pdam: physical damages (% added to str base value)
-	* mdam: magical damages (% added to int base value)
-
+	* pres: physical resistence (% added to basic values)
+	* mres: magical resistance (% added to basic values)
+	* pdam: physical damages (% added to basic values)
+	* mdam: magical damages (% added to basic values)
+	* dodg: dodge rate (% added to basic values)
