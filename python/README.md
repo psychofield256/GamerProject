@@ -6,7 +6,7 @@ This is the python version of the Gamer Project.
 ### Equipments
 In json files, if you want to add new equipments, you have to write:
 
-'''javascript
+```javascript
 {
 	"name": name,
 	"lore": description,
@@ -18,7 +18,7 @@ In json files, if you want to add new equipments, you have to write:
 		"attribute1": value, "attribute2": value
 	}
 }
-'''
+```
 
 In stats, the attributes are:
 
