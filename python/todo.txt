@@ -4,13 +4,18 @@ try to convert Item/Potion/Equipment/Jewel classes into json arrays or dict
 
 
 
---general--
-test code with pytest
-replace constants STATLIST, GENERALS and EQUIPGENERALS by a for boucle (should already be done)
+--code--
+test code with pytest (low)
+replace constants STATLIST, GENERALS and EQUIPGENERALS by a for boucle (will not be used after the use of json)
 add tests for Equipment, Jewel, PassiveBoost (with a real owner), etc.
-add npcs, players, etc.
-try to make an independant Jewel class (which inherits from Item)
+(no more test for now)
+try to make an independant Jewel class (which inherits from Item) (useless after json)
 
+--features--
+add npcs, players, etc.
+add entity class
+add monsters
+add map
 
 --specific---
 Entity class must have a "passives" PassiveSkill list attribute
