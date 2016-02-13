@@ -1,6 +1,10 @@
 #!/usr/bin/usr python
+# pylint: disable=import-error
 """
-This module contains the functions to convert items into strings
+This module contains the functions to convert items into strings.
+
+(pylint) import error is disabled because pylint doesn't recognize
+the use of pythonpath to make imports work when it's a standalone or not.
 """
 
 import os
@@ -16,13 +20,13 @@ except ImportError:
 
     import constants as c
 
-def new_bunch_str(self):
+def item_print(self):
     """
-    Function added to bunch.Bunch as a method.
+    Function used to convert a dict item into an str.
 
-    Equivalent to __str__(self), but added to an existing class.
-    This is for not create a class with only
-    1 __str__ function and use inheritance.
+    Equivalent to __str__(self), but a class isn't used.
+    This is to avoid making a class with only
+    a __str__ function and use inheritance.
     """
     var = ""
     for key in c.info_list:
