@@ -6,24 +6,24 @@ Game made by psychofield.
 Its objectives are to adapt the manga "The Gamer" as a real rpg.
 """
 
-import json
-from bunch import Bunch
+# import json
 
-import constants as c
-from functions.display import new_bunch_str as n
+# from functions.display import new_bunch_str as n
 
-# redefine Bunch.__str__()
-Bunch.__str__ = n
+# import constants as c
+import shops
 
-weapon_shop = []
+for item in shops["items"]:
+	print(item)
 
-with open("config/town/weapon_shop.json", "r") as f:
-	for weapon in json.load(f):
-		weapon = Bunch(**weapon)
-		weapon.type = "weapon"
-		weapon_shop.append(weapon)
+print("-----------")
+print("-----------")
 
-
-for weapon in weapon_shop:
-	print("---------------")
+for weapon in shops["weapons"]:
 	print(weapon)
+
+print("-----------")
+print("-----------")
+
+for armor in shops["armors"]:
+	print(armor)
