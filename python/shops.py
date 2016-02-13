@@ -32,6 +32,8 @@ with open("config/town/item_shop.json", "r") as f:
 with open("config/town/weapon_shop.json", "r") as f:
     for weapon in json.load(f):
         weapon["type"] = "equipment"
+        # this is not defined for a better looking json
+        weapon["slot"] = "weapon"
         weapon_shop.append(weapon)
 
 with open("config/town/armor_shop.json", "r") as f:
