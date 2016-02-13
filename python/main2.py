@@ -19,7 +19,9 @@ weapon_shop = []
 
 with open("config/town/weapon_shop.json", "r") as f:
 	for weapon in json.load(f):
-		weapon_shop.append(Bunch(**weapon))
+		weapon = Bunch(**weapon)
+		weapon.type = "weapon"
+		weapon_shop.append(weapon)
 
 
 for weapon in weapon_shop:
