@@ -4,7 +4,7 @@
 		"lore": "A wooden stick you \"borrowed\" at someone you didn't know.",
 		"lvl": 0,
 		"weight": 3,
-		"empty_slots": 1,
+		"sockets": 1,
 		"stats": {
 			"str": 5
         }

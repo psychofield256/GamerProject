@@ -4,7 +4,7 @@
 		"lore": "An epic overcheat armor.",
 		"lvl": 0,
 		"weight": 0,
-		"empty_slots": 5,
+		"sockets": 5,
 		"slot": "chestplate",
 		"stats": {
 			"str": 5000, "dex": 5000, "vit": 5000,
@@ -15,7 +15,7 @@
 		"lore": "A flexible, but resistant helmet.",
 		"lvl": 3,
 		"weight": 6,
-		"empty_slots": 0,
+		"sockets": 0,
 		"slot": "helmet",
 		"stats": {
 			"pres": 3
