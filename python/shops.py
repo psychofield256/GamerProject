@@ -1,40 +1,45 @@
 #!/usr/bin/env python
+# pylint: disable=invalid-name
 """
-This module contains the parsed jsons.
+This module contains the shops of the game.
 
-It contains the bunches for items.
+Json files are parsed, and the module is replaced by a dict.
+The dict contains the "items", "weapons" and "armors" keys.
+The values are lists of item dicts.
 """
 
 import json
-from bunch import Bunch
+import sys
 
 # import constants as c
-from functions.display import new_bunch_str as n
 
-# redefines Bunch.__str__ (in order not to create a new class for this)
-Bunch.__str__ = n
-
+# create the shops
 item_shop = []
 weapon_shop = []
 armor_shop = []
 
+# parse the json files
 with open("config/town/item_shop.json", "r") as f:
     for item in json.load(f):
-        # unpack the dict to make a Bunch
-        item = Bunch(**item)
         # tag it ro recognize it after
-        item.type = "item"
+        item["type"] = "item"
         # add it to the shop
         item_shop.append(item)
 
 with open("config/town/weapon_shop.json", "r") as f:
     for weapon in json.load(f):
-        weapon = Bunch(**weapon)
-        weapon.type = "equipment"
+        weapon["type"] = "equipment"
         weapon_shop.append(weapon)
 
 with open("config/town/armor_shop.json", "r") as f:
     for equip in json.load(f):
-        equip = Bunch(**equip)
-        equip.type = "equipment"
+        equip["type"] = "equipment"
         armor_shop.append(equip)
+
+shops = {
+    "items": item_shop,
+    "weapons": weapon_shop,
+    "armors": armor_shop
+}
+
+sys.modules[__name__] = shops
