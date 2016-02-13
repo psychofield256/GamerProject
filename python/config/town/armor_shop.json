@@ -5,7 +5,7 @@
 		"lvl": 0,
 		"weight": 0,
 		"empty_slots": 5,
-		"slot": 2,
+		"slot": "chestplate",
 		"stats": {
 			"str": 5000, "dex": 5000, "vit": 5000,
 			"int": 5000, "wis": 5000, "luk": 5000
@@ -16,7 +16,7 @@
 		"lvl": 3,
 		"weight": 6,
 		"empty_slots": 0,
-		"slot": 1,
+		"slot": "helmet",
 		"stats": {
 			"pres": 3
 		}
