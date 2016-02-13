@@ -6,6 +6,9 @@ This module contains the shops of the game.
 Json files are parsed, and the module is replaced by a dict.
 The dict contains the "items", "weapons" and "armors" keys.
 The values are lists of item dicts.
+
+(pylint) invalid-name is disabled because the lists append
+for every item (they're not constants)
 """
 
 import json
