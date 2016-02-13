@@ -26,7 +26,8 @@ class Constants(object):
 
     # def __init__(self):
     # """Create the constants."""
-    info_list = ["name", "lvl", "lore", "weight"]
+    item_info_list = ["name", "lvl", "lore", "weight"]
+    equipment_info_list = ["empty_slots", "slot"]
 
     def __setattr__(self, attr, value):
         """Block redefining a constant."""
