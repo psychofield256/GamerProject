@@ -20,7 +20,7 @@ except ImportError:
 
     import constants as c
 
-def item_print(self):
+def item_to_str(item):
     """
     Function used to convert a dict item into an str.
 
@@ -29,11 +29,11 @@ def item_print(self):
     a __str__ function and use inheritance.
     """
     var = ""
-    for key in c.info_list:
-        var += "%s: %s\n" % (key, str(self[key]))
-    #var += "name: " + self.["name"] + "\n"
-    #var += "lore: " + i["lore"] + "\n"
-    #var += "lvl: " + str(i["lvl"]) + "\n"
-    #var += "weight: " + str(i["weight"]) + "\n"
-
+    for key in c.item_info_list:
+        var += "%s: %s\n" % (key, str(item[key]))
+    if item["type"] == "equipment":
+        for key in c.equipment_info_list:
+            var += "%s: %s\n" % (key, str(item[key]))
+        for key, value in item["stats"].items():
+            var += "%s: %s\n" % (key, value)
     return var
