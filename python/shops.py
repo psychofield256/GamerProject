@@ -32,11 +32,11 @@ with open("config/town/weapon_shop.json") as f:
 
 with open("config/town/armor_shop.json") as f:
     for index in json.load(f):
-        weapons.append(lists["armors"][index])
+        armors.append(lists["armors"][index])
 
 with open("config/town/gem_shop.json") as f:
     for index in json.load(f):
-        weapons.append(lists["gems"][index])
+        gems.append(lists["gems"][index])
 
 shops = {
     "items": items,

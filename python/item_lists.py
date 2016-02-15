@@ -42,7 +42,7 @@ with open("config/items/armor_list.json", "r") as f:
         equip["gems"] = []
         armors.append(equip)
 
-with open("config/items/gel_list.json", "r") as f:
+with open("config/items/gem_list.json", "r") as f:
 	for gem in json.load(f):
 		gem["type"] = "gem"
 		gems.append(gem)
