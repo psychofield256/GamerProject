@@ -14,14 +14,14 @@ In json files, if you want to add new equipments, you have to write:
 
 ```json
 {
-	"name": name,
-	"lore": description,
-	"lvl": lvl,
-	"weight": weight,
-	"empty_slots": slots_for_jewels,
-	"slot": 0forweapon_1forhelmet_2forchestplate_3forleggings_4forboots,
+	"name": "name",
+	"lore": "description",
+	"lvl": 0,
+	"weight": 10,
+	"empty_slots": 2,
+	"slot": "weapon/helmet/chestplate/leggings/boots/pendant/ring/mantle",
 	"stats": {
-		"attribute1": value, "attribute2": value
+		"attribute1": 8, "attribute2": 3
 	}
 }
 ```
@@ -38,8 +38,15 @@ In stats, the attributes are:
 	* luk: luck (the critical rate)
 
 2. added stats
-	* pres: physical resistence (% added to basic values)
-	* mres: magical resistance (% added to basic values)
-	* pdam: physical damages (% added to basic values)
-	* mdam: magical damages (% added to basic values)
-	* dodg: dodge rate (% added to basic values)
+	Note: these stats are constants, and should mainly be equipment boost 	(for example, if you have a total of 100 in critical or dodge rate, you're probably cheat-modding the config)
+	* pres: physical resistence (% in adversary's damages)
+	* mres: magical resistance (% in adversary's damages)
+	* pdam: physical damages (% in your damages)
+	* mdam: magical damages (% in your damages)
+	* dodg: dodge rate (% added to base rate)
+	* miss: miss rate (% added to base rate) (you should add a negative value for this one)
+	* maxh: max hp (% of your basic max life)
+	* maxm: max mana (% of your basic max mana)
+	* hreg: hp regen (% of your basic life regen)
+	* mreg: mana regen (% of your basic mana regen)
+	* crit: critical rate (% added to your basic rate)
