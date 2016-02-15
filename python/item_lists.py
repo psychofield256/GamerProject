@@ -1,10 +1,14 @@
 #!/usr/bin/env python
+#pylint: disable=invalid-name
 """
 This module parses the json files in config/items.
 
 Json files are parsed, and the module is replaced by a dict.
 The dict contains the "items", "weapons" and "armors" keys.
 The values are lists of item dicts.
+
+Pylint: invalid name is disabled as items/weapons/armors/gems are
+changed in a for and shops is the total of all.
 """
 
 import json
@@ -13,6 +17,7 @@ import sys
 items = []
 weapons = []
 armors = []
+gems = []
 
 # parse the json files
 with open("config/items/item_list.json", "r") as f:
@@ -37,10 +42,16 @@ with open("config/items/armor_list.json", "r") as f:
         equip["gems"] = []
         armors.append(equip)
 
+with open("config/items/gel_list.json", "r") as f:
+	for gem in json.load(f):
+		gem["type"] = "gem"
+		gems.append(gem)
+
 shops = {
     "items": items,
     "weapons": weapons,
-    "armors": armors
+    "armors": armors,
+    "gems": gems
 }
 
 sys.modules[__name__] = shops

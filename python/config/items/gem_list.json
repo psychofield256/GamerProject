@@ -1,0 +1,15 @@
+[
+	{
+		"name": "The Jewel",
+		"lore": "Debug gem.",
+		"weight": 1,
+		"lvl": 0,
+		"stats": {
+			"str": 1000, "dex": 1000, "vit": 1000,
+			"int": 1000, "wis": 1000, "luk": 1000,
+			"pres": 100, "mres": 100,
+			"pdam": 100, "mdam": 100,
+			"dodg": 100
+		}
+	}
+]
