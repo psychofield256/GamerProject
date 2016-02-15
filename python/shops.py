@@ -15,39 +15,31 @@ import json
 import sys
 
 # import constants as c
+import item_lists as lists
 
-# create the shops
-item_shop = []
-weapon_shop = []
-armor_shop = []
+items = []
 
-# parse the json files
-with open("config/town/item_shop.json", "r") as f:
-    for item in json.load(f):
-        # tag it ro recognize it after
-        item["type"] = "item"
-        # add it to the shop
-        item_shop.append(item)
+with open("config/town/item_shop.json") as f:
+    for index in json.load(f):
+        items.append(lists["items"][index])
 
-with open("config/town/weapon_shop.json", "r") as f:
-    for weapon in json.load(f):
-        weapon["type"] = "equipment"
-        # this is not defined before for a better looking json
-        weapon["slot"] = "weapon"
-        # already inserted items
-        weapon["gems"] = []
-        weapon_shop.append(weapon)
+with open("config/town/weapon_shop.json") as f:
+    for index in json.load(f):
+        weapons.append(lists["weapons"][index])
 
-with open("config/town/armor_shop.json", "r") as f:
-    for equip in json.load(f):
-        equip["type"] = "equipment"
-        equip["gems"] = []
-        armor_shop.append(equip)
+with open("config/town/armor_shop.json") as f:
+    for index in json.load(f):
+        weapons.append(lists["armors"][index])
+
+with open("config/town/gem_shop.json") as f:
+    for index in json.load(f):
+        weapons.append(lists["gems"][index])
 
 shops = {
-    "items": item_shop,
-    "weapons": weapon_shop,
-    "armors": armor_shop
+    "items": items,
+    "armors": armors,
+    "weapons": weapons,
+    "gems": gems
 }
 
 sys.modules[__name__] = shops
