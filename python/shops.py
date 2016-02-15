@@ -18,6 +18,9 @@ import sys
 import item_lists as lists
 
 items = []
+weapons = []
+armors = []
+gems = []
 
 with open("config/town/item_shop.json") as f:
     for index in json.load(f):
