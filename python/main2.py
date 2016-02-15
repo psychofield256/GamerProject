@@ -12,15 +12,16 @@ Its objectives are to adapt the manga "The Gamer" as a real rpg.
 
 # import constants as c
 import shops
+from functions.items import item_to_str
 
 for item in shops["items"]:
-	print(item)
+	print(item_to_str(item))
 
 print("-----------")
 print("-----------")
 
 for weapon in shops["weapons"]:
-	print(weapon)
+	print(item_to_str(weapon))
 
 print("-----------")
 print("-----------")
