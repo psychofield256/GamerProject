@@ -1,7 +1,7 @@
 --urgent--
 try to convert Item/Potion/Equipment/Jewel classes into json arrays or dict
 (this may be a major change for the rest of the program, so it must be done before others)
-(This is now handled by shops.py)
+change json item lists organization (this is now handled by shops.py)
 
 
 --code--
