@@ -4,7 +4,6 @@ This is the python version of the Gamer Project.
 
 ## Requirements
 The needed libraries are:
-* bunch
 * json
 To install these, you can use pip: `pip install bunch json`
 
