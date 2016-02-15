@@ -3,9 +3,8 @@
 This is the python version of the Gamer Project.
 
 ## Requirements
-The needed libraries are:
-* json
-To install these, you can use pip: `pip install bunch json`
+The needed libraries is json, the default python lib.
+The game was made in python 3.5, but I didn't use any specific 3.5 functionnality, and every 3.x should work
 
 ## Config
 ### Equipments
