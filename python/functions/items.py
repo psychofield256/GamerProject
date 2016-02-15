@@ -25,10 +25,17 @@ except ImportError:
     import constants as c
 
 def stats_to_str(item):
-    """Local function, return the stats of the item."""
+    """Local function, return the stats of the item in a str."""
     var = "stats:\n"
     for stat, value in item["stats"].items():
-        var += "%s: %s\n" % (stat, value)
+        var += "\t%s: %s\n" % (stat, value)
+    return var
+
+def gem_names(item):
+    """Local function, return the names of the gems in a str."""
+    var = "gems:\n"
+    for gem in item["gems"]:
+        var += "\t%s: %s\n" % (gem["name"])
     return var
 
 def item_to_str(item):
@@ -47,6 +54,7 @@ def item_to_str(item):
         for key in c.equipment_info_list:
             var += "%s: %s\n" % (key, str(item[key]))
         var += stats_to_str(item)
+        var += gem_names(item)
     elif item["type"] == "gem":
         for key in c.gem_info_list:
             var += "%s: %s\n" % (key, str(item[key]))

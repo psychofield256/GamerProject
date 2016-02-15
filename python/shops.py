@@ -35,13 +35,13 @@ with open("config/town/weapon_shop.json", "r") as f:
         # this is not defined before for a better looking json
         weapon["slot"] = "weapon"
         # already inserted items
-        weapon["inserted"] = []
+        weapon["gems"] = []
         weapon_shop.append(weapon)
 
 with open("config/town/armor_shop.json", "r") as f:
     for equip in json.load(f):
         equip["type"] = "equipment"
-        equip["inserted"] = []
+        equip["gems"] = []
         armor_shop.append(equip)
 
 shops = {

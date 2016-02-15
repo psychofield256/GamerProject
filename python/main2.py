@@ -27,4 +27,4 @@ print("-----------")
 print("-----------")
 
 for armor in shops["armors"]:
-	print(armor)
+	print(item_to_str(armor))
