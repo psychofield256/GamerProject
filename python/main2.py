@@ -22,10 +22,15 @@ print("-----------")
 
 for weapon in shops["weapons"]:
 	print(item_to_str(weapon))
-	print("---------------")
 
 print("-----------")
 print("-----------")
 
 for armor in shops["armors"]:
 	print(item_to_str(armor))
+
+print("-----------")
+print("-----------")
+
+for gem in shops["gems"]:
+	print(item_to_str(gem))
