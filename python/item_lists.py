@@ -47,11 +47,11 @@ with open("config/items/gem_list.json", "r") as f:
 		gem["type"] = "gem"
 		gems.append(gem)
 
-shops = {
+lists = {
     "items": items,
     "weapons": weapons,
     "armors": armors,
     "gems": gems
 }
 
-sys.modules[__name__] = shops
+sys.modules[__name__] = lists
