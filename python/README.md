@@ -36,7 +36,7 @@ In stats, the attributes are:
 	* luk: luck (the critical rate)
 
 2. added stats
-	Note: these stats are constants, and should mainly be equipment boost 	(for example, if you have a total of 100 in critical or dodge rate, you're probably cheat-modding the config)
+	Note: these stats are constants, and should only be weak equipment boost (for example, if you have a total of 100 in critical or dodge rate, you're probably cheat-modding the config)
 	* pres: physical resistence (% in adversary's damages)
 	* mres: magical resistance (% in adversary's damages)
 	* pdam: physical damages (% in your damages)
