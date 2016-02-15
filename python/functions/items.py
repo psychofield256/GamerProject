@@ -57,8 +57,6 @@ def item_to_str(item):
         if item["gems"] != []:
             var += gem_names(item)
     elif item["type"] == "gem":
-        for key in c.gem_info_list:
-            var += "%s: %s\n" % (key, str(item[key]))
         var += stats_to_str(item)
 
     return var
