@@ -1,12 +1,3 @@
 [
-	{
-		"name": "Wooden Stick",
-		"lore": "A wooden stick you \"borrowed\" at someone you didn't know.",
-		"lvl": 0,
-		"weight": 3,
-		"sockets": 1,
-		"stats": {
-			"str": 5
-        }
-	}
+	0
 ]
