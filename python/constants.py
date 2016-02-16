@@ -6,6 +6,8 @@ The constants can be set at every moment, because
 import will return an instance, not the module.
 """
 
+# this docstring is a comment
+"""
 STATLIST = ["str", "dex", "vit", "int", "wis", "luk"]
 
 # the item's generals informations
@@ -18,6 +20,7 @@ emptystats = {
 	"str": 0, "dex": 0, "vit": 0,
 	"int": 0, "wis": 0, "luk": 0,
 }
+"""
 
 class Constants(object):
     """Constants of the project."""
@@ -49,7 +52,8 @@ class Constants(object):
 
 
 # this allows to import the module and get the instance with
-# basic constants in it. Other can be added
+# constants in it. Other can be added after import, but other
+# imported instances won't be changed
 c = Constants()
 
 import sys
