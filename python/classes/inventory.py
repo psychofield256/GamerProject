@@ -38,32 +38,34 @@ class Inventory:
         self.slots = {"helmet": helmet, "chestplate": chestplate,
         "leggings": leggings, "boots": boots, "weapon": weapon}
         """
-    def sayItems(self):
-        """generator returning all the items in the items section"""
+
+    def say_items(self):
+        """Generator returning all the items in the items section."""
         for item in self.items:
             yield item
-            
-    def sayEquipments(self):
-        """generator returning all the items in the equipments section"""
+
+    def say_equipments(self):
+        """Generator returning all the items in the equipments section."""
         for equip in self.equipments:
             yield equip
-            
-    def sayPotions(self):
-        """generator returning all the items in the potions section"""
-        for p in self.potions:
-            yield p
-            
-    def saySlots(self):
-        """
-        Return a tuple with the actual equipment:
-        1: Weapon, 2: Helmet, 3: Chestplate, 4: Leggings, 5: Boots
-        """
-        return self.slots["weapon"], self.slots["helmet"], self.slots["chestplate"],
-        self.slots["leggings"], self.slots["boots"]
-    
+
+    def say_potions(self):
+        """Generator returning all the items in the potions section."""
+        for potion in self.potions:
+            yield potion
+
+    def say_gems(self):
+        """Generator returning all the gems of the inventory."""
+        for gem in self.gems:
+            yield gem
+
+    def say_equipment(self):
+        """Return a dict with the actual equipment."""
+        return self.equipment
+
     def add(self, item):
-        """Add the item given to the section corresponding to its type"""
-        if item.iType == "equipment":
+        """Add the item to the section corresponding to its type."""
+        if item["type"] == "equipment":
             self.equipments.append(item)
         elif item.iType == "potion":
             self.potions.append(item)
@@ -105,4 +107,3 @@ class Inventory:
         #if the slot is not one in the list
         except KeyError:
             print("this slot doesn't exist")
-        
