@@ -28,14 +28,23 @@ class Constants(object):
     # """Create the constants."""
     item_info_list = ["name", "lvl", "lore", "weight"]
     equipment_info_list = ["sockets", "slot"]
+    empty_equipment_dict = {
+        "weapon": None,
+        "helmet": None,
+        "chestplate": None,
+        "leggings": None,
+        "boots": None,
+        "pendant": None,
+        "ring": None,
+        "mantle": None
+    }
 
     def __setattr__(self, attr, value):
-        """Block redefining a constant."""
-        # if there is already a constant, raise
+        """Method to block redefining a constant."""
         if hasattr(self, attr):
             raise self.ConstantError("A constant cannot be changed.")
-        # else, create it
-        object.__setattr__(self, attr, value)
+        else:
+            object.__setattr__(self, attr, value)
 
 
 

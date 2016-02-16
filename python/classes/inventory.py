@@ -1,19 +1,30 @@
 #!/usr/bin/env python
 
+import sys
+import os
+
+import constants as c
+
 
 class Inventory:
     """
     Class used to create the inventory of entities
     takes:
-    -An Item list
-    -(optionnal) The four Equipments (helmet, chestplate, leggings, boots, weapon)
+    -(optionnal) An Item list
+    -(optionnal) An unepacked equipment dict (see the doc)
+    You can make a dict first and use **<dict>, or use a
+    826 characters line. I recommand to unpack the dict.
     """
-    def __init__(self, items=[], helmet=None, chestplate=None,
-                 leggings = None, boots = None, weapon=None):
+    def __init__(self, items=[], **equipments):
+        # creates the equipment dict
+        self.equipment = c.empty_equipment_dict
+        self.equipment.update(equipments)
         #creates the different sections of the inventory
         self.items = []
         self.equipments = []
         self.potions = []
+        self.gems = []
+        """
         for item in items:
             #if the item is an equipment, add it to equipments
             if item.iType == "equipment":
@@ -26,7 +37,7 @@ class Inventory:
                 self.items.append(item)
         self.slots = {"helmet": helmet, "chestplate": chestplate,
         "leggings": leggings, "boots": boots, "weapon": weapon}
-        
+        """
     def sayItems(self):
         """generator returning all the items in the items section"""
         for item in self.items:
