@@ -41,12 +41,28 @@ class Inventory:
 
     def add(self, item):
         """Add the item to the section corresponding to its type."""
-        if item["type"] == "equipment":
+        t = item["type"]
+        if t == "equipment":
             self.equipments.append(item)
-        elif item.iType == "potion":
+        elif t == "potion":
             self.potions.append(item)
-        elif item.iType == "item" or item.iType == "jewel":
+        elif  t == "gem":
+            self.gems.append(item)
+        elif t == "item":
             self.items.append(item)
+
+        # this is a dictionnary mapping
+        # to test. Before, I need to use the previous code
+        # to make it work.
+        # switch = {
+        #    "equipment": lambda: self.equipment.append(item),
+        #    "potion": lambda: self.equipment.append(item),
+        #    "gem": lambda: self.equipment.append(item),
+        #    "item": lambda: self.equipment.append(item),
+        # }
+        # return switch.get(item["type"])
+
+
     def equip(self, position):
         """
         Method for equipping an equipment in the inventory to the corresponding slot
