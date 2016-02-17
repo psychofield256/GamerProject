@@ -39,30 +39,6 @@ class Inventory:
         "leggings": leggings, "boots": boots, "weapon": weapon}
         """
 
-    def say_items(self):
-        """Generator returning all the items in the items section."""
-        for item in self.items:
-            yield item
-
-    def say_equipments(self):
-        """Generator returning all the items in the equipments section."""
-        for equip in self.equipments:
-            yield equip
-
-    def say_potions(self):
-        """Generator returning all the items in the potions section."""
-        for potion in self.potions:
-            yield potion
-
-    def say_gems(self):
-        """Generator returning all the gems of the inventory."""
-        for gem in self.gems:
-            yield gem
-
-    def say_equipment(self):
-        """Return a dict with the actual equipment."""
-        return self.equipment
-
     def add(self, item):
         """Add the item to the section corresponding to its type."""
         if item["type"] == "equipment":

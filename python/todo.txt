@@ -1,5 +1,4 @@
 --urgent--
-remove Inventory's getter-style methods (useless, we're not in java)
 
 
 --code--
