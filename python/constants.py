@@ -29,6 +29,7 @@ class Constants(object):
 
     # def __init__(self):
     # """Create the constants."""
+    basic_stats = ["str", "dex", "vit", "int", "wis", "luk"]
     item_info_list = ["name", "lvl", "lore", "weight"]
     equipment_info_list = ["sockets", "slot"]
     empty_equipment_dict = {
