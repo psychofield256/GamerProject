@@ -13,7 +13,12 @@ Its objectives are to adapt the manga "The Gamer" as a real rpg.
 # import constants as c
 import shops
 from functions.items import item_to_str
+from classes.inventory import Inventory
 
+
+inv = Inventory()
+
+"""
 for item in shops["items"]:
 	print(item_to_str(item))
 
@@ -31,6 +36,11 @@ for armor in shops["armors"]:
 
 print("-----------")
 print("-----------")
+"""
 
 for gem in shops["gems"]:
+	# print(item_to_str(gem))
+	inv.add(gem)
+
+for gem in inv.gems:
 	print(item_to_str(gem))

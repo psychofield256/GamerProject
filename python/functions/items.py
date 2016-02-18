@@ -27,7 +27,20 @@ except ImportError:
 def stats_to_str(item):
     """Local function, return the stats of the item in a str."""
     var = "stats:\n"
+    # sort basic and added stats in tuples
+    basic_stats = []
+    added_stats = []
     for stat, value in item["stats"].items():
+        if stat in c.basic_stats:
+            basic_stats.append((stat, value))
+        else:
+            added_stats.append((stat, value))
+
+    # add them in the good order
+    for stat, value in basic_stats:
+        var += "\t%s: %s\n" % (stat, value)
+    var += "\n"
+    for stat, value in added_stats:
         var += "\t%s: %s\n" % (stat, value)
     return var
 
