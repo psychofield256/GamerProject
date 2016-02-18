@@ -62,7 +62,6 @@ class Inventory:
         # }
         # return switch.get(item["type"])
 
-
     def equip(self, position):
         """
         Method for equipping an equipment in the inventory to the corresponding slot
@@ -73,9 +72,9 @@ class Inventory:
             #takes the equipment to equip
             equip = self.equipments[position]
             #unequip the slot of the item to equip
-            self.unequip(equip.slot)
+            self.unequip(equip["slot"])
             #copy the new one in the equipment and delete the old one
-            self.slots[equip.slot] = equip
+            self.equipment[equip["slot"]] = equip
             del self.equipments[position]
         #if the equipment doesn't have the attributes of an equipment,
         #it's not one
@@ -93,9 +92,9 @@ class Inventory:
         #then, replace it with None
         #if it was None, don't do anything, because equip will replace it when there will be something
         try:
-            if self.slots[slot] != None:
-                self.add(self.slots[slot])
-                self.slots[slot] = None
+            if self.equipment[slot] != None:
+                self.add(self.equipment[slot])
+                self.equipment[slot] = None
         #if the slot is not one in the list
         except KeyError:
             print("this slot doesn't exist")
