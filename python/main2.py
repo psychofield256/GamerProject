@@ -24,23 +24,25 @@ for item in shops["items"]:
 
 print("-----------")
 print("-----------")
+"""
 
 for weapon in shops["weapons"]:
-	print(item_to_str(weapon))
-
-print("-----------")
-print("-----------")
+	inv.add(weapon)
 
 for armor in shops["armors"]:
-	print(item_to_str(armor))
-
-print("-----------")
-print("-----------")
-"""
+	inv.add(armor)
 
 for gem in shops["gems"]:
 	# print(item_to_str(gem))
 	inv.add(gem)
 
-for gem in inv.gems:
-	print(item_to_str(gem))
+inv.equip(0)
+
+for equip in inv.equipments:
+	print(item_to_str(equip))
+
+print("-----------")
+print("-----------")
+
+for slot, equip in inv.equipment.items():
+	print("%s:\n%s" % (slot, item_to_str(equip)))

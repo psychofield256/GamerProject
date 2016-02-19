@@ -60,8 +60,21 @@ def item_to_str(item):
     a __str__ function and use inheritance.
     """
     var = ""
-    for key in c.item_info_list:
-        var += "%s: %s\n" % (key, str(item[key]))
+    first_values = []
+    second_values = []
+
+    if item is None:
+        return var
+
+    for key, value in item.items():
+        if key in c.item_info_list:
+            first_values.append((key, value))
+        else:
+            second_values.append((key, value))
+    for key, value in first_values:
+        var += "%s: %s\n" % (key, str(value))
+    for key, value in second_values:
+        var += "%s: %s\n" % (key, str(value))
 
     if item["type"] == "equipment":
         for key in c.equipment_info_list:
