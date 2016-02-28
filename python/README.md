@@ -72,3 +72,8 @@ In cases, you write the situations in which the skill will gain experience. They
 * fight-end: the end of a fight
 * turn-begin: the beginning of a turn
 * turn-end: the end of a turn
+* hit: when the character hits an ennemy
+* hit-defend: when the character hits an ennemy defending
+* hurt: when the character is hurt
+* hurt-defend: when the character is hit after choosing to defend
+* use: when the skill is used (only for active skills)
