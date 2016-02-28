@@ -20,29 +20,29 @@ inv = Inventory()
 
 """
 for item in shops["items"]:
-	print(item_to_str(item))
+    print(item_to_str(item))
 
 print("-----------")
 print("-----------")
 """
 
 for weapon in shops["weapons"]:
-	inv.add(weapon)
+    inv.add(weapon)
 
 for armor in shops["armors"]:
-	inv.add(armor)
+    inv.add(armor)
 
 for gem in shops["gems"]:
-	# print(item_to_str(gem))
-	inv.add(gem)
+    # print(item_to_str(gem))
+    inv.add(gem)
 
 inv.equip(0)
 
 for equip in inv.equipments:
-	print(item_to_str(equip))
+    print(item_to_str(equip))
 
 print("-----------")
 print("-----------")
 
 for slot, equip in inv.equipment.items():
-	print("%s:\n%s" % (slot, item_to_str(equip)))
+    print("%s:\n%s" % (slot, item_to_str(equip)))
