@@ -38,6 +38,9 @@ class Constants(object):
     added_stats = ["pres", "mres", "pdam", "mdam", "dodg",
                    "miss", "crit", "hmax", "mmax", "hreg", "mreg"]
 
+    # todo
+    # exp_cases = ["fight-end", ""]
+
     item_infos = ["name", "lvl", "lore", "weight"]
 
     equipment_infos = ["sockets", "slot"]

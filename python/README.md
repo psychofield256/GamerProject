@@ -48,3 +48,27 @@ In stats, the attributes are:
 	* mmax: max mana (% of your basic max mana)
 	* hreg: hp regen (% of your basic life regen)
 	* mreg: mana regen (% of your basic mana regen)
+
+### Skills
+In json files, to add a new skill, you have to write:
+```json
+{
+	"name": "name",
+	"lore": "description",
+	"cases": ["case1", "case2"],
+	"requirements": {
+		"stat1": 5
+	}
+	"stats": {
+		"stat1": 5
+	}
+}
+```
+
+In stats, it's the same that equipment. I really discourage using stats in percents, as upgrading the skill will increase the percentage (see the note in added stats)
+
+In cases, you write the situations in which the skill will gain experience. They can be:
+* fight-begin: the beginning of a fight
+* fight-end: the end of a fight
+* turn-begin: the beginning of a turn
+* turn-end: the end of a turn

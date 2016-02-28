@@ -38,11 +38,12 @@ class PermanentBoost(object):
     -an int level (not necessary)
     """
 
-    def __init__(self, name, stats, owner, lvl=0):
+    def __init__(self, name, stats, owner, exp_cases="", lvl=0):
         """Constructor of PermanentBoost."""
         self.name = name
         self.base_stats = stats
         self.owner = owner
+        self.exp_cases
         # calculates the exp needed to get the level wanted
         self.exp = getexp(lvl)
 
