@@ -1,14 +1,18 @@
 # pylint: disable=invalid-name,import-error
 """Module for skills and active/passive boosts."""
 
+"""
 import sys
 import os
+"""
 
-try:
-    from functions.levels import getexp, getlvl
-    from constants import *
+from functions.levels import getexp, getlvl
+from constants import *
+
+"""
 except ImportError:
     # if pythonpath is not main.py, go up until you're at it and register it
+
     directory = os.path.abspath(__file__)
     while not directory.endswith("python"):
         directory = os.path.dirname(directory)
@@ -16,14 +20,14 @@ except ImportError:
 
     from functions.levels import getexp, getlvl
     from constants import *
-
+"""    
 
 class PermanentBoost(object):
     """
-    class for PermanentBoost.
+    class for every permanent boost.
 
     A permanent boost is a permanent skill that increases
-    the stats of the owner. Its exp is gained in the defined cases.
+    the stats of the owner. Its exp is gained when kept active.
     It is always turned on and doesn't require mana to be activated
 
     Takes:
@@ -34,17 +38,13 @@ class PermanentBoost(object):
     -an int level (not necessary)
     """
 
-    def __init__(self, name, stats, boosts, owner, expcases, lvl=0):
+    def __init__(self, name, stats, owner, lvl=0):
         """Constructor of PermanentBoost."""
         self.name = name
-        # this is a tuple because a boost should not change the boosted stats
-        # it's not a dict because most of the stats will not be used
-        self.boosted_stats = tuple(stats)
-        self.basestats = tuple(boosts)
+        self.base_stats = stats
         self.owner = owner
         # calculates the exp needed to get the level wanted
         self.exp = getexp(lvl)
-        self.expcases = expcases
 
     def addexp(self, exp, case):
         """Add exp to the boost and refresh the stats."""
