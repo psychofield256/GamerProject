@@ -34,9 +34,15 @@ class Constants(object):
     # def __init__(self):
     # """Create the constants."""
     basic_stats = ["str", "dex", "vit", "int", "wis", "luk"]
-    item_info_list = ["name", "lvl", "lore", "weight"]
-    equipment_info_list = ["sockets", "slot"]
-    empty_equipment_dict = {
+
+    added_stats = ["pres", "mres", "pdam", "mdam", "dodg",
+                   "miss", "crit", "hmax", "mmax", "hreg", "mreg"]
+
+    item_infos = ["name", "lvl", "lore", "weight"]
+
+    equipment_infos = ["sockets", "slot"]
+
+    empty_equipment = {
         "weapon": None,
         "helmet": None,
         "chestplate": None,
