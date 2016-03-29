@@ -7,15 +7,12 @@ Its objectives are to adapt the manga "The Gamer" as a real rpg.
 """
 
 from classes.inventory import Inventory
+from items import shops, item_to_str
 
 i = Inventory()
+for item in shops["armors"]:
+    print(item_to_str(item))
 
-from items import shops
-
-print(shops)
-# import json
-
-# from functions.display import new_bunch_str as n
 
 # import constants as c
 """

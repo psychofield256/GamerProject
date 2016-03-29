@@ -2,17 +2,92 @@
 This module contains code about items of the game.
 
 You can import:
--shops (dict dict)
--lists (list dict)
+-shops (dict)
+-lists (dict)
 
 -Functions:
 --item_to_str(item: dict) --> str
---socket(item: dict, gem: dict)
-
+--socket(item: dict, gem: dict) (not implemented)
+(Other functions are just local ones and useless for the rest of the program)
 """
 
 import json
+
+from constants import *
 # import sys
+
+# game functions
+
+
+def stats_to_str(item):
+    """
+    Return the stats of the item in a str.
+
+    The difference between basic and added stats is already implemented,
+    but commented out because added stats are still not implemented.
+    """
+    var = "stats:\n"
+    # sort basic and added stats in tuples
+    basic_stats = []
+    added_stats = []
+    for stat, value in item["stats"].items():
+        if stat in BASIC_STATS:
+            basic_stats.append((stat, value))
+        else:
+            added_stats.append((stat, value))
+
+    # add them in the good order
+    for stat, value in basic_stats:
+        var += "\t%s: %s\n" % (stat, value)
+    var += "\n"
+    for stat, value in added_stats:
+        var += "\t%s: %s\n" % (stat, value)
+    return var
+
+
+def gem_names(item):
+    """Return the names of the gems in a str."""
+    var = "gems:\n"
+    for gem in item["gems"]:
+        var += "\t%s: %s\n" % (gem["name"])
+    return var
+
+
+def item_to_str(item):
+    """
+    Function used to convert a dict item into an str.
+
+    Equivalent to __str__(self), but a class isn't used.
+    This is to avoid making a class with only
+    a __str__ function and use inheritance.
+    """
+    var = ""
+    first_values = []
+    second_values = []
+
+    if item is None:
+        return var
+
+    for key, value in item.items():
+        if key in ITEM_INFOS:
+            first_values.append((key, value))
+        else:
+            second_values.append((key, value))
+    for key, value in first_values:
+        var += "%s: %s\n" % (key, str(value))
+    for key, value in second_values:
+        var += "%s: %s\n" % (key, str(value))
+
+    if item["type"] == "equipment":
+        for key in EQUIPMENT_INFOS:
+            var += "%s: %s\n" % (key, str(item[key]))
+        var += stats_to_str(item)
+        if item["gems"] != []:
+            var += gem_names(item)
+    elif item["type"] == "gem":
+        var += stats_to_str(item)
+
+    return var
 
 # game items
 items = []
