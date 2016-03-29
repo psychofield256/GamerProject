@@ -1,51 +1,57 @@
-#!/usr/bin/env python
-#-*-encoding:utf-8-*-
+#!usr/bin/env python
 
-from classes.item import Item
-from classes.equipment import Equipment
+"""
+Game made by psychofield.
+
+Its objectives are to adapt the manga "The Gamer" as a real rpg.
+"""
+
 from classes.inventory import Inventory
-from classes.potion import Potion
-from items import items, equipments, jewels
-itemList = []
-for item in items:
-	#creates an Item object and store it in itemList
-	itemList.append(Item(item))
-equipList = []
-for equip in equipments:
-	#same for Equipment instances
-	equipList.append(Equipment(equip))
-for jewel in jewels:
-	itemList.append(Item(jewel, jewel=True))
 
-l = itemList + equipList
 i = Inventory()
 
-for item in equipList:
-	i.add(item)
-for item in itemList:
-	i.add(item)
+from items import shops
 
-a = Potion(4)
+print(shops)
+# import json
 
-i.add(a)
+# from functions.display import new_bunch_str as n
 
-i.equip(4)
-i.equip(3)
-i.unequip("helmet")
+# import constants as c
+"""
+import shops
+from functions.items import item_to_str
+from classes.inventory import Inventory
 
-print("-----------------------")
-print("actual equipment:")
-for equip in i.saySlots():
-	print(equip, "\n")
-print("-----------------------")
-print("equipments:")
-for e in i.sayEquipments():
-	print(e,"\n")
-print("-----------------------------")
-print("items:")
-for item in i.sayItems():
-	print(item, "\n")
-print("-----------------------")
-print("potions:")
-for p in i.sayPotions():
-	print(p, "\n")
+
+inv = Inventory()
+"""
+"""
+for item in shops["items"]:
+    print(item_to_str(item))
+
+print("-----------")
+print("-----------")
+"""
+"""
+for weapon in shops["weapons"]:
+    inv.add(weapon)
+
+for armor in shops["armors"]:
+    inv.add(armor)
+
+for gem in shops["gems"]:
+    # print(item_to_str(gem))
+    inv.add(gem)
+
+inv.equip(0)
+
+for equip in inv.equipments:
+    print(item_to_str(equip))
+
+print("-----------")
+print("-----------")
+
+for slot, equip in inv.equipment.items():
+    print("%s:\n%s" % (slot, item_to_str(equip)))
+"""

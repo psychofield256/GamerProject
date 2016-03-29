@@ -35,7 +35,7 @@ In stats, the attributes are:
 	* wis: wisdom (the mp regen and magical resistance)
 	* luk: luck (the critical rate)
 
-2. added stats
+2. added stats (Not available!)
 	Note: these stats are constants, and should only be weak equipment boost (for example, if you have a total of 100 in critical or dodge rate, you're probably cheat-modding the config)
 	* pres: physical resistence (% in adversary's damages)
 	* mres: magical resistance (% in adversary's damages)
@@ -49,7 +49,7 @@ In stats, the attributes are:
 	* hreg: hp regen (% of your basic life regen)
 	* mreg: mana regen (% of your basic mana regen)
 
-### Skills
+### Skills (Not available!)
 In json files, to add a new skill, you have to write:
 ```json
 {

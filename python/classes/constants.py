@@ -23,6 +23,6 @@ while not MAIN_DIR.endswith("python"):
     MAIN_DIR = os.path.dirname(MAIN_DIR)
 
 sys.path.insert(0, MAIN_DIR)
-import constants
 
-sys.modules[__name__] = constants
+
+from constants import *

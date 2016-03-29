@@ -24,6 +24,7 @@ gems = []
 
 with open("config/town/item_shop.json") as f:
     for index in json.load(f):
+        # add the item at the index in the item list
         items.append(lists["items"][index])
 
 with open("config/town/weapon_shop.json") as f:
@@ -45,4 +46,4 @@ shops = {
     "gems": gems
 }
 
-sys.modules[__name__] = shops
+# sys.modules[__name__] = shops

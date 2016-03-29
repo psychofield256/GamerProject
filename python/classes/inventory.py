@@ -3,7 +3,9 @@
 import sys
 import os
 
-import constants as c
+# from . import constants
+# import constants as c
+from constants import *
 
 
 class Inventory:
@@ -16,28 +18,14 @@ class Inventory:
     826 characters line. I recommand to unpack the dict.
     """
     def __init__(self, items=[], **equipments):
-        # creates the equipment dict
-        self.equipment = c.empty_equipment_dict
+        # creates an empty equipment dict and fill it with the args
+        self.equipment = EMPTY_EQUIPMENT
         self.equipment.update(equipments)
-        #creates the different sections of the inventory
+        # creates the different sections of the inventory
         self.items = []
         self.equipments = []
         self.potions = []
         self.gems = []
-        """
-        for item in items:
-            #if the item is an equipment, add it to equipments
-            if item.iType == "equipment":
-                self.equipments.append(item)
-            #if it's a potion, it goes in potions
-            elif item.iType == "potion":
-                self.potions.append(item)
-            #else, add it to items
-            else:
-                self.items.append(item)
-        self.slots = {"helmet": helmet, "chestplate": chestplate,
-        "leggings": leggings, "boots": boots, "weapon": weapon}
-        """
 
     def add(self, item):
         """Add the item to the section corresponding to its type."""
@@ -46,7 +34,7 @@ class Inventory:
             self.equipments.append(item)
         elif t == "potion":
             self.potions.append(item)
-        elif  t == "gem":
+        elif t == "gem":
             self.gems.append(item)
         elif t == "item":
             self.items.append(item)

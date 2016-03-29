@@ -24,6 +24,25 @@ emptystats = {
 }
 """
 
+BASIC_STATS = ["str", "dex", "vit", "int", "wis", "luk"]
+ADDED_STATS = ["pres", "mres", "pdam", "mdam", "dodg",
+               "miss", "crit", "hmax", "mmax", "hreg",
+               "mreg"]
+ITEM_INFOS = ["name", "lvl", "lore", "weight"]
+EQUIPMENT_INFOS = ["sockets", "slot"]
+EMPTY_EQUIPMENT = {
+    "weapon": None,
+    "helmet": None,
+    "chestplate": None,
+    "leggings": None,
+    "boots": None,
+    "pendant": None,
+    "ring": None,
+    "mantle": None
+}
+
+# to remove, it's a bad practice because it's too memory-heavy for simple
+# constants and not practical
 
 class Constants(object):
     """Constants of the project."""
@@ -69,4 +88,4 @@ class Constants(object):
 # imported instances won't be changed
 c = Constants()
 
-sys.modules[__name__] = c
+# sys.modules[__name__] = c
