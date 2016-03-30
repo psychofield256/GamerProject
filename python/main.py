@@ -14,15 +14,6 @@ for item in shops["armors"]:
     print(item_to_str(item))
 
 
-# import constants as c
-"""
-import shops
-from functions.items import item_to_str
-from classes.inventory import Inventory
-
-
-inv = Inventory()
-"""
 """
 for item in shops["items"]:
     print(item_to_str(item))

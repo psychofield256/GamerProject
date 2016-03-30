@@ -1,0 +1,11 @@
+[
+	{
+		"name": "consumable test",
+		"lore": "description",
+		"weight": 1,
+		"lvl": 1,
+		"effects": {
+			"life-heal": 50
+		}
+	}
+]

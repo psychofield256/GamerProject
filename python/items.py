@@ -89,6 +89,11 @@ def item_to_str(item):
 
     return var
 
+def make_potion():
+    """Create a potion dict."""
+
+
+
 # game items
 items = []
 weapons = []

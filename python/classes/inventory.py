@@ -17,6 +17,7 @@ class Inventory:
     You can make a dict first and use **<dict>, or use a
     826 characters line. I recommand to unpack the dict.
     """
+
     def __init__(self, items=[], **equipments):
         # creates an empty equipment dict and fill it with the args
         self.equipment = EMPTY_EQUIPMENT
@@ -57,15 +58,15 @@ class Inventory:
         Take the equipment position in the equipments section.
         """
         try:
-            #takes the equipment to equip
+            # takes the equipment to equip
             equip = self.equipments[position]
-            #unequip the slot of the item to equip
+            # unequip the slot of the item to equip
             self.unequip(equip["slot"])
-            #copy the new one in the equipment and delete the old one
+            # copy the new one in the equipment and delete the old one
             self.equipment[equip["slot"]] = equip
             del self.equipments[position]
-        #if the equipment doesn't have the attributes of an equipment,
-        #it's not one
+        # if the equipment doesn't have the attributes of an equipment,
+        # it's not one
         except AttributeError:
             print("this is not an equipment!")
 
@@ -75,14 +76,15 @@ class Inventory:
         Takes a str which can be "weapon",
         "helmet", "chestplate", "leggings" or "boots"
         """
-        #check if the actual equipment is not None.
-        #Then, take the item in the slot selected and copy it to the inventory.
-        #then, replace it with None
-        #if it was None, don't do anything, because equip will replace it when there will be something
+        # check if the actual equipment is not None.
+        # Then, take the item in the slot selected and copy it to the inventory.
+        # then, replace it with None
+        # if it was None, don't do anything, because equip will replace it when
+        # there will be something
         try:
             if self.equipment[slot] != None:
                 self.add(self.equipment[slot])
                 self.equipment[slot] = None
-        #if the slot is not one in the list
+        # if the slot is not one in the list
         except KeyError:
             print("this slot doesn't exist")

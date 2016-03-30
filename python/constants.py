@@ -7,6 +7,7 @@ import will return an instance, not the module.
 """
 
 import sys
+from pathlib import Path
 
 # this docstring is a comment
 """
@@ -40,6 +41,10 @@ EMPTY_EQUIPMENT = {
     "ring": None,
     "mantle": None
 }
+
+# CONFIG_PATH = "config"
+ITEM_LIST_PATH = Path("config/items")
+SHOP_PATH = Path("config/town/shop")
 
 # to remove, it's a bad practice because it's too memory-heavy for simple
 # constants and not practical

@@ -11,7 +11,7 @@ Tests for the Gamer Project
 
 # from random import randrange
 
-
+"""
 from functions.levels import getexp, getlvl
 from items import ITEMS, JEWELS, EQUIPMENTS
 from classes.item import Item
@@ -20,7 +20,7 @@ from classes.skills import PassiveBoost
 
 
 def test_getexp():
-    """Tests the getexp function"""
+    ""Tests the getexp function""
     lvl = 5
     # 1^3 = 1
     # 2^3 = 8
@@ -40,7 +40,7 @@ def test_getexp():
 
 
 def test_getlvl():
-    """Tests the getlvl function"""
+    ""Tests the getlvl function""
     explvl2 = 9
     explvl3 = 36
     explvl4 = 100
@@ -68,7 +68,7 @@ def test_getlvl():
 
 
 def test_item_list():
-    """Tests each dict of the item list (items.py)"""
+    ""Tests each dict of the item list (items.py)""
     for item in ITEMS:
         assert isinstance(item["name"], str)
         assert isinstance(item["lore"], str)
@@ -77,7 +77,7 @@ def test_item_list():
 
 
 def test_jewel_list():
-    """Tests each dict of the jewel list (items.py)"""
+    ""Tests each dict of the jewel list (items.py)""
     for jewel in JEWELS:
         assert isinstance(jewel["name"], str)
         assert isinstance(jewel["lore"], str)
@@ -88,7 +88,7 @@ def test_jewel_list():
 
 
 def test_equipment_list():
-    """Tests each dict of the equipment list (items.py)"""
+    ""Tests each dict of the equipment list (items.py)""
     possible_slots = ["weapon", "helmet", "chestplate", "leggings", "boots"]
     for equip in EQUIPMENTS:
         assert isinstance(equip["name"], str)
@@ -104,8 +104,8 @@ def test_equipment_list():
 
 
 def test_item_object():
-    """Tests the Item class.
-    Creates a dict for this, so it won't need items.py to be working"""
+    ""Tests the Item class.
+    Creates a dict for this, so it won't need items.py to be working""
 
     src = {
         "name": "test",
@@ -131,7 +131,7 @@ def test_item_object():
 
 
 def test_jewel_item():
-    """Tests for items that are jewels"""
+    ""Tests for items that are jewels""
     src = {
         "name": "jewel",
         "lore": "item that can be inserted",
@@ -148,7 +148,7 @@ def test_jewel_item():
 
 
 def test_potion_object():
-    """Tests the Potion class."""
+    ""Tests the Potion class.""
     potion = Potion(2)
     assert potion.itemtype == "potion"
     assert potion.potiontype == "life"
@@ -175,8 +175,9 @@ def test_potion_object():
 
 
 def test_passiveboost():
-    """Tests the PassiveBoost class."""
+    ""Tests the PassiveBoost class.""
     stats = ("str", "dex", "vit")
     boosts = (10, 10, 20)
     # owner should not be None, but entities are still not made
     boost = PassiveBoost(stats, boosts, owner=None)
+"""

@@ -8,13 +8,15 @@ Tests for the Gamer Project Game.
 # todo:
 # every test
 
+"""
 from classes.skills import PermanentBoost
 
 
 class TestSkill(object):
-    """Test classes.skills."""
+    ""Test classes.skills.""
 
     def test_permanent_boost(self):
-        """Test the PermanentBoost instances."""
+        ""Test the PermanentBoost instances.""
         stats = {"str": 5, "vit": 2}
         pb = PermanentBoost("super strength", stats, "fake owner")
+"""
