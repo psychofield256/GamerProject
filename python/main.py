@@ -6,12 +6,20 @@ Game made by psychofield.
 Its objectives are to adapt the manga "The Gamer" as a real rpg.
 """
 
-from classes.inventory import Inventory
-from items import shops, item_to_str
+# import pygame
+# import pytmx
 
-i = Inventory()
-for item in shops["armors"]:
-    print(item_to_str(item))
+from items import shops, item_to_str
+from classes.entities import *
+
+
+def main():
+    """test."""
+    for item in shops["armors"]:
+        print(item_to_str(item))
+
+if __name__ == "__main__":
+    main()
 
 
 """

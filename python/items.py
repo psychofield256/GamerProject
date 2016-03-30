@@ -89,26 +89,25 @@ def item_to_str(item):
 
     return var
 
-def make_potion():
-    """Create a potion dict."""
-
-
 
 # game items
 items = []
 weapons = []
 armors = []
 gems = []
-
+consumables = []
 # parse the json files
-with open("config/items/item_list.json", "r") as f:
+i = ITEMLISTS_PATHS
+
+with open(ITEMLISTS_PATHS["items"]) as f:
     for item in json.load(f):
         # tag it ro recognize it after
         item["type"] = "item"
         # add it to the shop
         items.append(item)
 
-with open("config/items/weapon_list.json", "r") as f:
+
+with open(ITEMLISTS_PATHS["weapons"]) as f:
     for weapon in json.load(f):
         weapon["type"] = "equipment"
         # this is not defined before for a better looking json
@@ -117,22 +116,29 @@ with open("config/items/weapon_list.json", "r") as f:
         weapon["gems"] = []
         weapons.append(weapon)
 
-with open("config/items/armor_list.json", "r") as f:
+with open(ITEMLISTS_PATHS["armors"]) as f:
     for equip in json.load(f):
         equip["type"] = "equipment"
         equip["gems"] = []
         armors.append(equip)
 
-with open("config/items/gem_list.json", "r") as f:
+with open(ITEMLISTS_PATHS["gems"]) as f:
     for gem in json.load(f):
         gem["type"] = "gem"
         gems.append(gem)
+
+
+with open(ITEMLISTS_PATHS["consumables"]) as f:
+    for consu in json.load(f):
+        consu["type"] = "consumable"
+        consumables.append(consu)
 
 lists = {
     "items": items,
     "weapons": weapons,
     "armors": armors,
-    "gems": gems
+    "gems": gems,
+    "consumables": consumables,
 }
 
 
@@ -141,27 +147,34 @@ items = []
 weapons = []
 armors = []
 gems = []
+consumables = []
 
-with open("config/town/item_shop.json") as f:
+
+with open(SHOP_PATHS["items"]) as f:
     for index in json.load(f):
         # add the item at the index in the item list
         items.append(lists["items"][index])
 
-with open("config/town/weapon_shop.json") as f:
+with open(SHOP_PATHS["weapons"]) as f:
     for index in json.load(f):
         weapons.append(lists["weapons"][index])
 
-with open("config/town/armor_shop.json") as f:
+with open(SHOP_PATHS["armors"]) as f:
     for index in json.load(f):
         armors.append(lists["armors"][index])
 
-with open("config/town/gem_shop.json") as f:
+with open(SHOP_PATHS["gems"]) as f:
     for index in json.load(f):
         gems.append(lists["gems"][index])
+
+with open(SHOP_PATHS["consumables"]) as f:
+    for index in json.load(f):
+        consumables.append(lists["consumables"][index])
 
 shops = {
     "items": items,
     "armors": armors,
     "weapons": weapons,
-    "gems": gems
+    "gems": gems,
+    "consumables": consumables,
 }

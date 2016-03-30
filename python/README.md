@@ -49,6 +49,11 @@ In stats, the attributes are:
 	* hreg: hp regen (% of your basic life regen)
 	* mreg: mana regen (% of your basic mana regen)
 
+
+### Consumables (Not available!)
+
+
+
 ### Skills (Not available!)
 In json files, to add a new skill, you have to write:
 ```json

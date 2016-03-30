@@ -7,7 +7,8 @@ import will return an instance, not the module.
 """
 
 import sys
-from pathlib import Path
+# from pathlib import Path
+from os import path
 
 # this docstring is a comment
 """
@@ -42,9 +43,23 @@ EMPTY_EQUIPMENT = {
     "mantle": None
 }
 
-# CONFIG_PATH = "config"
-ITEM_LIST_PATH = Path("config/items")
-SHOP_PATH = Path("config/town/shop")
+p = "config/items"
+ITEMLISTS_PATHS = {
+    "armors": path.join(p, "armors.json"),
+    "consumables": path.join(p, "consumables.json"),
+    "gems": path.join(p, "gems.json"),
+    "items": path.join(p, "items.json"),
+    "weapons": path.join(p, "weapons.json"),
+}
+
+p = "config/town/shop"
+SHOP_PATHS = {
+    "armors": path.join(p, "armors.json"),
+    "consumables": path.join(p, "consumables.json"),
+    "gems": path.join(p, "gems.json"),
+    "items": path.join(p, "items.json"),
+    "weapons": path.join(p, "weapons.json"),
+}
 
 # to remove, it's a bad practice because it's too memory-heavy for simple
 # constants and not practical

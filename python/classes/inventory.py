@@ -18,7 +18,9 @@ class Inventory:
     826 characters line. I recommand to unpack the dict.
     """
 
-    def __init__(self, items=[], **equipments):
+    def __init__(self, items=None, **equipments):
+        if not items:
+            items = []
         # creates an empty equipment dict and fill it with the args
         self.equipment = EMPTY_EQUIPMENT
         self.equipment.update(equipments)
@@ -27,6 +29,7 @@ class Inventory:
         self.equipments = []
         self.potions = []
         self.gems = []
+        self.consumables = []
 
     def add(self, item):
         """Add the item to the section corresponding to its type."""
@@ -39,6 +42,8 @@ class Inventory:
             self.gems.append(item)
         elif t == "item":
             self.items.append(item)
+        elif t == "consumable":
+            self.consumables.append(item)
 
         # this is a dictionnary mapping
         # to test. Before, I need to use the previous code
