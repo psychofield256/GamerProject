@@ -20,10 +20,8 @@ class State(object):
             b = b.before
         return s
 
-state = State("menu")
 
-state = State("game", state)
-
-state = State("")
-
-print(state)
+if __name__ == "__main__":
+    state = State("menu")
+    state = State("game", state)
+    print(state)
