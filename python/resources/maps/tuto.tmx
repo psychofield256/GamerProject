@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="tile_12" tilewidth="16" tileheight="16" margin="16" tilecount="312" columns="24">
+  <image source="../tests/tiles.png" width="400" height="224"/>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJy7xMDAcGkUj+JRPIpH8SgmEQMANrxIMA==
+  </data>
+ </layer>
+ <layer name="SubBackground" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgcgJORvvYdAuLDQHwEiI8C8TEgPg7EJ6hg9l0qmIEMjhKhhptA+PFA5bkYIebB+NQId2LcN2re8DaPUPo7imQOpe5rQDODGv49ioaxyVHLbGzm8dC5/KMWAACQ9xsh
+  </data>
+ </layer>
+ <layer name="BlocksColliders" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzV0zdLQ1EYgOHzI6JZNcEW1KwWrBhdLVixrBasWNYo2EaNmoios10J4uzooM4WLD/BgmUQfIcjfIR7PCTEwQ8e7uVceDl3+JSKf9ax4WBTf1/AIkJYwjJWEEYEqzG9Y/10IQWpcONEn29hGzvYxR72cYBDHBl6uchDPvyid2r5vzNDrwoBVKNG9K5wjRvc6rM73OMBj4ZeOzrQiS7Re8IzXvCqz97wjg98GnqjGMM4JkQv3jnHhYPLBHtO86USv59p/qqXhnR44E1CrwCFKEJxEnq1qEM9GsT3DGQiC9nIgU/Z97cbPehFn+iVoBRlKEcFKpV9f4OYxBTWRK8RTWhGC1rRpuz7GxSNqHjvxwAGMYRhjCj7/ppmGjOYxRzm9f1t+/tbL3ai6n/u7898A8G8YCw=
+  </data>
+ </layer>
+</map>

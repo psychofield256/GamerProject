@@ -181,3 +181,16 @@ def test_passiveboost():
     # owner should not be None, but entities are still not made
     boost = PassiveBoost(stats, boosts, owner=None)
 """
+
+import os
+import pygame
+
+from tools.pg.spritesheet import SpriteSheet
+
+main_dir = os.getcwd()
+screen = pygame.display.set_mode((600, 400))
+# print(main_dir)
+
+def test_spritesheet():
+    filename = os.path.join(main_dir, "resources/sprites/pokemon.png")
+    ss = SpriteSheet(filename)

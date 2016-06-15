@@ -1,0 +1,11 @@
+# item list
+---
+- &test_item
+  name: item name
+  lore: description
+  weight: !!int 1
+  lvl: !!int 1
+
+# Town shop items
+---
+- *test_item

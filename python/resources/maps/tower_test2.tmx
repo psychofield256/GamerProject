@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="14">
+ <tileset firstgid="1" name="floor" tilewidth="16" tileheight="16" tilecount="140" columns="10">
+  <image source="../tiles/cobbles2.png" width="162" height="224"/>
+ </tileset>
+ <tileset firstgid="141" name="all" tilewidth="16" tileheight="16" tilecount="552" columns="23">
+  <image source="../tiles/dungeon_tiles_0.png" width="368" height="384"/>
+ </tileset>
+ <layer name="Background" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJyNkusRwjAMgxNK2YHX/lPw2oESdiCUFbAP6xA+N/THd0mDJCc6Dimlo3Ci9TyTi3AVBuFm6xxUW4S7+fFd/zDlx3mX29SGv5p/KfT5Vwe6HPtr8BvvRwM53u+9o5vb252QA633Rx2rHm8CheY/0rcb3zUyuJdCuTw/6vppOvbjDbrn+ZyPDJzxnlH/Isf5fE/+Zu0r8Puuo+6hX+XP/fHWKMefcS/q5/mt/27UhfrXwkbY0rprwJq98AakIIKc
+  </data>
+ </layer>
+ <layer name="ColliderBlocks" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxbwsjAsJhMvASKyQWj+kf1j+qnXD8lGAB3Qyaf
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="floor" tilewidth="16" tileheight="16" tilecount="819" columns="21">
+  <image source="../tiles/Floor.png" width="336" height="624"/>
+ </tileset>
+ <layer name="Background" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJzbx8DAsJ9MfACILwPxFTLx1VH9o/pH9VOk/wUQvyQTvwJiANTc1AE=
+  </data>
+ </layer>
+ <layer name="BlocksColliders" width="16" height="16">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjFQAAAQAAAE=
+  </data>
+ </layer>
+</map>

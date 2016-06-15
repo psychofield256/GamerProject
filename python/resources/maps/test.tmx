@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="all" tilewidth="16" tileheight="16" tilecount="350" columns="25">
+  <image source="../tiles/test.png" width="400" height="224"/>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJz7wsDA8GUUj+JRPIpH8SgmEQMArrZ9UA==
+  </data>
+ </layer>
+ <layer name="SubBackground" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIw4wQvFgNw8fHkjziLFr1Dzy9FPLPGrFL63TyxAHAH4yAC8=
+  </data>
+ </layer>
+ <layer name="BlocksColliders" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzEdKhEEUhdHfdZg3YAC1dWbEVtBue2bEAMaZEQMYZ0YMIIaZtrgGt+GCPAsoCqEQEXxwZvd9WfZzV0kV1dRQS11g10AjTTRHei200kaOdjoCu37yDDAY6Q0xTIEiI5QCu2lmmGUu0ptngUWWWGYlsNtmh132Ir19DjjkiGNOArtrbrjlLtK754MHHnniObL/zn0m/v/V66SLbnropS+hN8oY40wwyVRCb5U11tlgk62E3ilnnHPBJVcJvRdeKfNGfUWWvSf0/u937gttKiKm
+  </data>
+ </layer>
+</map>

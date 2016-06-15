@@ -1,0 +1,11 @@
+import pygame
+
+from classes.entities import Player
+from scenes.base import Scene
+from scenes.game.beginning import TowerFloor1
+
+class NewFileMenu(Scene):
+    """Menu for choosing the save file."""
+
+    def __init__(self):
+        

@@ -10,6 +10,9 @@ import sys
 # from pathlib import Path
 from os import path
 
+from ruamel import yaml
+from easydict import EasyDict as edict
+
 # this docstring is a comment
 """
 STATLIST = ["str", "dex", "vit", "int", "wis", "luk"]
@@ -25,6 +28,21 @@ emptystats = {
     "int": 0, "wis": 0, "luk": 0,
 }
 """
+
+BLOCK_TILE_LAYER = "ColliderBlocks"
+
+with open("config/settings.yml") as f:
+    CONFIG = edict(yaml.safe_load(f))
+
+COLORS = {
+    "black": (0, 0, 0),
+    "white": (255, 255, 255),
+    "red": (255, 0, 0),
+    "green": (0, 255, 0),
+    "blue": (0, 0, 255),
+}
+MENU_CURSOR_FILE = "resources/cursors/slime.png"
+CONFIG_FILE = "config/settings.yml"
 
 BASIC_STATS = ["str", "dex", "vit", "int", "wis", "luk"]
 ADDED_STATS = ["pres", "mres", "pdam", "mdam", "dodg",

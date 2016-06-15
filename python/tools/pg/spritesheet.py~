@@ -1,0 +1,26 @@
+import pygame
+
+pygame.init()
+
+class SpriteSheet(object):
+    "Small class used to handle spritesheets in pygame"
+
+    def __init__(self, filename): # , sprite_size=(16, 16)):
+        try:
+            self.spritesheet = pygame.image.load(filename).convert()
+        except pygame.error as e:
+            print("unable to load:", filename)
+            raise e
+        self.width, self.height = self.spritesheet.get_size()
+
+    def get_img(self, x, y, w, h):
+        return self.spritesheet.subsurface(x, y, w, h)
+
+    def get_frame(self, y, h):
+        "Return all the images of an animation in an image"
+        return self.spritesheet.subsurface(0, y, self.width, h)
+
+    def get_frames(self, h):
+        "Return a list of all the frames (need a height arg)"
+        frames = int(self.height / h)
+        return [self.get_frame(y, h) for y in range(frames)]

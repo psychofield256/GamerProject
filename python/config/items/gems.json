@@ -9,7 +9,7 @@
 			"int": 1000, "wis": 1000, "luk": 1000,
 			"pres": 30, "mres": 30,
 			"pdam": 100, "mdam": 100,
-			"dodg": 30, "miss": -30
+			"dodg": 30, "miss": 30
 		}
 	}
 ]

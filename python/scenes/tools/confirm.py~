@@ -1,0 +1,18 @@
+from scenes.base import Scene
+
+import pygame as pg
+
+pg.font.init()
+
+class ConfirmPrompt(Scene):
+
+    def __init__(self):
+        self.msg = "Are you sure ?"
+        self.choice = 1 # 1 for yes
+        self.choices = "No", "Yes"
+
+    def update(self, delta):
+        pass
+
+    def render(self, screen):
+        pass

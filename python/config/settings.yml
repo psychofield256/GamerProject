@@ -1,0 +1,18 @@
+# General
+---
+window:
+  width: 640
+  height: 480
+player:
+  new:
+    stats:
+      str: 5
+      dex: 5
+      vit: 5
+      int: 5
+      wis: 5
+      luk: 5
+  sprite:
+    path: resources/sprites/pokemon.png
+    width: 16
+    height: 16
