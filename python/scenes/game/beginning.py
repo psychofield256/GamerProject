@@ -31,6 +31,8 @@ class TowerFloor1(Scene):
                     self.player.step(delta, self.tmxdata)
         self.player.update(delta, self.tmxdata)
 
+        # handle the map change
+
     def render(self, screen):
         # size_w, size_h = screen.get_size()
         # w, h = self.tmxdata.width, self.tmxdata.height

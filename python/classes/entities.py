@@ -122,10 +122,6 @@ class Entity(pg.sprite.Sprite):
             x += 1
         return (x, y)
 
-    def collidepoint(self, x, y):
-        x, y = self.rect.x, self.rect.y
-        # if x, 
-
     def exact_cell(self):
         return self._step == 0
 
