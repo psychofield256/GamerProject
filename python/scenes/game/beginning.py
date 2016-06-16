@@ -21,7 +21,6 @@ class TowerFloor1(Scene):
             if self.player.moving:
                 self.player.step(delta, self.tmxdata)
             else:
-                #if self.tmxdata
                 self.player.moving = True
         else:
             if self.player.moving:
@@ -47,7 +46,6 @@ class TowerFloor1(Scene):
                 for x, y, image in layer.tiles():
                     image = pg.transform.scale(image, (wanted_w, wanted_h))
                     screen.blit(image, (x * wanted_w, y * wanted_h))
-        #  self.player.render(screen, self.tmxdata)
         ppos = self.player.get_pixel_pos((32, 32))
         screen.blit(self.player.get_image((32, 32)), ppos)
 
@@ -58,29 +56,21 @@ class TowerFloor1(Scene):
                     if e.key == K_UP:
                         self.player.move_up()
                         self.playermovkeyon = True
-                        #self.player.moving = True
                     elif e.key == K_DOWN:
                         self.player.move_down()
                         self.playermovkeyon = True
-                        #self.player.moving = True
                     elif e.key == K_LEFT:
                         self.player.move_left()
                         self.playermovkeyon = True
-                        #self.player.moving = True
                     elif e.key == K_RIGHT:
                         self.player.move_right()
                         self.playermovkeyon = True
-                        # self.player.moving = True
             elif e.type == KEYUP:
                 if e.key == K_UP and self.player.direction == "up":
-                    # if self.player.move_complete():
                     self.playermovkeyon = False
                 elif e.key == K_DOWN and self.player.direction == "down":
-                    # if self.player.move_complete():
                     self.playermovkeyon = False
                 elif e.key == K_LEFT and self.player.direction == "left":
-                    # if self.player.move_complete():
                     self.playermovkeyon = False
                 elif e.key == K_RIGHT and self.player.direction == "right":
-                    # if self.player.move_complete():
                     self.playermovkeyon = False

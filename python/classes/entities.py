@@ -8,6 +8,12 @@ from levels import getexp
 from tools.pg.spritesheet import SpriteSheet
 
 
+DOWN = 0
+UP = 1
+LEFT = 2
+RIGHT = 3
+
+
 class Entity(pg.sprite.Sprite):
     """Class for Entities."""
 
@@ -15,7 +21,7 @@ class Entity(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         # self.spritesheet = pg.image.load(img)
         self.spritesheet = SpriteSheet(img, (64, 64))
-        self.direction = "down"
+        self._direction = DOWN
         self.moving = False
         self.foot = "left"
         self._step = 0
@@ -52,14 +58,7 @@ class Entity(pg.sprite.Sprite):
         }
 
     def set_sprite(self, size=(32, 32)):
-        if self.direction == "down":
-            y = 0
-        elif self.direction == "up":
-            y = 1
-        elif self.direction == "left":
-            y = 2
-        elif self.direction == "right":
-            y = 3
+        y = self._direction
         if self.foot == "right":
             x = 1
         else:
@@ -78,14 +77,14 @@ class Entity(pg.sprite.Sprite):
 
     def forward(self):
         self.oldrect = self.rect.copy()
-        if self.direction == "up":
+        if self._direction == UP:
             # self.y -= 1
             self.rect.y -= 1
-        elif self.direction == "down":
+        elif self._direction == DOWN:
             self.rect.y += 1
-        elif self.direction == "left":
+        elif self._direction == LEFT:
             self.rect.x -= 1
-        elif self.direction == "right":
+        elif self._direction == RIGHT:
             self.rect.x += 1
         if self.foot == "right":
             self.foot = "left"
@@ -112,66 +111,61 @@ class Entity(pg.sprite.Sprite):
     def in_front(self):
         "Return the point just in front of the player (used for collisions)"
         x, y = self.rect.x, self.rect.y
-        if self.direction == "up":
+        if self._direction == UP:
             y -= 1
-        elif self.direction == "down":
+        elif self._direction == DOWN:
             y += 1
-        elif self.direction == "left":
+        elif self._direction == LEFT:
             x -= 1
-        elif self.direction == "right":
+        elif self._direction == RIGHT:
             x += 1
         return (x, y)
 
     def exact_cell(self):
         return self._step == 0
 
+    @property
+    def direction(self):
+        if self._direction == UP:
+            return "up"
+        elif self._direction == DOWN:
+            return "down"
+        elif self._direction == LEFT:
+            return "left"
+        elif self._direction == RIGHT:
+            return "right"
+
     def move_up(self):
-        if self.direction != "up":
-            self.direction = "up"
-            self.set_sprite()
+        self._direction = UP
+        self.set_sprite()
 
     def move_down(self):
-        if self.direction != "down":
-            self.direction = "down"
-            self.set_sprite()
+        self._direction = DOWN
+        self.set_sprite()
 
     def move_left(self):
-        if self.direction != "left":
-            self.direction = "left"
-            self.set_sprite()
+        self._direction = LEFT
+        self.set_sprite()
 
     def move_right(self):
-        if self.direction != "right":
-            self.direction = "right"
-            self.set_sprite()
+        self._direction = RIGHT
+        self.set_sprite()
 
     def update(self, delta, tilemap):
-        # tilemap.set_focus(self.rect.x, self.rect.y)
-        # tilemap.set_focus(self.rect.x, self.rect.y)
-        # if self.moving:
-        #     self.walk_time += delta
-        # self.complete_move()
         pass
-
-    # def move_complete(self):
-    #    "Used to test if the player's move is complete or not (~)"
-        # if self.walk_time > 500:
-        #    self.walk_time = 0
-        #    self.forward()
-    #    return self._step == 0
 
     def get_pixel_pos(self, tile_size):
         "Return the position with the step, in a pixel accurate way."
         tw, th = tile_size
         x, y = self.rect.x * tw, self.rect.y * th
         step = (self._step / self._max_step)
-        if self.direction == "up":
+        if self._direction == UP:
             y -= step * th
-        elif self.direction == "down":
+        elif self._direction == DOWN:
             y += step * th
-        elif self.direction == "left":
+        elif self._direction == LEFT:
             x -= step * tw
-        elif self.direction == "right":
+        elif self._direction == RIGHT:
             x += step * tw
         return (x, y)
 
