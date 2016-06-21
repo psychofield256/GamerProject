@@ -22,6 +22,7 @@ font = pg.font.Font(None, 24)
 with open(CONFIG_FILE) as f:
     config = yaml.safe_load(f)
 config = edict(config)
+print(config)
 width, height = config.window.values()
 screen = pg.display.set_mode((width, height))
 pg.display.set_caption("The Gamer Project")

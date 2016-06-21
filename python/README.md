@@ -3,12 +3,19 @@
 This is the python version of the Gamer Project.
 
 ## Requirements
-The needed libraries is json, the default python lib.
+Currently, the needed libraries are :
+* ruamel.yaml (Pyaml works too, but by changing YAML\_PARSING\_LIB in constants.py),
+* pygame,
+* pytmx,
+* easydict (really small. I think every pythonist should know what is it)
+
 The game was made in python 3.5, but I didn't use any specific 3.5 functionnality, and every 3.x should work
 
 ## Config
+I used json files before, but I choosed to use yaml instead (easier to write)
 ### Equipments
-In json files, if you want to add new equipments, you have to write:
+In yml files, if you want to add new equipments, you have to write:
+In yaml files, the files are organized like this:
 
 ```json
 {

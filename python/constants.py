@@ -29,7 +29,14 @@ emptystats = {
 }
 """
 
+# "ruamel.yaml" or "pyaml"
+YAML_PARSING_LIB = "ruamel.yaml"
+
 BLOCK_TILE_LAYER = "ColliderBlocks"
+EVENT_TILE_LAYER = "Events"
+
+TILE_WIDTH = 32
+TILE_HEIGHT = 32
 
 with open("config/settings.yml") as f:
     CONFIG = edict(yaml.safe_load(f))
@@ -43,6 +50,8 @@ COLORS = {
 }
 MENU_CURSOR_FILE = "resources/cursors/slime.png"
 CONFIG_FILE = "config/settings.yml"
+ARMOR_FILE = "config/armors.yml"
+
 
 BASIC_STATS = ["str", "dex", "vit", "int", "wis", "luk"]
 ADDED_STATS = ["pres", "mres", "pdam", "mdam", "dodg",

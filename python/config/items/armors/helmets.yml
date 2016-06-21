@@ -1,0 +1,10 @@
+# All the helmets of the game
+---
+- &leather_helm
+  name: Leather Helmet
+  lore: A flexible, but resistant helmet.
+  lvl: 3
+  weight: 6
+  slot: helmet
+  stats:
+    pres: 3

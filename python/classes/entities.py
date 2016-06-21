@@ -1,12 +1,15 @@
 import pygame as pg
 
-
-from constants import CONFIG, EMPTY_EQUIPMENT, BLOCK_TILE_LAYER
+from constants import (CONFIG, EMPTY_EQUIPMENT, BLOCK_TILE_LAYER, TILE_WIDTH, TILE_HEIGHT)
 
 from classes.inventory import Inventory
 from levels import getexp
 from tools.pg.spritesheet import SpriteSheet
 
+# TODO
+# remove the foot attr
+# remove the rect (use properties to optimize the cpu)
+# really depend of the config for sprite width.height
 
 DOWN = 0
 UP = 1
@@ -19,26 +22,15 @@ class Entity(pg.sprite.Sprite):
 
     def __init__(self, name, position, stats, equipment, img, lvl=0):
         pg.sprite.Sprite.__init__(self)
-        # self.spritesheet = pg.image.load(img)
-        self.spritesheet = SpriteSheet(img, (64, 64))
+        self.swidth = CONFIG.player.sprite.width
+        self.sheight = CONFIG.player.sprite.height
+        self.spritesheet = SpriteSheet(img, (self.swidth, self.sheight))
         self._direction = DOWN
         self.moving = False
-        self.foot = "left"
         self._step = 0
         self._max_step = 300 # time in ms
-        # self.x, self.y = position
-        # self.oldx, self.oldy = position
-        #self.sprite_switch = {
-        #    # 1st line
-        #    "down": self.spritesheet.subsurface(0, 0, 32, 16),
-        #    "left": self.spritesheet.subsurface(0, 16, 32, 16),
-        #    "right": self.spritesheet.subsurface(0, 32, 32, 16),
-        #    "up": self.spritesheet.subsurface(0, 48, 32, 16),
-        #}
+        self.x, self.y = position
         self.set_sprite()
-        # self.rect = self.image.get_rect()
-        self.rect = pg.Rect(position, (32, 32))
-        # self.oldrect = self.rect.copy()
 
         self.exp = getexp(lvl)
         self.name = name
@@ -47,70 +39,77 @@ class Entity(pg.sprite.Sprite):
         self.equipment = dict(EMPTY_EQUIPMENT)
         self.equipment.update(equipment)
 
-        # passive boosts
+        # permanent passive boosts (out of fights)
         self.talents = []
-        # monsters can be boosted (or malus-ed), but don't have the necessary AI to use the corresponding active skills
+        # temporary active boosts or malus (out of and in fights)
         self.boosts = []
-        # active ones are useable in fight
-        # passive ones are not, but not useable by monsters
+        # all the permanent fight skills
         self.skills = {
             "active": [],
+            "passive": [],
+        }
+        skills = {
+            "fight": {
+                "active": [],
+                "passive": [],
+            },
+            "out": {
+                "active": [],
+                "passive": [],
+            },
         }
 
     def set_sprite(self, size=(32, 32)):
         y = self._direction
-        if self.foot == "right":
+        # take the right foot if the player has walked more than half the cell
+        if self._step >= (self._max_step / 2):
             x = 1
         else:
             x = 0
-        # self.image = self.spritesheet.subsurface(x, y, w, h)
         self.image = self.spritesheet.get_sprite(x, y, size)
 
     def get_image(self, size):
-        if self._step > (self._max_step / 2):
-            self.foot = "right"
-        else:
-            self.foot = "left"
         self.set_sprite(size)
         return self.image
         # return pg.transform.scale(self.image, size)
 
     def forward(self):
-        self.oldrect = self.rect.copy()
         if self._direction == UP:
-            # self.y -= 1
-            self.rect.y -= 1
+            self.y -= 1
         elif self._direction == DOWN:
-            self.rect.y += 1
+            self.y += 1
         elif self._direction == LEFT:
-            self.rect.x -= 1
+            self.x -= 1
         elif self._direction == RIGHT:
-            self.rect.x += 1
-        if self.foot == "right":
-            self.foot = "left"
-        else:
-            self.foot = "right"
+            self.x += 1
         self.moving = False
         self.set_sprite()
 
     def step(self, s, tmxmap):
+        """s is the number of steps (should be used for delta)."""
         if self._step >= self._max_step:
             self._step = 0
             self.forward()
         else:
             block_layer = tmxmap.get_layer_by_name(BLOCK_TILE_LAYER)
+            # I use a rect, but it doesn't actually represent a tile.
+            # It's because when I iter tiles, I get x and y in coords, not
+            # in pixels
             next_rect = pg.Rect(self.in_front(), (1, 1))
             in_wall = False
             for x, y, gid in block_layer.iter_data():
                 if gid and next_rect.collidepoint(x, y):
                     in_wall = True
+                    break
 
             if not in_wall:
                 self._step += s
 
-    def in_front(self):
-        "Return the point just in front of the player (used for collisions)"
-        x, y = self.rect.x, self.rect.y
+    def in_front(self, in_pixels=False):
+        """Return the point just in front of the player (used in collisions).
+        The in_pixels argument is never used in the code, but it didn't
+        cost anything to keep it after realizing i didn't need it."""
+        x, y = self.x, self.y
         if self._direction == UP:
             y -= 1
         elif self._direction == DOWN:
@@ -119,6 +118,9 @@ class Entity(pg.sprite.Sprite):
             x -= 1
         elif self._direction == RIGHT:
             x += 1
+
+        if in_pixels:
+            return (x * TILE_WIDTH, y * TILE_HEIGHT)
         return (x, y)
 
     def exact_cell(self):
@@ -157,7 +159,7 @@ class Entity(pg.sprite.Sprite):
     def get_pixel_pos(self, tile_size):
         "Return the position with the step, in a pixel accurate way."
         tw, th = tile_size
-        x, y = self.rect.x * tw, self.rect.y * th
+        x, y = self.x * tw, self.y * th
         step = (self._step / self._max_step)
         if self._direction == UP:
             y -= step * th
@@ -169,11 +171,9 @@ class Entity(pg.sprite.Sprite):
             x += step * tw
         return (x, y)
 
-    # def is_up(self):
-    #    return self.direction == "up"
-
-    # def is_down(self):
-    #    return self.direction == "down"
+    @property
+    def rect(self):
+        return pg.Rect(self.x * TILE_WIDTH, self.y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT)
 
 
 class Player(Entity):

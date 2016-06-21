@@ -5,6 +5,8 @@ from pygame.locals import *
 import pytmx
 
 from scenes.base import Scene
+from tools.pg.rects import multiply
+# from scenes.menus.main import MainMenu
 
 class TowerFloor1(Scene):
     "Tower in which the player starts playing (floor 1)"
@@ -13,7 +15,7 @@ class TowerFloor1(Scene):
         super(TowerFloor1, self).__init__()
         self.tmxdata = pytmx.load_pygame("resources/maps/tower_test2.tmx")
         self.player = player
-        self.player.rect.x, self.player.rect.y = position
+        self.player.x, self.player.y = position
         self.playermovkeyon = False
 
     def update(self, delta):
@@ -31,6 +33,16 @@ class TowerFloor1(Scene):
         self.player.update(delta, self.tmxdata)
 
         # handle the map change
+        # get the stairs
+        stairs = self.tmxdata.get_object_by_name("DownStairs")
+        # get its rect
+        stairs = pg.Rect((stairs.x, stairs.y), (stairs.width, stairs.height))
+        # rescale it
+        multiply(stairs)
+        # test the collision
+        if self.player.rect.colliderect(stairs):
+            # for now, they just lead to the menu
+            self.manager.go_back()
 
     def render(self, screen):
         # size_w, size_h = screen.get_size()

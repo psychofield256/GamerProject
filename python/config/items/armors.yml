@@ -1,22 +1,9 @@
--
-  name: Debug Armor
-  lore: An epic overcheat armor.
-  lvl: 0
-  weight: 0
-  sockets: 5
-  slot: chestplate
-  stats:
-    str: 5000
-    dex: 5000
-    vit: 5000
-    int: 5000
-    wis: 5000
-    luk: 5000
--
-  name: Leather Helmet
-  lore: A flexible, but resistant helmet.
-  lvl: 3
-  weight: 6
-  slot: helmet
-  stats:
-    pres: 3
+# Paths of all the armors
+---
+helmets: !include armors/helmets.yml
+chestplates: !include armors/chestplates.yml
+leggings: !include armors/leggings.yml
+boots: !include armors/boots.yml
+pendants: !include armors/pendants.yml
+rings: !include armors/rings.yml
+mantles: !include armors/mantles.yml
