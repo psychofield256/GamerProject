@@ -11,6 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   overview
+
 
 
 Indices and tables
@@ -19,5 +21,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-Gamer Project is an in-dev, open-source game, written with a so poor inspiration that I ended making almost everything configurable.
