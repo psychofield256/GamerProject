@@ -9,7 +9,7 @@ elif YAML_PARSING_LIB == "pyaml":
     import yaml
     from tools.yaml.include_pyaml import Loader
 
-with open("config/items.yml") as f:
+with open("config/items/all.yml") as f:
     conf = yaml.load(f, Loader)
 
 p = PrettyPrinter()

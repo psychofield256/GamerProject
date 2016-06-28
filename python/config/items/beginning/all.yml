@@ -1,0 +1,7 @@
+# items of every new player
+---
+armors: !include armors.yml
+weapons: !include weapons.yml
+items: !include items.yml
+consumables: !include consumables.yml
+gems: !include gems.yml

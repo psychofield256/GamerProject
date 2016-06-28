@@ -37,6 +37,8 @@ EVENT_TILE_LAYER = "Events"
 
 TILE_WIDTH = 32
 TILE_HEIGHT = 32
+CELL_WIDTH = 32
+CELL_HEIGHT = 32
 
 with open("config/settings.yml") as f:
     CONFIG = edict(yaml.safe_load(f))

@@ -13,10 +13,10 @@
  </layer>
  <layer name="ColliderBlocks" width="16" height="16">
   <data encoding="base64" compression="zlib">
-   eJxbwsjAsJhMvASKyQWDXb85AbMHu/tH9Y8M/ZRgABkxJtc=
+   eJxbwsjAsJhMvASKyQWj+kf1j+qnXD8lGAB3Qyaf
   </data>
  </layer>
  <objectgroup name="Events">
-  <object id="15" name="DownStairs" type="MapChange" x="16" y="16" width="16" height="16"/>
+  <object id="15" name="DownStairs" type="MapChange" x="32" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

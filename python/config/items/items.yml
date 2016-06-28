@@ -1,5 +1,0 @@
--
-  name: item name
-  lore: descripion
-  weight: !!int 1
-  lvl: !!int 1

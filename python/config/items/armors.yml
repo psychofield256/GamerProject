@@ -1,9 +1,0 @@
-# Paths of all the armors
----
-helmets: !include armors/helmets.yml
-chestplates: !include armors/chestplates.yml
-leggings: !include armors/leggings.yml
-boots: !include armors/boots.yml
-pendants: !include armors/pendants.yml
-rings: !include armors/rings.yml
-mantles: !include armors/mantles.yml

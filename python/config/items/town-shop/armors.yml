@@ -1,0 +1,29 @@
+# armors of the town shop
+---
+-
+  name: Leather Helmet
+  id: leather-helmet
+  sprite: null
+  lore: A flexible, but resistant helmet.
+  lvl: 3
+  weight: 6
+  slot: helmet
+  stats:
+    pres: 3
+
+-
+  name: Debug Armor
+  id: dbg-armor
+  sprite: null
+  lore: An epic overcheat armor.
+  lvl: 0
+  weight: 0
+  sockets: 5
+  slot: chestplate
+  stats:
+    str: 5000
+    dex: 5000
+    vit: 5000
+    int: 5000
+    wis: 5000
+    luk: 5000

@@ -8,7 +8,11 @@ from constants import COLORS
 pg.font.init()
 
 class Scene(object):
-    """Base class for every scene. Contains some functions and constants to help other scenes."""
+    """
+    Base class for every scene.
+
+    Contains some functions and constants to help other scenes.
+    """
 
     # ordinary characters (used in name input for character creation)
     chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"

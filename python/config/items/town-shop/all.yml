@@ -1,0 +1,7 @@
+# contains the different sections of the town shop
+---
+armors: !include armors.yml
+weapons: weapons.yml
+items: items.yml
+consumables: consumables.yml
+gems: gems.yml

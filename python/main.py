@@ -13,7 +13,7 @@ from easydict import EasyDict as edict
 
 from scenes.manager import SceneManager
 
-from items import shops, item_to_str
+from items import item_to_str # shops, item_to_str
 from classes.entities import Player
 from constants import *
 
@@ -22,7 +22,6 @@ font = pg.font.Font(None, 24)
 with open(CONFIG_FILE) as f:
     config = yaml.safe_load(f)
 config = edict(config)
-print(config)
 width, height = config.window.values()
 screen = pg.display.set_mode((width, height))
 pg.display.set_caption("The Gamer Project")

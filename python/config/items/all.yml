@@ -1,0 +1,19 @@
+# global path files
+---
+beginning: !include beginning/all.yml
+town-shop: !include town-shop/all.yml
+dungeon-chests: null
+dungeon-monsters: null
+#global:
+#  armors: !include all/armors.yml
+#  weapons: !include all/weapons.yml
+#  items: all/items.yml
+#  consumables: all/consumables.yml
+#  gems: all/gems.yml
+#places:
+#  town-shop:
+#    armors: !include places/town-shop/armors.yml
+#    weapons: config/town/weapons.yml
+#    items: config/town/items.yml
+#    consumables: config/town/consumables.yml
+#    gems: config/town/gems.yml

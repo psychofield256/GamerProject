@@ -5,6 +5,7 @@ from pygame.locals import *
 import pytmx
 
 from scenes.base import Scene
+from scenes.menus.ingame import IngameMenu
 from tools.pg.rects import multiply
 # from scenes.menus.main import MainMenu
 
@@ -41,8 +42,8 @@ class TowerFloor1(Scene):
         multiply(stairs)
         # test the collision
         if self.player.rect.colliderect(stairs):
-            # for now, they just lead to the menu
             self.manager.go_back()
+            # for now, they just lead to the menu
 
     def render(self, screen):
         # size_w, size_h = screen.get_size()
@@ -64,6 +65,9 @@ class TowerFloor1(Scene):
     def handle_events(self, events):
         for e in events:
             if e.type == KEYDOWN:
+                if e.key == K_ESCAPE:
+                    self.manager.add(IngameMenu(self.manager, self.player))
+                # handle moves
                 if self.player.exact_cell():
                     if e.key == K_UP:
                         self.player.move_up()

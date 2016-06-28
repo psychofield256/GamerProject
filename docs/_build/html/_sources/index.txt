@@ -17,6 +17,9 @@ Contents:
    items
    skills
    monsters
+   sprites
+   stats
+   effects
    config-packer
 
 

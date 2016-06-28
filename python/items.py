@@ -2,13 +2,14 @@
 This module contains code about items of the game.
 
 You can import:
--shops (dict)
+# -shops (dict)
 -lists (dict)
 
 -Functions:
 --item_to_str(item: dict) --> str
 --socket(item: dict, gem: dict) (not implemented)
-(Other functions are just local ones and useless for the rest of the program)
+(Other functions are just local ones and useless for the
+rest of the program)
 """
 
 import json
@@ -97,6 +98,7 @@ armors = []
 gems = []
 consumables = []
 # parse the json files
+"""
 i = ITEMLISTS_PATHS
 
 with open(ITEMLISTS_PATHS["items"]) as f:
@@ -142,6 +144,7 @@ lists = {
 }
 
 
+
 # town shops
 items = []
 weapons = []
@@ -178,3 +181,4 @@ shops = {
     "gems": gems,
     "consumables": consumables,
 }
+"""
