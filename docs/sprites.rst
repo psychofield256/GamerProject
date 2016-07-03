@@ -28,13 +28,12 @@ For monsters, the sprite is an animation. Thus, the file will be a spritesheet, 
 
 .. highlight:: yaml	
 
-Monster must have the following attributes
-For monsters, ``sprite`` must be set to::
+Monster must have the following attributes::
+  id: blablabla
   sprite:
     frames: 2
     height: 16
     width: 16
-    id: blablabla
     extension: .png
 
 The path will set to: resources/monsters/blablabla.png

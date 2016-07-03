@@ -2,3 +2,4 @@
 ---
 entities: !include entities/all.yml
 items: !include items/all.yml
+settings: !include settings.yml

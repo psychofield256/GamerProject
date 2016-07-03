@@ -1,3 +1,4 @@
+import os.path
 import math
 import pygame as pg
 
@@ -23,7 +24,7 @@ RIGHT = 3
 class Entity(pg.sprite.Sprite):
     """Class for Entities."""
 
-    def __init__(self, name, position, stats, equipment, img, lvl=0):
+    def __init__(self, name, position, stats, equipment, img, size, lvl=0):
         pg.sprite.Sprite.__init__(self)
         self.swidth = conf.entities.player.sprite.width
         self.sheight = conf.entities.player.sprite.height
@@ -184,8 +185,9 @@ class Entity(pg.sprite.Sprite):
 class Player(Entity):
 
     def __init__(self, name, pos=(0,0), lvl=0):
-        stats = dict(CONFIG.player.new.stats)
-        img = CONFIG.player.sprite.path
+        stats = dict(conf.entities.player.stats)
+        img = str(conf.entities.player.id) + \
+              str(conf.entities.player.sprite.extension)
         equipment = {}
         # img = CONFIG.player.skin
         Entity.__init__(self, name, pos, stats, equipment, img, lvl)
