@@ -1,3 +1,5 @@
+from easydict import EasyDict as edict
+
 from constants import *
 from pprint import PrettyPrinter
 import pprint
@@ -9,8 +11,10 @@ elif YAML_PARSING_LIB == "pyaml":
     import yaml
     from tools.yaml.include_pyaml import Loader
 
-with open("config/items/all.yml") as f:
+with open("config/all.yml") as f:
     conf = yaml.load(f, Loader)
 
 p = PrettyPrinter()
 p.pprint(conf)
+
+conf = edict(conf)

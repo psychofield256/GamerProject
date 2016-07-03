@@ -1,0 +1,16 @@
+# All the chestplates of the game
+---
+- &debug_armor
+  name: Debug Armor
+  lore: An epic overcheat armor.
+  lvl: 0
+  weight: 0
+  sockets: 5
+  slot: chestplate
+  stats:
+    str: 5000
+    dex: 5000
+    vit: 5000
+    int: 5000
+    wis: 5000
+    luk: 5000

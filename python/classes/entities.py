@@ -1,3 +1,4 @@
+import math
 import pygame as pg
 
 from constants import (CONFIG, EMPTY_EQUIPMENT, BLOCK_TILE_LAYER, TILE_WIDTH, TILE_HEIGHT)
@@ -5,6 +6,8 @@ from constants import (CONFIG, EMPTY_EQUIPMENT, BLOCK_TILE_LAYER, TILE_WIDTH, TI
 from classes.inventory import Inventory
 from levels import getexp
 from tools.pg.spritesheet import SpriteSheet
+
+from parsedconf import conf
 
 # TODO
 # remove the foot attr
@@ -22,8 +25,9 @@ class Entity(pg.sprite.Sprite):
 
     def __init__(self, name, position, stats, equipment, img, lvl=0):
         pg.sprite.Sprite.__init__(self)
-        self.swidth = CONFIG.player.sprite.width
-        self.sheight = CONFIG.player.sprite.height
+        self.swidth = conf.entities.player.sprite.width
+        self.sheight = conf.entities.player.sprite.height
+        # self.
         self.spritesheet = SpriteSheet(img, (self.swidth, self.sheight))
         self._direction = DOWN
         self.moving = False
@@ -62,9 +66,10 @@ class Entity(pg.sprite.Sprite):
     def set_sprite(self, size=(32, 32)):
         y = self._direction
         # take the right foot if the player has walked more than half the cell
-        if self._step >= (self._max_step / 2):
-            x = 1
-        else:
+        # take the frame corresponding to the step
+        x = int(self.spritesheet.xlen * (self._step / self._max_step))
+        # in case the entity is at the end of the move
+        if x >= self.spritesheet.xlen:
             x = 0
         self.image = self.spritesheet.get_sprite(x, y, size)
 

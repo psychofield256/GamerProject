@@ -1,0 +1,4 @@
+# Used to pack the conf altogether
+---
+entities: !include entities/all.yml
+items: !include items/all.yml

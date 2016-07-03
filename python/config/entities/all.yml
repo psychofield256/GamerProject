@@ -1,0 +1,15 @@
+# Entities of the game
+---
+# new player
+player:
+  id: pokemon.png
+  stats:
+    str: 5
+    dex: 5
+    vit: 5
+    int: 5
+    wis: 5
+    luk: 5
+  sprite:
+    width: 64
+    height: 64
