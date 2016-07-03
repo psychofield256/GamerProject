@@ -2,11 +2,11 @@
 Some functions for pygame rects.
 """
 
-def multiply(rect):
+def resize(rect, before, now):
     "Equivalent of pygame.transform.scale for surfaces."
     # convert the position coords
-    rect.left *= 2
-    rect.top *= 2
+    rect.left = int(rect.left / before * now)
+    rect.top = int(rect.top / before * now)
     # convert the size
-    rect.width *= 2
-    rect.height *= 2
+    rect.width = int(rect.width / before * now)
+    rect.height = int(rect.height / before * now)

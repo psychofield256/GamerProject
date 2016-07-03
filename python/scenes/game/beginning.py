@@ -6,7 +6,7 @@ import pytmx
 
 from scenes.base import Scene
 from scenes.menus.ingame import IngameMenu
-from tools.pg.rects import multiply
+from tools.pg.rects import resize
 # from scenes.menus.main import MainMenu
 
 class TowerFloor1(Scene):
@@ -39,7 +39,7 @@ class TowerFloor1(Scene):
         # get its rect
         stairs = pg.Rect((stairs.x, stairs.y), (stairs.width, stairs.height))
         # rescale it
-        multiply(stairs)
+        resize(stairs, 16, 32)
         # test the collision
         if self.player.rect.colliderect(stairs):
             self.manager.go_back()
