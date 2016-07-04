@@ -2,18 +2,18 @@
 ---
 # new player
 player:
-  -
-    stats:
-      str: 5
-      dex: 5
-      vit: 5
-      int: 5
-      wis: 5
-      luk: 5
-    sprite:
-      frames: 2
-      width: 64
-      height: 64
-      extension: .png
+  id: player
+  stats:
+    str: 5
+    dex: 5
+    vit: 5
+    int: 5
+    wis: 5
+    luk: 5
+  sprite:
+    frames: 2
+    width: 64
+    height: 64
+    extension: .png
 npcs: []
 monsters: []

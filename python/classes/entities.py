@@ -44,7 +44,7 @@ class Entity(pg.sprite.Sprite):
         self.equipment = dict(EMPTY_EQUIPMENT)
         self.equipment.update(equipment)
 
-        # permanent passive boosts (out of fights)
+        # permanent passive boosts (out of and infights)
         self.talents = []
         # temporary active boosts or malus (out of and in fights)
         self.boosts = []
@@ -186,8 +186,7 @@ class Player(Entity):
 
     def __init__(self, name, pos=(0,0), lvl=0):
         stats = dict(conf.entities.player.stats)
-        img = str(conf.entities.player.id) + \
-              str(conf.entities.player.sprite.extension)
+        img = conf.entities.player.sprite.path
         equipment = {}
         # img = CONFIG.player.skin
         Entity.__init__(self, name, pos, stats, equipment, img, lvl)
