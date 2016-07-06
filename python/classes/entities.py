@@ -26,8 +26,7 @@ class Entity(pg.sprite.Sprite):
 
     def __init__(self, name, position, stats, equipment, img, size, lvl=0):
         pg.sprite.Sprite.__init__(self)
-        self.swidth = conf.entities.player.sprite.width
-        self.sheight = conf.entities.player.sprite.height
+        self.swidth, self.sheight = size
         # self.
         self.spritesheet = SpriteSheet(img, (self.swidth, self.sheight))
         self._direction = DOWN
@@ -185,11 +184,14 @@ class Entity(pg.sprite.Sprite):
 class Player(Entity):
 
     def __init__(self, name, pos=(0,0), lvl=0):
-        stats = dict(conf.entities.player.stats)
+        stats = dict(conf.entities.player.stats) # rebuild the dict
         img = conf.entities.player.sprite.path
+        size = (conf.entities.player.sprite.width,
+                conf.entities.player.sprite.height)
         equipment = {}
         # img = CONFIG.player.skin
-        Entity.__init__(self, name, pos, stats, equipment, img, lvl)
+        Entity.__init__(self, name, pos, stats,
+                        equipment, img, size, lvl)
         self.inv = Inventory()
         self.skills["passive"] = [] # skills used out of fights
 
