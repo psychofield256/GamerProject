@@ -12,8 +12,8 @@ from tools.pg.rects import resize
 class TowerFloor1(Scene):
     "Tower in which the player starts playing (floor 1)"
 
-    def __init__(self, player, position=(3, 3)):
-        super(TowerFloor1, self).__init__()
+    def __init__(self, manager, player, position=(3, 3)):
+        super(TowerFloor1, self).__init__(manager)
         self.tmxdata = pytmx.load_pygame("resources/maps/tower_test2.tmx")
         self.player = player
         self.player.x, self.player.y = position

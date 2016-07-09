@@ -9,8 +9,8 @@ from scenes.menus.settings import SettingsMenu
 class MainMenu(Scene):
     """First scene"""
 
-    def __init__(self):
-        super(MainMenu, self).__init__()
+    def __init__(self, manager):
+        super(MainMenu, self).__init__(manager)
         self.choices = [
             {"msg": "New Game", "next": NewNameMenu},
             {"msg": "Continue", "next": LoadSaveFileMenu},
@@ -81,6 +81,6 @@ class MainMenu(Scene):
                 elif e.key == pg.K_RETURN:
                     # in case it's None (Quit)
                     if self.choices[self.choice]["next"]:
-                        self.manager.add(self.choices[self.choice]["next"]())
+                        self.manager.add(self.choices[self.choice]["next"](self.manager))
                     else:
                         self.manager.quit()

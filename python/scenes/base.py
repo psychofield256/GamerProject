@@ -19,8 +19,8 @@ class Scene(object):
     font = pg.font.SysFont("Arial", 56)
     sfont = pg.font.SysFont("Arial", 32)
 
-    def __init__(self):
-        pass
+    def __init__(self, manager):
+        self.manager = manager
 
     def render(self, screen):
         raise NotImplementedError

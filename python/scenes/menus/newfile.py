@@ -8,8 +8,8 @@ from scenes.game.beginning import TowerFloor1
 class NewFileMenu(Scene):
     """Menu for choosing the save file."""
 
-    def __init__(self, name):
-        super(NewFileMenu, self).__init__()
+    def __init__(self, name, manager):
+        super(NewFileMenu, self).__init__(manager)
         self.name = name
         self.filename = []
         self.is_clearing = False
@@ -50,7 +50,7 @@ class NewFileMenu(Scene):
                 elif e.key == pg.K_RETURN:
                     player = Player(self.name)
                     self.save(player, "".join(self.filename))
-                    self.manager.go_to(TowerFloor1(player))
+                    self.manager.go_to(TowerFloor1(self.manager, player))
             elif e.type == pg.KEYUP:
                 if e.key == pg.K_BACKSPACE:
                     self.is_clearing = False

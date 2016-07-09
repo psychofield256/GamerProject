@@ -8,11 +8,11 @@ class SceneManager(object):
     def __init__(self):
         "Create the title scene"
         self.scene_stack = deque()
-        self.add(MainMenu())
+        self.add(MainMenu(self))
         self.ended = False
         self.cache = {} # used for scenes which need to store persistent data before goto-ing or go_back-ing
 
-    def render_old(self, screen, n):
+    def render_old(self, screen, n=2):
         "Render the n oldest scenes in the stack (starting from the before last one)."
         to_render = list(reversed(self.scene_stack))[1:n]
         for scene in to_render:
@@ -21,7 +21,7 @@ class SceneManager(object):
     def add(self, scene):
         self.scene_stack.append(scene)
         self.scene = scene
-        scene.manager = self
+        # scene.manager = self
 
     def go_back(self, n=1):
         "Remove n scene(s) from the stack"

@@ -9,7 +9,10 @@ pg.font.init()
 
 class ConfirmPrompt(Scene):
 
-    def __init__(self, msg):
+    def __init__(self, msg, manager):
+        self.manager = manager
+        self.manager.cache["in-confirm-prompt"] = True
+
         self.confirm = False
         # self.sfont = pg.font.SysFont("Arial", 32)
         self.cursor = pg.image.load(MENU_CURSOR_FILE).convert()
@@ -34,7 +37,10 @@ class ConfirmPrompt(Scene):
     def update(self, delta):
         pass
     def render(self, screen):
-        self.manager.render_old(screen, 2)
+        # render all
+        # self.manager.render_old(screen, len(self.manager.scene_stack) - 1)
+        # only 2 are necessary because others won't change
+        self.manager.render_old(screen)
 
         qx, qy = self.question.get_size()
         yx, yy = self.yes.get_size()
@@ -72,6 +78,10 @@ class ConfirmPrompt(Scene):
                         self.confirm = True
                 elif e.key == pg.K_RETURN:
                     if self.confirm:
-                        self.manager.go_back(2)
+                        # back until not in main menu
+                        self.manager.go_back(len(self.manager.scene_stack) - 1)
                     else:
                         self.manager.go_back()
+
+    def onleave(self):
+        del self.manager.cache['in-confirm-prompt']

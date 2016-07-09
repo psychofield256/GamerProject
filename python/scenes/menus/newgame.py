@@ -7,8 +7,8 @@ from scenes.menus.newfile import NewFileMenu
 class NewNameMenu(Scene):
     """Menu of player parameters before creating and playing the created game."""
 
-    def __init__(self):
-        super(NewNameMenu, self).__init__()
+    def __init__(self, manager):
+        super(NewNameMenu, self).__init__(manager)
         self.name = []
         self.is_clearing = False  # when backspace is down
         self.clearing_time = 0
@@ -51,7 +51,7 @@ class NewNameMenu(Scene):
                     self.is_clearing = True
                 elif e.key == pg.K_RETURN:
                     # new_player = Player(self.name)
-                    self.manager.go_to(NewFileMenu(self.name))
+                    self.manager.go_to(NewFileMenu(self.name, self.manager))
             elif e.type == pg.KEYUP:
                 if e.key == pg.K_BACKSPACE:
                     self.is_clearing = False
