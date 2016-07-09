@@ -16,4 +16,4 @@ player:
     height: 64
     extension: .png
 npcs: []
-monsters: []
+monsters: !include monsters.yml

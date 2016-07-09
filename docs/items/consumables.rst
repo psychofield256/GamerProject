@@ -2,7 +2,8 @@
 Consumables
 ===========
 
-The path to the consumable config files is: config/items/<section>/consumables.yml
+The path to the consumable config files is:
+config/items/<section>/consumables.yml
 
 To create a consumable item, the following attributes must be set:
 

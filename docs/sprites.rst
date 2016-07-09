@@ -4,14 +4,28 @@
 Sprites
 =======
 
-Everything have a sprite. And if you want to add something to the game, then the thing you add needs a sprite. If you are not a graphist, but want to train, I'd be pleased that you do while creating your contents for my game.
+Everything have a sprite. And if you want to add something to the
+game, then the thing you add needs a sprite. If you are not a
+graphist, but want to train, I'd be pleased that you do while creating
+your contents for my game.
 
 As I'm not a graphist myself, I had to use resources from opengameart.
 
-The file must be an image. The size is arbitrary (the image will be resized before printing). The files must be placed in: ``resources/<items|skills|monsters>/<id>.png``
+The file must be an image. The size is arbitrary (the image will be
+resized before printing). The files must be placed in:
+``resources/<items|skills|monsters>/<id>.png``
 
-For monsters, the sprite is an animation. Thus, the file will be a spritesheet, containing frames organized as follow:
+For monsters, an animation and a fight sprite are needed. For now, there is no support. I think I will do a second file for the fight sprite.
+.. Thus, the file will contain the both, which will be separated before use in the code.
 
+.. , a
+.. monster resource is divided in 2 files:
+
+.. - fs (fight sprite)
+.. - mf (map frames)
+
+The animation file will be a spritesheet, containing frames organized
+as follow:
 
 +-------------+-------------+-----+
 | Direction 1 | Direction 2 | ... |
@@ -28,7 +42,8 @@ For monsters, the sprite is an animation. Thus, the file will be a spritesheet, 
 
 .. highlight:: yaml	
 
-Monster must have the following attributes::
+monsters must have the following attributes::
+
   id: blablabla
   sprite:
     frames: 2
@@ -36,10 +51,19 @@ Monster must have the following attributes::
     width: 16
     extension: .png
 
+.. The file paths will become:
+
+.. - resources/monsters/blablabla-fs.png
+.. - resources/monsters/blablabla-mf.png
+
 The path will set to: resources/monsters/blablabla.png
 
-For items, the ``sprite`` attribute must be filled with::
+For items, as there is a single image, the size doesn't need to be
+precised, and the ``sprite`` attribute doesn't need to be
+set. Instead, the id attribute must be set::
 
-  path: relative/or/absolute/path/to/file.png
+  id: item-test
 
+Then, the path will become ``resources/items/item-test.png``
 
+For now, the extension can't be choosen, because I still didn't found where to put an 'extension' attribute.

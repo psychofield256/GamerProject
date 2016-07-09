@@ -56,6 +56,9 @@ class Inventory:
         # }
         # return switch.get(item["type"])
 
+    def equip_direct(self, equip):
+        self.equipment[equip.slot] = equip.copy()
+
     def equip(self, position):
         """
         Method for equipping an equipment in the inventory to the corresponding slot
@@ -68,7 +71,7 @@ class Inventory:
             # unequip the slot of the item to equip
             self.unequip(equip["slot"])
             # copy the new one in the equipment and delete the old one
-            self.equipment[equip["slot"]] = equip
+            self.equipment[equip["slot"]] = equip.copy()
             del self.equipments[position]
         # if the equipment doesn't have the attributes of an equipment,
         # it's not one

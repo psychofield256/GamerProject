@@ -1,4 +1,4 @@
-# global path files
+# global item file paths
 ---
 beginning: !include beginning/all.yml
 town-shop: !include town-shop/all.yml

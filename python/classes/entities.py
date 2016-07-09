@@ -24,11 +24,12 @@ RIGHT = 3
 class Entity(pg.sprite.Sprite):
     """Class for Entities."""
 
-    def __init__(self, name, position, stats, equipment, img, size, lvl=0):
+    def __init__(self, name, position, stats, imgdata, lvl=0):
         pg.sprite.Sprite.__init__(self)
-        self.swidth, self.sheight = size
+        self.swidth, self.sheight = (imgdata.width, imgdata.height)
         # self.
-        self.spritesheet = SpriteSheet(img, (self.swidth, self.sheight))
+        self.spritesheet = SpriteSheet(imgdata.path,
+                                       (self.swidth, self.sheight))
         self._direction = DOWN
         self.moving = False
         self._step = 0
@@ -40,8 +41,11 @@ class Entity(pg.sprite.Sprite):
         self.name = name
         self.stats = stats
         self.points = 0
-        self.equipment = dict(EMPTY_EQUIPMENT)
-        self.equipment.update(equipment)
+
+        self.inv = Inventory()
+
+        # self.equipment = dict(EMPTY_EQUIPMENT)
+        # self.equipment.update(equipment)
 
         # permanent passive boosts (out of and infights)
         self.talents = []
@@ -188,17 +192,19 @@ class Player(Entity):
         img = conf.entities.player.sprite.path
         size = (conf.entities.player.sprite.width,
                 conf.entities.player.sprite.height)
-        equipment = {}
+        imgdata = conf.entities.player.sprite
         # img = CONFIG.player.skin
-        Entity.__init__(self, name, pos, stats,
-                        equipment, img, size, lvl)
+        Entity.__init__(self, name, pos, stats, imgdata, lvl)
         self.inv = Inventory()
-        self.skills["passive"] = [] # skills used out of fights
 
 
 class Monster(Entity):
     """docstring for Monster"""
 
-    def __init__(self, name, pos, stats, equipment, to_drop, img, lvl=0):
-        Entity.__init__(self, name, pos, stats, equipment, img, lvl)
-        self.dropped_item = to_drop
+    def __init__(self, confdata, pos=(0,0), lvl=0):
+        Entity.__init__(self, confdata.name, pos,
+                        confdata.stats.copy(), confdata.sprite, lvl)
+
+#    def __init__(self, name, pos, stats, equipment, to_drop, img, lvl=0):
+#        Entity.__init__(self, name, pos, stats, equipment, img, lvl)
+#        self.dropped_item = to_drop

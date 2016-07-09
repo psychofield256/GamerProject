@@ -10,6 +10,7 @@ Contents:
    yaml
    maps
    items
+   entities
    skills
    monsters
    sprites

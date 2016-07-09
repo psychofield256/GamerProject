@@ -10,7 +10,8 @@ To create a weapon, the following attributes must be set:
 - id: string, used as identifier (for comparisons)
 - sprite: filepath, explanations in :ref:`sprites`.
 - lore: string, description (seen in inventory)
-- lvl: used as necessary level to equip and to calculate the price, and maybe alchemy some day
+- lvl: used as necessary level to equip and to calculate the price,
+  and maybe alchemy some day
 - weight: int, used to limit the items in inventory
 - type: string, used for boosts. Can be:
 
@@ -20,5 +21,6 @@ To create a weapon, the following attributes must be set:
   - katana (family: sword, single-handed)
   - dagger (family: dagger, single-handed)
   - wand (family: magical, single-handed)
+  - miscellaneous (family: single-handed)
 
 - stats: Fill as you want. Everything in the :ref:`stats` will count.

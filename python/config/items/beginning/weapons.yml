@@ -1,1 +1,10 @@
 ---
+-
+ name: Wooden Stick
+ id: wooden-stick
+ sprite: null
+ lore: 'A stick you "borrowed" to a "friend".'
+ lvl: 0
+ weight: 3
+ type: miscellaneous
+ stats: {}
