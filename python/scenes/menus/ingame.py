@@ -21,14 +21,15 @@ class IngameMenu(Scene):
             ("Quit", self.quit),
         ]
         self.to_blit = []
-        self.height_pos = 20
+        height_pos = 20
         self.maxw = 0
         for choice in self.choices:
             surf = self.sfont.render(choice[0], True, COLORS['white'])
-            self.to_blit.append((surf, (20, self.height_pos)))
-            self.maxw = max(self.maxw, (20 + surf.get_width() + 10 + \
+            self.to_blit.append((surf, (20, height_pos)))
+            self.maxw = max(self.maxw, (20 + surf.get_width() + 20 + \
                               self.cursor.get_width()))
-            self.height_pos += 20 + surf.get_height()
+            height_pos += 20 + surf.get_height()
+        self.maxh = height_pos  # 20 px at top and at bottom
             
         # self.surf = pg.Surface(())
 
@@ -43,26 +44,23 @@ changes won't be saved",
     def render(self, screen):
         if not self.manager.cache.get('in-confirm-prompt', False):
             self.manager.render_old(screen)
-        # bg = self.map.get_layer_by_name("Background")
+        bg = self.map.get_layer_by_name("Background")
         # w, h = CELL_WIDTH, CELL_HEIGHT
-        # for x, y, img in bg.tiles():
-            # img = pg.transform.scale(img, (w, h))
-            # screen.blit(img, (x * w, y * h))
-        w, h = screen.get_size()
-        w = int(w / 3)
-        h = int(h / 1.2)
+        # the menu tilemap is 8 tiles large
+        w, h = self.maxw // 8, self.maxh // 16
+        for x, y, img in bg.tiles():
+            img = pg.transform.scale(img, (w, h))
+            screen.blit(img, (x * w, y * h))
+        # w, h = screen.get_size()
+        # w = int(w / 3)
+        # h = int(h / 1.2)
 
-        menu = pg.Surface((self.maxw, self.height_pos))
-        menu.fill(COLORS['blue'])
-
-        for i, thing in enumerate(self.to_blit):
-            menu.blit(thing[0], thing[1])
+        for i, (txt, coords) in enumerate(self.to_blit):
+            screen.blit(txt, coords)
             if self.choice == i:
-                menu.blit(self.cursor,
-                          (thing[1][0] + thing[0].get_width() + 10,
-                           thing[1][1] + 20))
-
-        screen.blit(menu, (0,0))
+                screen.blit(self.cursor,
+                          (coords[0] + txt.get_width() + 10,
+                           coords[1] + 20))
 
     def handle_events(self, events):
         for e in events:

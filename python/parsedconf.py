@@ -23,11 +23,12 @@ conf = edict(conf)
 
 for section in ('monsters', 'npcs'):
     for entity in conf.entities[section]:
-        filepath = str(entity.id) + str(entity.sprite.extension)
-        entity.sprite.path = os.path.join('resources/entities/',
-                                          section, filepath)
+        filepath = str(entity.id) + str(entity.extension)
+        entity.sprite = os.path.join('resources/entities/',
+                                     section, filepath)
 
 # the player is a special section
+conf.entities.player.id = 'player'
 filepath = 'player' + str(conf.entities.player.sprite.extension)
 conf.entities.player.sprite.path = os.path.join('resources/entities',
                                                 filepath)

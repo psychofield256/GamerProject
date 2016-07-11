@@ -2,7 +2,6 @@
 ---
 # new player
 player:
-  id: player
   stats:
     str: 5
     dex: 5

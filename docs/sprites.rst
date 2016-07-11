@@ -15,7 +15,8 @@ The file must be an image. The size is arbitrary (the image will be
 resized before printing). The files must be placed in:
 ``resources/<items|skills|monsters>/<id>.png``
 
-For monsters, an animation and a fight sprite are needed. For now, there is no support. I think I will do a second file for the fight sprite.
+.. For monsters, an animation and a fight sprite are needed. I planned to do both, and 
+.. For now, there is no support. I think I will do a second file for the fight sprite.
 .. Thus, the file will contain the both, which will be separated before use in the code.
 
 .. , a
@@ -24,20 +25,20 @@ For monsters, an animation and a fight sprite are needed. For now, there is no s
 .. - fs (fight sprite)
 .. - mf (map frames)
 
-The animation file will be a spritesheet, containing frames organized
-as follow:
+.. The animation file will be a spritesheet, containing frames organized
+.. as follow:
 
-+-------------+-------------+-----+
-| Direction 1 | Direction 2 | ... |
-+=============+=============+=====+
-| South 1     | South 2     | ... |
-+-------------+-------------+-----+
-| North 1     | North 2     | ... |
-+-------------+-------------+-----+
-| East 1      | East 2      | ... |
-+-------------+-------------+-----+
-| West 1      | West 2      | ... |
-+-------------+-------------+-----+
+.. +-------------+-------------+-----+
+..  | Direction 1 | Direction 2 | ... |
+.. +=============+=============+=====+
+..  | South 1     | South 2     | ... |
+.. +-------------+-------------+-----+
+..  | North 1     | North 2     | ... |
+.. +-------------+-------------+-----+
+..  | East 1      | East 2      | ... |
+.. +-------------+-------------+-----+
+..  | West 1      | West 2      | ... |
+.. +-------------+-------------+-----+
 
 
 .. highlight:: yaml	
@@ -45,7 +46,11 @@ as follow:
 monsters must have the following attributes::
 
   id: blablabla
-  sprite:
+  extension: .png
+
+The path will become: ``resources/entities/monsters/blablabla.png``
+
+..  sprite:
     frames: 2
     height: 16
     width: 16
@@ -56,13 +61,14 @@ monsters must have the following attributes::
 .. - resources/monsters/blablabla-fs.png
 .. - resources/monsters/blablabla-mf.png
 
-The path will set to: resources/monsters/blablabla.png
+.. The path will set to: resources/monsters/blablabla.png
 
 For items, as there is a single image, the size doesn't need to be
 precised, and the ``sprite`` attribute doesn't need to be
 set. Instead, the id attribute must be set::
 
   id: item-test
+  extension: .png
 
 Then, the path will become ``resources/items/item-test.png``
 

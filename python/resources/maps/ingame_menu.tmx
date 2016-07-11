@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Background" width="16" height="16">
   <data encoding="base64" compression="zlib">
-   eJxbxsDAsBwLXsFAHNgGxNux4B2j+kf1j+qnuf5jQHwcCz5BpH4AyVxQEQ==
+   eJxbxsDAsBwHXsFAGGwD4u048I5R/aP6R/XTVP8xID6OA58gQj8AnDVbgQ==
   </data>
  </layer>
 </map>

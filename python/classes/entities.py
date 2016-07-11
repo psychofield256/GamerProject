@@ -20,6 +20,12 @@ UP = 1
 LEFT = 2
 RIGHT = 3
 
+class Entity2(object):
+    'an entity can fight. But not necessarily be a sprite.'
+
+    def __init__(self):
+        pass
+
 
 class Entity(pg.sprite.Sprite):
     """Class for Entities."""
@@ -27,9 +33,7 @@ class Entity(pg.sprite.Sprite):
     def __init__(self, name, position, stats, imgdata, lvl=0):
         pg.sprite.Sprite.__init__(self)
         self.swidth, self.sheight = (imgdata.width, imgdata.height)
-        # self.
-        self.spritesheet = SpriteSheet(imgdata.path,
-                                       (self.swidth, self.sheight))
+        self.spritesheet = SpriteSheet(imgdata.path, self.swidth)
         self._direction = DOWN
         self.moving = False
         self._step = 0
@@ -44,31 +48,21 @@ class Entity(pg.sprite.Sprite):
 
         self.inv = Inventory()
 
-        # self.equipment = dict(EMPTY_EQUIPMENT)
-        # self.equipment.update(equipment)
+        # the *entity* can have talents (permanent, passive, skills,
+        # act on stats), boosts (temporary, passive, effect of
+        # skill, act on stats), and skills
+        # (active (as opposed to talents), can only be in fights,
+        # can do damages or other things)
+        # there may also be out-of-fight skills (like cooking), but
+        # it may be not what I wanted when creating skills
 
-        # permanent passive boosts (out of and infights)
         self.talents = []
-        # temporary active boosts or malus (out of and in fights)
         self.boosts = []
-        # all the permanent fight skills
-        self.skills = {
-            "active": [],
-            "passive": [],
-        }
-        skills = {
-            "fight": {
-                "active": [],
-                "passive": [],
-            },
-            "out": {
-                "active": [],
-                "passive": [],
-            },
-        }
+        self.skills = []
 
     def set_sprite(self, size=(32, 32)):
         y = self._direction
+        
         # take the right foot if the player has walked more than half the cell
         # take the frame corresponding to the step
         x = int(self.spritesheet.xlen * (self._step / self._max_step))
@@ -76,6 +70,7 @@ class Entity(pg.sprite.Sprite):
         if x >= self.spritesheet.xlen:
             x = 0
         self.image = self.spritesheet.get_sprite(x, y, size)
+        # self.image = self.spritesheet.
 
     def get_image(self, size):
         self.set_sprite(size)
