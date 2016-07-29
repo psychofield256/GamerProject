@@ -11,7 +11,7 @@ player:
     luk: 5
   sprite:
     frames: 2
-    width: 64
+    width: 48
     height: 64
     extension: .png
 npcs: []

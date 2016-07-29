@@ -1,3 +1,5 @@
+from random import randrange, choice
+
 import pygame as pg
 
 from pygame.locals import *
@@ -6,11 +8,16 @@ import pytmx
 
 from scenes.base import Scene
 from scenes.menus.ingame import IngameMenu
+from scenes.menus.fight import FightMenu
 from tools.pg.rects import resize
 # from scenes.menus.main import MainMenu
 
+from parsedconf import conf
+
 class TowerFloor1(Scene):
     "Tower in which the player starts playing (floor 1)"
+
+    mob_prob = -1
 
     def __init__(self, manager, player, position=(3, 3)):
         super(TowerFloor1, self).__init__(manager)
@@ -19,20 +26,24 @@ class TowerFloor1(Scene):
         self.player.x, self.player.y = position
         self.playermovkeyon = False
 
-    def update(self, delta):
+    def move(self, dt):
+        '''Handle the moves of the player'''
+        if self.player.moving:
+            self.player.step(dt, self.tmxdata) # should have a lock
+            if self.player.exact_cell():
+                self.stop()
         if self.playermovkeyon:
-            if self.player.moving:
-                self.player.step(delta, self.tmxdata)
-            else:
-                self.player.moving = True
-        else:
-            if self.player.moving:
-                if self.player.exact_cell():
-                    self.player.moving = False
-                else:
-                    self.player.step(delta, self.tmxdata)
+            self.player.moving = True
+
+    def update(self, delta):
+        self.move(delta)
         self.player.update(delta, self.tmxdata)
 
+    def stop(self):
+        '''stop the player shortly after a case
+        and check if an event should occur'''
+
+        self.player.moving = False
         # handle the map change
         # get the stairs
         stairs = self.tmxdata.get_object_by_name("DownStairs")
@@ -44,6 +55,17 @@ class TowerFloor1(Scene):
         if self.player.rect.colliderect(stairs):
             self.manager.go_back()
             # for now, they just lead to the menu
+        else:
+            monster = randrange(100)
+            if monster <= self.mob_prob:
+                num = randrange(1, 4)
+                monsters = []
+                for i in range(num):
+                    monster = choice(conf.entities.monsters)
+                    lvl = 1
+                    monsters.append((monster, lvl))
+                    self.manager.add(FightMenu(self.manager, self.player,
+                                               monsters))
 
     def render(self, screen):
         # size_w, size_h = screen.get_size()
@@ -66,6 +88,10 @@ class TowerFloor1(Scene):
         for e in events:
             if e.type == KEYDOWN:
                 if e.key == K_ESCAPE:
+                    # prevents from moving after back from the menu
+                    # doesn't work
+                    #if self.player.exact_cell():
+                    #    self.player.moving = False
                     self.manager.add(IngameMenu(self.manager, self.player))
                 # handle moves
                 if self.player.exact_cell():

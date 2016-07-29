@@ -27,7 +27,7 @@ class IngameMenu(Scene):
             surf = self.sfont.render(choice[0], True, COLORS['white'])
             self.to_blit.append((surf, (20, height_pos)))
             self.maxw = max(self.maxw, (20 + surf.get_width() + 20 + \
-                              self.cursor.get_width()))
+                                        self.cursor.get_width() + 10))
             height_pos += 20 + surf.get_height()
         self.maxh = height_pos  # 20 px at top and at bottom
             
@@ -46,8 +46,7 @@ changes won't be saved",
             self.manager.render_old(screen)
         bg = self.map.get_layer_by_name("Background")
         # w, h = CELL_WIDTH, CELL_HEIGHT
-        # the menu tilemap is 8 tiles large
-        w, h = self.maxw // 8, self.maxh // 16
+        w, h = self.maxw // 16, self.maxh // 16
         for x, y, img in bg.tiles():
             img = pg.transform.scale(img, (w, h))
             screen.blit(img, (x * w, y * h))

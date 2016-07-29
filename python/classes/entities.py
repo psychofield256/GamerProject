@@ -27,12 +27,13 @@ class Entity2(object):
         pass
 
 
-class Entity(pg.sprite.Sprite):
+class MovingEntity(pg.sprite.Sprite):
     """Class for Entities."""
 
     def __init__(self, name, position, stats, imgdata, lvl=0):
         pg.sprite.Sprite.__init__(self)
         self.swidth, self.sheight = (imgdata.width, imgdata.height)
+        # la la ici la (change directions)
         self.spritesheet = SpriteSheet(imgdata.path, self.swidth)
         self._direction = DOWN
         self.moving = False
@@ -61,7 +62,13 @@ class Entity(pg.sprite.Sprite):
         self.skills = []
 
     def set_sprite(self, size=(32, 32)):
-        y = self._direction
+        switch = {
+            LEFT: 'l',
+            RIGHT: 'r',
+            UP: 'u',
+            DOWN: 'd',
+        }
+        d = switch[self._direction]
         
         # take the right foot if the player has walked more than half the cell
         # take the frame corresponding to the step
@@ -69,7 +76,7 @@ class Entity(pg.sprite.Sprite):
         # in case the entity is at the end of the move
         if x >= self.spritesheet.xlen:
             x = 0
-        self.image = self.spritesheet.get_sprite(x, y, size)
+        self.image = self.spritesheet.get_sprite(x, d, size)
         # self.image = self.spritesheet.
 
     def get_image(self, size):
@@ -180,7 +187,7 @@ class Entity(pg.sprite.Sprite):
         return pg.Rect(self.x * TILE_WIDTH, self.y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT)
 
 
-class Player(Entity):
+class Player(MovingEntity):
 
     def __init__(self, name, pos=(0,0), lvl=0):
         stats = dict(conf.entities.player.stats) # rebuild the dict
@@ -189,11 +196,11 @@ class Player(Entity):
                 conf.entities.player.sprite.height)
         imgdata = conf.entities.player.sprite
         # img = CONFIG.player.skin
-        Entity.__init__(self, name, pos, stats, imgdata, lvl)
+        MovingEntity.__init__(self, name, pos, stats, imgdata, lvl)
         self.inv = Inventory()
 
 
-class Monster(Entity):
+class Monster(Entity2):
     """docstring for Monster"""
 
     def __init__(self, confdata, pos=(0,0), lvl=0):
